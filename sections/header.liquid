@@ -1,0 +1,63 @@
+{{ 'style-header.css' | asset_url | stylesheet_tag}}
+
+
+<div class="header">
+    <div class="header__nav">
+            <a href="#">
+                <img src="{{ section.settings.header_logo.src | img_url: '240x'}}" alt="" class="logo">
+            </a>
+
+            <ul class="nav-items">
+                {% for link in section.blocks %}
+                    <li class="nav-item">
+                        <a href="#">{{link.settings.nav_link}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="header__icons">
+                {% render 'icon-search' %}
+                {% render 'icon-account' %}
+                {% render 'icon-basket' %}
+            </div>
+    </div>
+</div>
+
+<style>
+    .header {
+        background-image: url("{{ section.settings.hero_image | img_url: '1920x' }}");
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Homepage Hero",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "hero_image",
+            "label": "Hero Image"
+        },
+        
+        {
+            
+            "type": "image_picker",
+            "id": "header_logo",
+            "label": "Logo"
+        }
+    ],
+    "blocks": [
+        {
+        "name": "Nav Links",
+        "type": "text",
+        "settings": [
+            {
+                "type": "text",
+                "id": "nav_link",
+                "label": "Nav-Link"
+            }
+        ]
+        }
+    ]
+}
+{% endschema %}

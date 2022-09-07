@@ -1,0 +1,24 @@
+
+
+.header {
+    width: 100%;
+    height: calc(100vh - 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: red;
+    grid-gap: 10px;
+    padding: 16px 40px;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
