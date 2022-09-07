@@ -1,0 +1,29 @@
+
+.announcement {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.announcement__wrapper {
+    width: 100%;
+    height: 40px;
+    background: #FBFBFB;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.announcement__link {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 168%;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
