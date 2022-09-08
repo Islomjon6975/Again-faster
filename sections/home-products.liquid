@@ -1,15 +1,64 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+{{ 'style-home-products.css' | asset_url | stylesheet_tag}}
+
 
 <div class="homepage-products">
-    <div class="homepage-products__wrapper">
-        <div class="homepage-product">
+    <div class="swiper swiper__contaiener">
+        <div class="homepage-products__wrapper swiper-wrapper">
             {% for productimg in section.blocks %}
+            <div class="homepage-product swiper-slide">
                 <div class="homepage-product__img-wrapper">
                     <img src="{{ productimg.settings.product_img.src | img_url: '328x334' }}" alt="">
                 </div>
+                <h6 class="homepage-product__title">{{productimg.settings.product_name }}</h6>
+            </div>
             {% endfor %}
         </div>
+        <div class="swiper-scrollbar"></div>
     </div>
 </div>
+
+
+<script>
+    const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+        el: '.swiper-scrollbar',
+        clickable: true,
+    },
+
+    slidesPerView: 4,
+        spaceBetween: 18,   
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        mousewheel: true,
+});
+</script>
 
 {% schema %}
 {
@@ -23,6 +72,11 @@
                     "id": "product_img",
                     "type": "image_picker",
                     "label": "Product Image"
+                },
+                {
+                    "id": "product_name",
+                    "type": "text",
+                    "label": "Product Name"
                 }
             ]
         }
