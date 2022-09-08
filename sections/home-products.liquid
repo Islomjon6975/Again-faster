@@ -1,0 +1,31 @@
+
+<div class="homepage-products">
+    <div class="homepage-products__wrapper">
+        <div class="homepage-product">
+            {% for productimg in section.blocks %}
+                <div class="homepage-product__img-wrapper">
+                    <img src="{{ productimg.settings.product_img.src | img_url: '328x334' }}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Homepage Products",
+    "blocks": [
+        {
+            "name": "Products",
+            "type": "image_picker",
+            "settings": [
+                {
+                    "id": "product_img",
+                    "type": "image_picker",
+                    "label": "Product Image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
