@@ -1,0 +1,75 @@
+{{ 'style-home-banners.css' | asset_url | stylesheet_tag}}
+<script src="lazysizes.min.js" async=""></script>
+
+
+<div class="home-banner">
+    <div class="home-banner__image-big__wrapper">
+        <img class="banner_img lazyload"
+            src="{{ section.settings.banner_image.src | img_url: '1024x827' }}"
+            data-src="{{ img_url }}"
+            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+            data-aspectratio="{{ section.settings.banner_image.aspect_ratio }}"
+            data-sizes="auto"
+            data-parent-fit="cover"
+            alt="{{ section.settings.banner_image.alt | escape }}">
+    </div>
+
+    <div class="home-banner__wrapper">
+        <div class="home-banner__image-small__wrapper">
+            <img class="banner_img lazyload"
+                src="{{ section.settings.banner_imagesmall.src | img_url: '462x628' }}"
+                data-src="{{ img_url }}"
+                data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                data-aspectratio="{{ section.settings.banner_imagesmall.aspect_ratio }}"
+                data-sizes="auto"
+                data-parent-fit="cover"
+                alt="{{ section.settings.banner_imagesmall.alt | escape }}">
+        </div>
+        <h5 class="banner__subtitle">{{section.settings.banner_subtitle}}</h5>
+        <h3 class="banner__title">{{section.settings.banner_title}}</h3>
+        <p class="banner__description">{{section.settings.banner_description}}</p>
+        <a class="banner__link" href="#">Shop weights</a>
+    
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Banner",
+
+    "settings": [
+        {
+            "id": "banner_image",
+            "type": "image_picker",
+            "label": "Banner Image 1"
+        },
+        {
+            "id": "banner_imagesmall",
+            "type": "image_picker",
+            "label": "Banner Image 2"
+        },
+        {
+            "id": "banner_subtitle",
+            "type": "text",
+            "label": "Banner Subtitle"
+        },
+        {
+            "id": "banner_title",
+            "type": "text",
+            "label": "Banner Title"
+        },
+        {
+            "id": "banner_description",
+            "type": "text",
+            "label": "Banner Description"
+        }
+    ],
+
+    "presets": [
+        {
+            "category": "Heeeee",
+            "name": "Heee name"
+        }
+    ]
+}
+{% endschema %}

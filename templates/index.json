@@ -1,0 +1,17 @@
+{
+  "sections":{
+      "home-banners":{
+          "type":"home-banners"
+      }
+  },
+  "order":[
+    "home-banners"
+  ]
+}
+
+
+
+
+
+
+

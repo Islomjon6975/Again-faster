@@ -1,18 +1,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 <script  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 {{ 'style-home-products.css' | asset_url | stylesheet_tag}}
+<script src="lazysizes.min.js" async=""></script>
 
 
 <div class="homepage-products">
     <div class="swiper swiper__contaiener">
         <div class="homepage-products__wrapper swiper-wrapper">
-            {% for productimg in section.blocks %}
-            <div class="homepage-product swiper-slide">
-                <div class="homepage-product__img-wrapper">
-                    <img src="{{ productimg.settings.product_img.src | img_url: '328x334' }}" alt="">
+            {% for collection in section.settings.collection_list %}
+                <div class="homepage-product swiper-slide">
+                    <div class="homepage-product__img-wrapper">
+                        <img class="banner_img lazyload"
+                            src="{{ collection.image | img_url: '328x334' }}"
+                            data-src="{{ img_url }}"
+                            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                            data-aspectratio="{{ collection.image.aspect_ratio }}"
+                            data-sizes="auto"
+                            data-parent-fit="cover"
+                            alt="{{ collection.image.alt | escape }}">
+                    </div>
+                    <h6 class="homepage-product__title">{{collection.title}}</h6>
                 </div>
-                <h6 class="homepage-product__title">{{productimg.settings.product_name }}</h6>
-            </div>
             {% endfor %}
         </div>
         <div class="swiper-scrollbar"></div>
@@ -62,23 +70,12 @@
 
 {% schema %}
 {
-    "name": "Homepage Products",
-    "blocks": [
+    "name": "Product Collections",
+    "settings": [
         {
-            "name": "Products",
-            "type": "image_picker",
-            "settings": [
-                {
-                    "id": "product_img",
-                    "type": "image_picker",
-                    "label": "Product Image"
-                },
-                {
-                    "id": "product_name",
-                    "type": "text",
-                    "label": "Product Name"
-                }
-            ]
+            "id": "collection_list",
+            "type": "collection_list",
+            "label": "Collections"
         }
     ]
 }
