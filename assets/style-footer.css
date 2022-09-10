@@ -7,6 +7,7 @@
 .footer__container {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
+    grid-column-gap: 150px;
     max-width: 1440px;
     width: 100%;
     height: 100%;
@@ -29,7 +30,6 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    text-align: center;
     letter-spacing: 0.165em;
     text-transform: uppercase;
     color: #000000;
@@ -47,11 +47,25 @@
     outline: none;
     border: none;
     border-bottom: 1px solid #C4C4C4;
-    padding: 18px 0px;
+    padding: 15px 0px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 141.8%;
     color: #000000;
     opacity: 0.5;
+}
+
+.footer-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 28px;
 }

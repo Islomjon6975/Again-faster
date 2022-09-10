@@ -15,13 +15,14 @@
 
 .header__nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 10px;
     align-items: center;
     
 }
 
 .logo {
+
 }
 
 .logo:hover {
@@ -89,6 +90,7 @@
     color: #FFFFFF;
     margin: 24px 0px 40px 0px;
 }
+
 
 .rich-text__btn {
     width: 253px;

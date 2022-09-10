@@ -8,27 +8,76 @@
 
 <div class="footer">
     <div class="footer__container">
-        <div class="footer__form footer__col1">
-            <h4 class="footer__title"></h4>
-            <div class="footer__input__wrapper">
-                <input type="text" class="footer__input" placeholder="Enter your email">
-                <img src="../assets/svg-arrow.svg" alt="">
+        {% for block in section.blocks %}
+            <div class="footer__form footer__col1">
+                <h4 class="footer__title">{{ block.settings.footer_form_title }}</h4>
+                <div class="footer__input__wrapper">
+                    <input type="text" class="footer__input" placeholder="Enter your email">
+                    <span class="footer-arrow">
+                        {% render 'icon-arrow-black' %}
+                    </span>
+                </div>
+                <div class="footer__socials">
+                    {% render 'icon-facebook' %}
+                    {% render 'icon-instagram' %}
+                    {% render 'icon-email' %}
+                </div>
             </div>
-        </div>
-        <div class="footer__col2"></div>
-        <div class="footer__col3"></div>
+                <h4 class="footer__title">{{ block.settings.footer_col1_title }}</h4>
+            <div class="footer__col2"></div>
+            <div class="footer__col3">
+                <h4 class="footer__title">{{ block.settings.footer_col2_title }}</h4>
+            </div>
+        {% endfor %}
     </div>
 </div>
 
 {% schema %}
 {
     "name": "Footer",
-    "settings": [
+    
+
+    "blocks": [
         {
-            "id": "footer_icon",
-            "type": "image_picker",
-            "label": "Footer Image"
+            "name": "Form",
+            "type": "footer-form",
+            "settings": [
+                {
+                    "id": "footer_icon",
+                    "type": "image_picker",
+                    "label": "Footer Image"
+                },
+                {
+                    "id": "footer_form_title",
+                    "type": "text",
+                    "label": "Title"
+                }
+            ]
+        }, 
+        {
+            "name": "Text",
+            "type": "footer-column1",
+            "settings": [
+                {
+                    "id": "footer_col1_title",
+                    "type": "text",
+                    "label": "Title"
+                }
+            ]
+        },
+        {
+            "name": "Col2",
+            "type": "footer-column2",
+            "settings": [
+                {
+                    "id": "footer_col2_title",
+                    "type": "text",
+                    "label": "Title"
+                }
+            ]
         }
     ]
+        
+    
 }
 {% endschema %}

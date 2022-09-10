@@ -8,9 +8,9 @@
             </a>
 
             <ul class="nav__items">
-                {% for link in section.blocks %}
+                {% for link in section.settings.menu.links %}
                     <li class="nav__item">
-                        <a class="nav__link" href="#">{{link.settings.nav_link}}</a>
+                        <a class="nav__link" href="#">{{link.title | escape }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -44,6 +44,11 @@
     "name": "Homepage Hero",
     "settings": [
         {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+        },
+        {
             "type": "image_picker",
             "id": "hero_image",
             "label": "Hero Image"
@@ -67,21 +72,6 @@
             "type": "text",
             "id": "richtext_btn",
             "label": "Rich-text button"
-        }
-
-
-    ],
-    "blocks": [
-        {
-        "name": "Nav Links",
-        "type": "text",
-        "settings": [
-            {
-                "type": "text",
-                "id": "nav_link",
-                "label": "Nav-Link"
-            }
-        ]
         }
     ]
 }
