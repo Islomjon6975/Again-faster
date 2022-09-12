@@ -1,11 +1,19 @@
 {
   "sections":{
       "home-banners":{
-          "type":"home-banners"
+        "type":"home-banners"
+      },
+      "home-training": {
+        "type": "home-training"
+      },
+      "home-gym": {
+        "type": "home-gym"
       }
   },
   "order":[
-    "home-banners"
+    "home-banners",
+    "home-training",
+    "home-gym"
   ]
 }
 

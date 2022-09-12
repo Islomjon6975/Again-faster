@@ -8,9 +8,8 @@
 
 <div class="footer">
     <div class="footer__container">
-        {% for block in section.blocks %}
             <div class="footer__form footer__col1">
-                <h4 class="footer__title">{{ block.settings.footer_form_title }}</h4>
+                <h4 class="footer__title">{{ section.settings.footer_title1 }}</h4>
                 <div class="footer__input__wrapper">
                     <input type="text" class="footer__input" placeholder="Enter your email">
                     <span class="footer-arrow">
@@ -23,60 +22,58 @@
                     {% render 'icon-email' %}
                 </div>
             </div>
-                <h4 class="footer__title">{{ block.settings.footer_col1_title }}</h4>
-            <div class="footer__col2"></div>
-            <div class="footer__col3">
-                <h4 class="footer__title">{{ block.settings.footer_col2_title }}</h4>
+                
+            <div class="footer__col2">
+                <h4 class="footer__title">{{ section.settings.footer_title2 }}</h4>
+                <p class="footer__subtitle">About Us</p>
+                <p class="footer__subtitle">Blog</p>
+                <p class="footer__subtitle">Gift Cards</p>
+                <p class="footer__subtitle">Military/LEO Discount</p>
+                <p class="footer__subtitle">Financing</p>
+                <p class="footer__subtitle">Retail Store</p>
             </div>
-        {% endfor %}
+            <div class="footer__col3">
+                <h4 class="footer__title">{{ section.settings.footer_title3 }}</h4>
+                <p class="footer__subtitle">Introductions</p>
+                <p class="footer__subtitle">Shipping</p>
+                <p class="footer__subtitle">Returns and Warranty</p>
+                <p class="footer__subtitle">Contact Us</p>
+                <p class="footer__subtitle">Shop in Store</p>
+            </div>
     </div>
+    <p class="footer__copyright">©2020 Again Faster. All Rights Reserved</p>
 </div>
 
 {% schema %}
 {
-    "name": "Footer",
-    
-
-    "blocks": [
+    "name": "Footer Image",
+    "settings": [
         {
-            "name": "Form",
-            "type": "footer-form",
-            "settings": [
-                {
-                    "id": "footer_icon",
-                    "type": "image_picker",
-                    "label": "Footer Image"
-                },
-                {
-                    "id": "footer_form_title",
-                    "type": "text",
-                    "label": "Title"
-                }
-            ]
-        }, 
-        {
-            "name": "Text",
-            "type": "footer-column1",
-            "settings": [
-                {
-                    "id": "footer_col1_title",
-                    "type": "text",
-                    "label": "Title"
-                }
-            ]
+            "id": "footer_icon",
+            "type": "image_picker",
+            "label": "Footer Image"
         },
         {
-            "name": "Col2",
-            "type": "footer-column2",
-            "settings": [
-                {
-                    "id": "footer_col2_title",
-                    "type": "text",
-                    "label": "Title"
-                }
-            ]
+            "id": "footer_title1",
+            "type": "text",
+            "label": "Footer Title 1",
+            "default": "Newsletter"
+        },
+        {
+            "id": "footer_title2",
+            "type": "text",
+            "label": "Footer Title 2",
+            "default": "Again faster"
+        },
+        {
+            "id": "footer_title3",
+            "type": "text",
+            "label": "Footer Title 3",
+            "default": "Get Help"
         }
+
     ]
+    
         
     
 }

@@ -1,0 +1,65 @@
+.training__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.training__wrapper {
+    width: 1440px;
+    height: 688px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-left: 79px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.training__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 143%;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    max-width: 400px;
+}
+
+.training__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 167.5%;
+    color: #FFFFFF;
+    max-width: 400px;
+    margin: 24px 0px 40px 0px;
+}
+
+.rich-text__btn {
+    width: 253px;
+    height: 58px;
+    border: 1px solid #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0 24px;
+    transition: transform .3s ease;
+}
+
+.rich-text__btn:active {
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.rich-text__btn-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
