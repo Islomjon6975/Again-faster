@@ -8,12 +8,16 @@
       },
       "home-gym": {
         "type": "home-gym"
+      },
+      "home-newarrivals": {
+        "type": "home-newarrivals"
       }
   },
   "order":[
     "home-banners",
     "home-training",
-    "home-gym"
+    "home-gym",
+    "home-newarrivals"
   ]
 }
 

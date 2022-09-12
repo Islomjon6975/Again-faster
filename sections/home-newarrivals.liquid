@@ -1,0 +1,44 @@
+
+{{ 'style-newarrivals.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .arrivals__wrapper {
+        background-image: url("{{section.settings.arrivals_img | img_url: '1440x688'}}");
+    }
+</style>
+
+
+<div class="arrivals__container">
+    <div class="arrivals__wrapper">
+        <h4 class="arrivals__title">{{ section.settings.arrivals_title }}</h4>
+        <div class="rich-text__btn">
+            <div class="rich-text__btn-text">{{section.settings.arrivals_btn }}</div>
+            {% render 'icon-arrow' %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "New Arrivals",
+    "settings": [
+        {
+            "id": "arrivals_img",
+            "type": "image_picker",
+            "label": "Arrivals Image"
+        },
+        {
+            "id": "arrivals_title",
+            "type": "text",
+            "label": "Arrivals Title",
+            "default": "New Arrivals"
+        },
+        {
+            "id": "arrivals_btn",
+            "type": "text",
+            "label": "Arrivals Button",
+            "default": "Shop now"
+        }
+    ]
+}
+{% endschema %}
