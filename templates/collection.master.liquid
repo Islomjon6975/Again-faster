@@ -1,0 +1,21 @@
+{{ 'style-collection-master.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-master">
+    <div class="rich-text">
+        <p class="eyebrow">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
+        <h2 class="title"></h2>
+        <div class="rich-text__btn">
+            <div class="rich-text__btn-text">Consultation</div>
+            {% render 'icon-arrow-black' %}
+        </div>
+    </div>
+    <div class="master-images">
+        <div class="big-image__container">
+
+        </div>
+        <div class="small-image__container">
+
+        </div>
+    </div>
+</div>
+

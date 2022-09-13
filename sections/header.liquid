@@ -10,7 +10,7 @@
             <ul class="nav__items">
                 {% for link in section.settings.menu.links %}
                     <li class="nav__item">
-                        <a class="nav__link" href="#">{{link.title | escape }}</a>
+                        <a class="nav__link" href="{{ link.url }}">{{link.title | escape }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -22,22 +22,8 @@
             </div>
     </div>
 
-    <div class="rich-text">
-        <h1 class="rich-text__title">{{section.settings.richtext_title | default: 'Team barbell'}}</h1>
-        <p class="rich-text__description">{{section.settings.richtext_description | default: 'Team Barbell was to design a piece of equipment that matches the performance and quality of other elite level competition bars.'}}</p>
-        
-        <div class="rich-text__btn">
-            <div class="rich-text__btn-text">{{section.settings.richtext_btn | default: 'Expolore'}}</div>
-            {% render 'icon-arrow' %}
-        </div>
-    </div>
 </div>
 
-<style>
-    .header {
-        background-image: url("{{ section.settings.hero_image | img_url: '1440x' }}");
-    }
-</style>
 
 {% schema %}
 {
@@ -50,28 +36,8 @@
         },
         {
             "type": "image_picker",
-            "id": "hero_image",
-            "label": "Hero Image"
-        },
-        {
-            "type": "image_picker",
             "id": "header_logo",
             "label": "Logo"
-        },
-        {
-            "type": "text",
-            "id": "richtext_title",
-            "label": "Title"
-        },
-        {
-            "type": "richtext",
-            "id": "richtext_description",
-            "label": "Description"
-        },
-        {
-            "type": "text",
-            "id": "richtext_btn",
-            "label": "Rich-text button"
         }
     ]
 }

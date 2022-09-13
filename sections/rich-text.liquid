@@ -1,0 +1,33 @@
+
+{{ 'style-rich-text.css' | asset_url | stylesheet_tag }}
+
+
+<style>
+    .rich-text {
+        background-image: url("{{ section.settings.hero_img | img_url: '1440x988' }}")
+    }
+</style>
+
+<div class="rich-text">
+    <h1 class="rich-text__title">{{section.settings.richtext_title | default: 'Team barbell'}}</h1>
+    <p class="rich-text__description">{{section.settings.richtext_description | default: 'Team Barbell was to design a piece of equipment that matches the performance and quality of other elite level competition bars.'}}</p>
+    
+    <div class="rich-text__btn">
+        <div class="rich-text__btn-text">{{section.settings.richtext_btn | default: 'Expolore'}}</div>
+        {% render 'icon-arrow' %}
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Hero",
+    "settings": [
+        {
+            "id": "hero_img",
+            "type": "image_picker",
+            "label": "Hero Image"
+        }
+    ]
+}
+{% endschema %}

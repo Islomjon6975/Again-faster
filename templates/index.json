@@ -1,5 +1,8 @@
 {
   "sections":{
+      "rich-text":{
+        "type":"rich-text"
+      },
       "home-banners":{
         "type":"home-banners"
       },
@@ -14,6 +17,7 @@
       }
   },
   "order":[
+    "rich-text",
     "home-banners",
     "home-training",
     "home-gym",
