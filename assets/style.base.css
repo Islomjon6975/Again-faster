@@ -1,0 +1,124 @@
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-Bold.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-SemiBold.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-Regular.ttf") format("ttf");
+}
+
+
+@font-face {
+    font-family: 'Oswald';
+    src: url("../assets/Oswald/static/Oswald-Light.ttf") format("ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, .h1 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 130%;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+h2, .h2 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 143%;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+h3, .h3 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h4, .h4 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 168%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h5, .h5 {
+    font-family: "Oswald";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 168%;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+body {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 167.5%;
+}
+
+/* ------------------ ( 1440-768 ) -------------------- */
+@media (max-width: 1440px) {
+    h1, .h1 {
+        font-size: 52px;
+    }
+
+    h2, .h2 {
+        font-size: 36px;
+    }
+
+    h3, .h3 {
+        font-size: 20px;
+    }
+
+    h4, .h4 {
+        font-size: 16px;
+    }
+}
+
+
+/* ------------------ ( 768-375 ) -------------------- */
+@media (max-width: 1440px) {
+    h1, .h1 {
+        font-size: 40px;
+    }
+
+    h2, .h2 {
+        font-size: 28px;
+    }
+
+    h3, .h3 {
+        font-size: 18px;
+    }
+
+    h4, .h4 {
+        font-size: 14px;
+    }
+}

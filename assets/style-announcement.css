@@ -1,6 +1,6 @@
 
 .announcement {
-    max-width: 1440px;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,13 +19,6 @@
 }
 
 .announcement__link {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 168%;
-    text-align: center;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: #000000;
     text-decoration: none;
 }

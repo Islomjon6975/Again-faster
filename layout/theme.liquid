@@ -8,6 +8,7 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
+  {{ 'style.base.css' | asset_url | stylesheet_tag }}
   {{ 'style-base.css' | asset_url | stylesheet_tag }}
   {{ 'application.css' | asset_url | stylesheet_tag }}
   {{ 'style-normalize.css' | asset_url | stylesheet_tag }}
@@ -17,7 +18,7 @@
 </head>
 <body>
   {% section 'announcement' %}
-  {% section 'header' %}
+  <!-- {% section 'header' %} -->
   <!-- {% section 'home-products' %} -->
   <main role="main">
     {{ content_for_layout }}
