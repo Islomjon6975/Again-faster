@@ -1,7 +1,11 @@
 
 .rich-text {
-    width: 1440px;
-    height: 988px;
+    max-width: 1920px;
+    width: 100%;
+    height: calc(100vh - 40px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
     margin: auto;
     margin-top: -58px;
     background-color: green;
@@ -34,7 +38,7 @@
 }
 
 
-.rich-text__btn {
+.secondary-button {
     width: 253px;
     height: 58px;
     border: 1px solid #FFFFFF;
@@ -45,12 +49,12 @@
     transition: transform .3s ease;
 }
 
-.rich-text__btn:active {
+.secondary-button:active {
     transform: scale(0.98);
     cursor: pointer;
 }
 
-.rich-text__btn-text {
+.secondary-button__text {
     font-style: normal;
     font-weight: 400;
     font-size: 12px;

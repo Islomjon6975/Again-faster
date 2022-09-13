@@ -1,27 +1,11 @@
 {
   "sections":{
-      "rich-text":{
-        "type":"rich-text"
-      },
-      "home-banners":{
-        "type":"home-banners"
-      },
-      "home-training": {
-        "type": "home-training"
-      },
-      "home-gym": {
-        "type": "home-gym"
-      },
-      "home-newarrivals": {
-        "type": "home-newarrivals"
+      "home-rich-text": {
+        "type": "home-rich-text"
       }
   },
   "order":[
-    "rich-text",
-    "home-banners",
-    "home-training",
-    "home-gym",
-    "home-newarrivals"
+    "home-rich-text"
   ]
 }
 

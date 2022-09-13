@@ -26,6 +26,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-black: #000000;
+    --primary-white: #ffffff;
+    --primary-gold: #c2a57b;
+    --secondary-text-grey: #767676;
+    --secondary-grey: #c4c4c4;
+    --secondary-light-grey: #fbfbfb;
+    --red: #DA0000;
+    --green: #6FCF97;
+
+}
+
 h1, .h1 {
     font-family: "Open Sans";
     font-style: normal;
@@ -74,6 +86,15 @@ h5, .h5 {
     line-height: 168%;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+}
+
+p, .p  {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 167.5%;
+    color: #8F8F8F;
 }
 
 body {

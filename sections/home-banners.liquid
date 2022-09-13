@@ -3,6 +3,7 @@
 
 
 <div class="home-banner">
+    {% render 'primary-button' %}
     <div class="home-banner__image-big__wrapper">
         <img class="banner_img lazyload"
             src="{{ section.settings.banner_image.src | img_url: '1024x827' }}"
