@@ -1,20 +1,41 @@
 {{ 'style-collection-master.css' | asset_url | stylesheet_tag }}
+<script src="lazysizes.min.js" async=""></script>
 
 <div class="collection-master">
-    <div class="rich-text">
-        <p class="eyebrow">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
-        <h2 class="title"></h2>
-        <div class="rich-text__btn">
-            <div class="rich-text__btn-text">Consultation</div>
-            {% render 'icon-arrow-black' %}
+    <div class="collection-hero">
+        <div class="rich-text">
+            <p class="eyebrow h5">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
+            <h2 class="title h2">{{ collection.metafields.accentuate.title }}</h2>
+            <div class="rich-text__btn">
+                <a href="{{ collection.metafields.accentuate.cta_url }}" class="rich-text__btn-text">{{ collection.metafields.accentuate.cta_label }}</a>
+                {% render 'icon-arrow-black' %}
+            </div>
         </div>
-    </div>
-    <div class="master-images">
-        <div class="big-image__container">
-
-        </div>
-        <div class="small-image__container">
-
+        <div class="master-images">
+            <div class="big-image__container">
+                {% for item in collection.metafields.accentuate.image_1 %}
+                    <img class="banner_img lazyload"
+                    src="{{ item.src }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ item.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ item.alt | escape }}">
+                {% endfor %}
+            </div>
+            <div class="small-image__container">
+                {% for item in collection.metafields.accentuate.image_2 %}
+                    <img class="banner_img lazyload"
+                    src="{{ item.src }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ item.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ item.alt | escape }}">
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

@@ -97,6 +97,15 @@ p, .p  {
     color: #8F8F8F;
 }
 
+.small-p {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 167.5%;
+    color: #C4C4C4;
+}
+
 .link {
     font-family: 'Open Sans';
     font-style: normal;

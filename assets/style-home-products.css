@@ -12,14 +12,15 @@
 }
 
 .homepage-products__wrapper {
-    /* display: grid; */
-    /* grid-template-columns: repeat(4, 1fr); */
-    /* grid-column-gap: 18px; */
+    display: flex;
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 18px; */
 }
 
 .homepage-product {
     padding-bottom: 40px;
-    background-color: red;
+    /* width: 328px; */
 }
 
 .homepage-product__title {
