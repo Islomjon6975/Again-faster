@@ -1,16 +1,16 @@
 .collection-master {
     max-width: 1920px;
     width: 100%;
-    height: calc(100vh - 40px);
     margin: auto;
     padding: 0 40px;
-
-
+    
+    
 }
 
 .collection-hero {
     width: 100%;
     height: 100%;
+    height: calc(100vh - 40px);
     display: flex;
     align-items:center;
     justify-content: space-between;
@@ -116,4 +116,30 @@
         width: 170px;
         height: 260px;
     }
+}
+
+
+.product-collections {
+    width: 100%;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 18px;
+    grid-row-gap: 40px;
+    margin-bottom: 80px;
+}
+
+.product-collection {
+    
+}
+
+.product__image__wrappper {
+    width: 100%;
+    height: 334px;
+    background-color: red;
+}
+
+.product__title {
+    margin-top: 8px;
+    text-align: center;
 }
