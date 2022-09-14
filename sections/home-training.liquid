@@ -1,4 +1,4 @@
-{{ 'style-training.css' | asset_url | stylesheet_tag }}
+{{ 'style-home-training.css' | asset_url | stylesheet_tag }}
 
 <style>
     .training__wrapper {
@@ -8,10 +8,10 @@
 
 <div class="training__container">
     <div class="training__wrapper">
-        <h4 class="training__title">{{ section.settings.training_title }}</h4>
-        <p class="training__description">{{ section.settings.training_description }}</</p>
+        <h4 class="training__title h2">{{ section.settings.training_title }}</h4>
+        <p class="training__description p">{{ section.settings.training_description }}</</p>
         <div class="rich-text__btn">
-            <div class="rich-text__btn-text">{{section.settings.training_btn }}</div>
+            <div class="rich-text__btn-text h4">{{section.settings.training_btn }}</div>
             {% render 'icon-arrow' %}
         </div>
     </div>

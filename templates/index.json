@@ -2,10 +2,22 @@
   "sections":{
       "home-rich-text": {
         "type": "home-rich-text"
+      },
+      "home-products": {
+        "type": "home-products"
+      },
+      "home-banners": {
+        "type": "home-banners"
+      },
+      "home-training": {
+        "type": "home-training"
       }
   },
   "order":[
-    "home-rich-text"
+    "home-rich-text",
+    "home-products",
+    "home-banners",
+    "home-training"
   ]
 }
 

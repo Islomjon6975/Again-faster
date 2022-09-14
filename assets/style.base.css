@@ -97,6 +97,17 @@ p, .p  {
     color: #8F8F8F;
 }
 
+.link {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: #000000;
+}
+
 body {
     font-family: "Open Sans";
     font-style: normal;

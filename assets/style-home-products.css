@@ -1,6 +1,7 @@
 
 .homepage-products {
-    width: 1440px;
+    max-width: 1920px;
+    width: 100%;
     padding: 0 40px;
     padding: 97px 40px 120px 40px;
     margin: auto;
@@ -18,6 +19,7 @@
 
 .homepage-product {
     padding-bottom: 40px;
+    background-color: red;
 }
 
 .homepage-product__title {

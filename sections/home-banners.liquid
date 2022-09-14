@@ -3,7 +3,6 @@
 
 
 <div class="home-banner">
-    {% render 'primary-button' %}
     <div class="home-banner__image-big__wrapper">
         <img class="banner_img lazyload"
             src="{{ section.settings.banner_image.src | img_url: '1024x827' }}"
@@ -26,10 +25,10 @@
                 data-parent-fit="cover"
                 alt="{{ section.settings.banner_imagesmall.alt | escape }}">
         </div>
-        <h5 class="banner__subtitle">{{section.settings.banner_subtitle}}</h5>
-        <h3 class="banner__title">{{section.settings.banner_title}}</h3>
-        <p class="banner__description">{{section.settings.banner_description}}</p>
-        <a class="banner__link" href="{{ section.settings.banner_url }}">{{ section.settings.banner_url_name }}</a>
+        <h5 class="banner__subtitle h5">{{section.settings.banner_subtitle}}</h5>
+        <h3 class="banner__title h3">{{section.settings.banner_title}}</h3>
+        <p class="banner__description p">{{section.settings.banner_description}}</p>
+        <a class="banner__link link" href="{{ section.settings.banner_url }}">{{ section.settings.banner_url_name }}</a>
     
     </div>
 </div>
