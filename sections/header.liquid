@@ -3,10 +3,15 @@
 
 <div class="header">
     <div class="header__nav">
-            <a href="#" >
-                <img src="{{ section.settings.header_logo.src | img_url: '240x'}}" alt="logo" class="logo">
-            </a>
-
+            {% if template == 'index' %}
+                <a href="#" >
+                    <img src="{{ section.settings.header_logo.src | img_url: '240x'}}" alt="logo" class="logo">
+                </a>
+            {% else %}
+                <a href="#" >
+                    <img src="{{ section.settings.header_logo_black.src | img_url: '240x'}}" alt="logo" class="logo">
+                </a>
+            {% endif %}
             <ul class="nav__items">
                 {% for link in section.settings.menu.links %}
                     <li class="nav__item">
@@ -38,6 +43,11 @@
             "type": "image_picker",
             "id": "header_logo",
             "label": "Logo"
+        },
+        {
+            "type": "image_picker",
+            "id": "header_logo_black",
+            "label": "Logo black"
         }
     ]
 }

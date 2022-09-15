@@ -40,31 +40,23 @@
     </div>
 
     <div class="product-collections">
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
-        <div class="product-collection">
-            <div class="product__image__wrappper"></div>
-            <p class="product__title h5">Barbells</p>
-        </div>
+        {% assign products = collection.metafields.accentuate.collection_products | split: '|' %}
+        {% for item in products %}
+            <div class="product-collection">
+                <div class="product__image__wrappper">
+                    <img class="banner_img lazyload"
+                    src="{{ collections[item].image | img_url : 'medium' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ collections[item].image.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        class="product_img"
+                        alt="{{ collections[item].image.alt | escape }}">
+                    </div>
+                <p class="h5 product__title ">{{ collections[item].title | link_to: collections[item].url }}</p>
+            </div>
+        {% endfor %}
         
     </div>
 </div>
-

@@ -11,7 +11,7 @@
     top: 0px;
     left: 0;
     z-index: 10;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .header__nav {
@@ -42,8 +42,14 @@
     list-style-type: none;
 }
 
-.nav__link {
+.home .nav__link {
     color: #FFFFFF;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.nav__link {
+    color: #000000;
     text-decoration: none;
     text-transform: capitalize;
 }
@@ -57,6 +63,14 @@
     align-items:center;
     gap: 20px;
     justify-content: flex-end;
+}
+
+.home .header__icons svg path {
+    stroke: white;
+}
+
+.header__icons svg path {
+    stroke: black;
 }
 
 .header__icons:hover {
