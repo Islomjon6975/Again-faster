@@ -1,25 +1,3 @@
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-Bold.ttf") format("ttf");
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-SemiBold.ttf") format("ttf");
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url("../assets/Open_Sans/static/OpenSans/OpenSans-Regular.ttf") format("ttf");
-}
-
-
-@font-face {
-    font-family: 'Oswald';
-    src: url("../assets/Oswald/static/Oswald-Light.ttf") format("ttf");
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -35,11 +13,14 @@
     --secondary-light-grey: #fbfbfb;
     --red: #DA0000;
     --green: #6FCF97;
+}
 
+html {
+    scroll-behavior: smooth;
 }
 
 h1, .h1 {
-    font-family: "Open Sans";
+    font-family: 'OpenSans-Bold';
     font-style: normal;
     font-weight: bold;
     font-size: 60px;
@@ -49,7 +30,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-    font-family: "Open Sans";
+    font-family: 'OpenSans-SemiBold';
     font-style: normal;
     font-weight: bold;
     font-size: 40px;
@@ -59,7 +40,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-    font-family: "Open Sans";
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -69,7 +50,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-    font-family: "Open Sans";
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
@@ -79,7 +60,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-    font-family: "Oswald";
+    font-family: 'Oswald-Light';
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -89,7 +70,7 @@ h5, .h5 {
 }
 
 p, .p  {
-    font-family: 'Open Sans';
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -98,7 +79,7 @@ p, .p  {
 }
 
 .small-p {
-    font-family: 'Open Sans';
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -107,7 +88,7 @@ p, .p  {
 }
 
 .link {
-    font-family: 'Open Sans';
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -118,12 +99,107 @@ p, .p  {
 }
 
 body {
-    font-family: "Open Sans";
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 167.5%;
 }
+
+/* ------------------ ( Primary button ) -------------------- */
+.primary-button {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    max-width: 442px;
+    width: fit-content;
+    height: 43px;
+    padding: 0 40px;
+    background-color: var(--primary-black);
+    color: var(--primary-white);
+}
+
+.primary-button:hover {
+    background-color: var(--primary-white);
+    color: var(--primary-black);
+    border: 1px solid var(--primary-black);
+}
+
+/* ------------------ ( Secondary button black ) -------------------- */
+.secondary-button-black {
+    width: 253px;
+    height: 58px;
+    border: 1px solid var(--primary-black);
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0 24px;
+    transition: transform .3s ease;
+    text-decoration: none;
+}
+
+.secondary-button-black:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+    background-color: var(--primary-black)
+}
+
+.secondary-button-black:hover .secondary-button-black svg path {
+    stroke: var(--primary-white);
+}
+
+.secondary-button-black__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: var(--primary-black);
+}
+
+.secondary-button-black:hover .secondary-button-black__text {
+    color: var(--primary-white)
+}
+
+/* ------------------ ( Secondary button white ) -------------------- */
+.secondary-button-white {
+    width: 253px;
+    height: 58px;
+    border: 1px solid var(--primary-white);
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0 24px;
+    transition: transform .3s ease;
+}
+
+.secondary-button-white:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+    background-color: var(--primary-white)
+}
+
+.secondary-button-white:hover .secondary-button-white svg path {
+    stroke: black;
+}
+
+.secondary-button-white__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: var(--primary-white);
+}
+
+.secondary-button-white:hover .secondary-button-white__text {
+    color: var(--primary-black)
+}
+
+
+
 
 /* ------------------ ( 1440-768 ) -------------------- */
 @media (max-width: 1440px) {

@@ -150,7 +150,6 @@
 }
 
 .product-collection {
-    
 }
 
 .product__image__wrappper {
@@ -159,12 +158,26 @@
     background-color: white;
 }
 
+.product_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 9px;
+    justify-content: center;
+}
+
+.product_wrapper svg {
+    display: none;
+}
+
+.product-collection:hover .product_wrapper svg {
+    display: block;
+}
+
 .product__title {
     display: block;
-    margin-top: 8px;
     text-align: center;
     text-decoration: none !important;
-    width: 100%;
     color: black !important;
 }
 

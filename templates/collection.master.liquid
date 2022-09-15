@@ -6,10 +6,9 @@
         <div class="rich-text">
             <p class="eyebrow h5">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
             <h2 class="title h2">{{ collection.metafields.accentuate.title }}</h2>
-            <div class="rich-text__btn">
-                <a href="{{ collection.metafields.accentuate.cta_url }}" class="rich-text__btn-text">{{ collection.metafields.accentuate.cta_label }}</a>
-                {% render 'icon-arrow-black' %}
-            </div>
+
+            {% render 'secondary-button-black', title: collection.metafields.accentuate.cta_label, url: collection.metafields.accentuate.cta_url  %}
+
         </div>
         <div class="master-images">
             <div class="big-image__container">
@@ -53,8 +52,11 @@
                         data-parent-fit="cover"
                         class="product_img"
                         alt="{{ collections[item].image.alt | escape }}">
-                    </div>
-                <p class="h5 product__title ">{{ collections[item].title | link_to: collections[item].url }}</p>
+                </div>
+                <div class="product_wrapper">
+                    <a href="{{ collections[item].url }}" class="h5 product__title ">{{ collections[item].title  }}</a>
+                    {% render 'icon-arrow-black' %}
+                </div>
             </div>
         {% endfor %}
         
