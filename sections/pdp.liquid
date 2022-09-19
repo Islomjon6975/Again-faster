@@ -1,0 +1,192 @@
+{{ 'style-pdp.css' | asset_url | stylesheet_tag }}
+<script src="lazysizes.min.js" async=""></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<div class="pdp">
+    <div class="pdp__container">
+        <div class="pdp__image--wrapper swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="pdp_img lazyload"
+                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.pdp_img.alt | escape }}">
+                </div>
+                
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="pdp__details">
+            <h3 class="details__title h3">Dumbbell Singles</h3>
+            <p class="details__price p">$4.00</p>
+            <span class="stars__wrapper">
+                {% render 'icon-star' %}
+                {% render 'icon-star' %}
+                {% render 'icon-star' %}
+                {% render 'icon-star' %}
+                {% render 'icon-star' %}
+                <span class="p reviews">18 reviews</span>
+            </span>
+            <div class="affirm__wrapper">
+                {% render 'icon-affirm' %}
+                <span class="p reviews">pay as low as 56/mo Learn More</span>
+            </div>
+            <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p> 
+            <div class="pairs">
+                {% render 'badge', title: '3lb Single', type: 'pair' %}
+                {% render 'badge', title: '10lb Single', type: 'pair' %}
+                {% render 'badge', title: '12lb Single', type: 'pair' %}
+                {% render 'badge', title: '15lb Single', type: 'pair' %}
+                {% render 'badge', title: '20lb Single', type: 'pair' %}
+                {% render 'badge', title: '25lb Single', type: 'pair' %}
+                {% render 'badge', title: '15lb Single', type: 'pair' %}
+                {% render 'badge', title: '20lb Single', type: 'pair' %}
+                {% render 'badge', title: '25lb Single', type: 'pair' %}
+                {% render 'badge', title: '30lb Single', type: 'pair' %}
+                {% render 'badge', title: '35lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% render 'badge', title: '40lb Single', type: 'pair' %}
+            </div>
+            <p class="details__available p">Available for Free shipping!</p>
+            {% render 'primary-button', title: 'Add to Cart', type: 'large' %}
+            <h4 class="details__subtitle h4">Frequently bought with</h4>
+            <div class="details__wrapper">
+                <div class="details__product">
+                    <div class="product__image--wrapper">
+                        <img class="banner_img lazyload"
+                        src="{{ section.settings.detail_product.src | img_url: '98x125' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.detail_product.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.detail_product.alt | escape }}">
+                    </div>
+                    <div class="product__details">
+                        <p class="p product__details--text">Product Name</p>
+                        <a href="#" class="p product__details--text">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="details__product">
+                    <div class="product__image--wrapper">
+                        <img class="banner_img lazyload"
+                        src="{{ section.settings.detail_product.src | img_url: '98x125' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ section.settings.detail_product.aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ section.settings.detail_product.alt | escape }}">
+                    </div>
+                    <div class="product__details">
+                        <p class="p product__details--text">Product Name</p>
+                        <a href="#" class="p product__details--text">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "PDP",
+    "settings": [
+        {
+            "id": "pdp_img",
+            "type": "image_picker",
+            "label": "Pdp Image"
+        },
+        {
+            "id": "detail_product",
+            "type": "image_picker",
+            "label": "Pdp Detail Image"
+        }
+    ]
+}
+{% endschema %}
+
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+      slidesPerView: 1,
+      mousewheel:true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+
+</script>

@@ -120,14 +120,14 @@ body {
     color: var(--primary-white);
 }
 
-.primary-button:hover {
+.primary-button:active {
     background-color: var(--primary-white);
     color: var(--primary-black);
     border: 1px solid var(--primary-black);
 }
 
 .large {
-    width: 442px;
+    width: 100%;
 }
 
 /* ------------------ ( Secondary button black ) -------------------- */
@@ -290,6 +290,21 @@ body {
     border: none;
 }
 
+.pair {
+    width: 142px;
+    height: 55px;
+    background-color: var(--primary-white);
+    border: 1px solid #F1F1F1;
+}
+
+.pair:first-child {
+    border: 1px solid var(--primary-black);
+}
+
+.width {
+    width: 100%;
+}
+
 /* ------------------ ( Product card ) -------------------- */
 .product-card {
     position: relative;
@@ -326,6 +341,7 @@ body {
 .product-card__title {
     margin: 8px 0px;
     text-align: left;
+    text-decoration: none;
 }
 
 .product-card__price {

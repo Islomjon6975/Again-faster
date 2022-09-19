@@ -1,0 +1,121 @@
+.pdp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pdp__container {
+    max-width: 1920px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: auto;
+}
+
+.pdp__image--wrapper {
+    height: 900px;
+    position: relative;
+    width: 100%;
+}
+
+.swiper-slide {
+    width: 100%;
+}
+
+
+.pdp_img {
+    width: 100%;
+}
+
+.pdp__details {
+    padding-top: 40px;
+    max-width: 448px;
+    margin-left: 123px;
+}
+
+.details__title {
+    margin-bottom: 8px;
+}
+
+.stars__wrapper {
+    display: flex;
+    align-items:center;
+}
+
+.reviews {
+    margin-left: 8px;
+}
+
+.affirm__wrapper {
+    display: flex;
+    align-items:center;
+    margin: 11px 0px 24px 0px;
+}
+
+.details__description {
+    max-width: 442px;
+    margin-bottom: 18px;
+}
+
+.pairs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 8px;
+    height: 250px;
+    overflow-y: auto;
+    /* background-color: blue; */
+    position: relative;
+}
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: gainsboro;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.details__available {
+    color: #979797;
+    margin-bottom: 24px;
+    margin-top: 18px;
+}
+
+.details__subtitle {
+    font-size: 16px;
+    margin: 40px 0px 29px 0px;
+}
+
+.details__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.details__product {
+    display: flex;
+    align-items:center;
+    gap: 16px;
+}
+
+.product__image--wrapper {
+
+}
+
+.product__details--text {
+    color: var(--primary-black)
+}

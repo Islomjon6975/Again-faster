@@ -1,5 +1,5 @@
 
-<div class="product-card">
+<a href="{{ product_card.url }}" class="product-card">
     <div class="badges__wrapper">
         {% for tag in product_card.tags %}
             {% if tag == 'Sale' %}
@@ -21,7 +21,7 @@
         <img src="{{product_card.featured_image.src | img_url: 'large' }}" alt="" class="product-card__image">
     </div>
     <div class="product-card__details">
-        <p class="product-card__title h5">{{ product_card.title }}</p>
+        <p class="product-card__title h5">{{ product_card.title }}</phref=>
         <div class="product-card__star--wrapper">
             {% render 'icon-star' %}
             {% render 'icon-star' %}
@@ -32,4 +32,4 @@
         <p class="product-card__price h5">${{product_card.price}}.00</p>
 
     </div>
-</div>
+</a>
