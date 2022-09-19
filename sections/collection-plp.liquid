@@ -1,8 +1,9 @@
 {{ 'style-collection-plp.css'  | asset_url |  stylesheet_tag}}
 
+
 <style>
     .collection-plp__products {
-        grid-template-columns: repeat("{{section.settings.grid_column | plus}}", 1fr);
+        grid-template-columns: repeat({{section.settings.grid_column | plus:0}}, 1fr);
     }
 </style>
 
@@ -45,4 +46,6 @@
 }
 {% endschema %}
 
-<h1>{{ collection.title }}</h1>
+<script>
+    console.log("{{section.settings.grid_column | abs}}")
+</script>
