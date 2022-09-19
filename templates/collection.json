@@ -1,0 +1,13 @@
+{
+    "sections": {
+        "collection": {
+            "type": "collection-plp",
+            "settings": {
+                "product_column": 3
+            }
+        }
+    },
+    "order": [
+        "collection"
+    ]
+}

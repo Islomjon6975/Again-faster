@@ -1,0 +1,35 @@
+
+<div class="product-card">
+    <div class="badges__wrapper">
+        {% for tag in product_card.tags %}
+            {% if tag == 'Sale' %}
+                {% render 'badge', title: tag, type: 'sale' %}
+            {% endif %}
+            {% if tag == 'Free Shipping' %}
+                {% render 'badge', title: tag, type: 'secondary' %}
+            {% endif %}
+            {% if tag == 'Best Seller' %}
+                {% render 'badge', title: tag, type: 'primary' %}
+            {% endif %}
+            {% if tag == 'Pre-Oder' %}
+                {% render 'badge', title: tag, type: 'default' %}
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    <div class="product-card__image-wrapper">
+        <img src="{{product_card.featured_image.src | img_url: 'large' }}" alt="" class="product-card__image">
+    </div>
+    <div class="product-card__details">
+        <p class="product-card__title h5">{{ product_card.title }}</p>
+        <div class="product-card__star--wrapper">
+            {% render 'icon-star' %}
+            {% render 'icon-star' %}
+            {% render 'icon-star' %}
+            {% render 'icon-star' %}
+            {% render 'icon-star' %}
+        </div>
+        <p class="product-card__price h5">${{product_card.price}}.00</p>
+
+    </div>
+</div>
