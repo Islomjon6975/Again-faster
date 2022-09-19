@@ -3,7 +3,7 @@
 
 <style>
     .collection-plp__products {
-        grid-template-columns: repeat({{section.settings.grid_column | plus:0}}, 1fr);
+        /* grid-template-columns: repeat({{section.settings.grid_column | plus:0}}, 1fr); */
     }
 </style>
 
@@ -13,7 +13,7 @@
         <ul class="breadcrumb">
             {% for coll in section.settings.collection_list %}
                 <li class="breadcrumb-item">
-                    <a href="{{coll.url}}" class="breadcrumb-item__link h5">{{coll.title}}</a>
+                    <a href="{{coll.url}}" class="breadcrumb-item__link h5 {% if collection.title == coll.title %} active {% endif %}">{{coll.title}}</a>
                 </li>
                 <span class="slash">/</span>
             {% endfor %}
