@@ -309,6 +309,7 @@ body {
 .product-card {
     position: relative;
     width: 443px;
+    text-decoration: none;
 
 }
 
@@ -346,6 +347,7 @@ body {
 
 .product-card__price {
     margin: 8px 0;
+    text-decoration: none;
 }
 
 .product-card__star--wrapper {
@@ -357,4 +359,9 @@ body {
 .product-card__star--wrapper svg {
     width: 18px;
     height: 18px;
+}
+
+.linethrough {
+    text-decoration: line-through;
+    color: #353535;
 }

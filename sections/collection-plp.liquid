@@ -10,6 +10,7 @@
 <div class="collection-plp">
     <div class="collection-plp__wrapper">
         <h3 class="collection-plp__title h3">{{ collection.title }}</h3>
+        
         <ul class="breadcrumb">
             {% for coll in section.settings.collection_list %}
                 <li class="breadcrumb-item">
@@ -46,6 +47,3 @@
 }
 {% endschema %}
 
-<script>
-    console.log("{{section.settings.grid_column | abs}}")
-</script>

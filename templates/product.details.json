@@ -1,0 +1,13 @@
+
+{
+  "sections": {
+      "pdp": {
+          "type": "pdp"
+      }
+  },
+  "order": [
+      "pdp"
+  ]
+}
+
+

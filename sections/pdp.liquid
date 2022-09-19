@@ -7,9 +7,10 @@
     <div class="pdp__container">
         <div class="pdp__image--wrapper swiper mySwiper">
             <div class="swiper-wrapper">
+                {% for item in product.images %}
                 <div class="swiper-slide">
                     <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
+                        src="{{ item.src | img_url: '720x900' }}"
                         data-src="{{ img_url }}"
                         data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
                         data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
@@ -17,62 +18,12 @@
                         data-parent-fit="cover"
                         alt="{{ section.settings.pdp_img.alt | escape }}">
                 </div>
-                <div class="swiper-slide">
-                    <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                <div class="swiper-slide">
-                    <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                <div class="swiper-slide">
-                    <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                <div class="swiper-slide">
-                    <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                <div class="swiper-slide">
-                    <img class="pdp_img lazyload"
-                        src="{{ section.settings.pdp_img.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                
+                {% endfor %}             
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <div class="pdp__details">
-            <h3 class="details__title h3">Dumbbell Singles</h3>
+            <h3 class="details__title h3">{{ product.title }}</h3>
             <p class="details__price p">$4.00</p>
             <span class="stars__wrapper">
                 {% render 'icon-star' %}
@@ -132,7 +83,7 @@
                         alt="{{ section.settings.detail_product.alt | escape }}">
                     </div>
                     <div class="product__details">
-                        <p class="p product__details--text">Product Name</p>
+                        <p class="p product__details--text">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
                         <a href="#" class="p product__details--text">Add to Cart</a>
                     </div>
                 </div>
@@ -155,6 +106,59 @@
             </div>
         </div>
     </div>
+    <div class="pdp__banner-rubber">
+        <div class="banner-rubber__content">
+            <p class="banner-rubber__title">Rubber Hex Dumbbells</p>
+            <p class="banner-rubber__description p">Again Faster® Rubber Hex Dumbbells offer one of the most effective ways to add variance to any training program. Functional dumbbell movements cultivate stability, coordination and strength in ways that cannot be achieved using a barbell. Lighter dumbbells are great tools for accommodating athletes with an injury or those not yet comfortable with a bar. Whether you are making your first equipment purchase or looking to expand your gym's capabilities, making dumbbells a priority will take your training to the next level.</p>
+            <p class="banner-rubber__text">Need a way to organize your weights? Check out some of our Storage Options.</p>
+        </div>
+        <div class="banner-rubber__image--wrapper">
+            <img class="pdp_img lazyload"
+                    src="{{ section.settings.product_banner_image1.src | img_url: '620x720' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ section.settings.product_banner_image1.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ section.settings.product_banner_image1.alt | escape }}">
+        </div>
+    </div>
+
+    <div class="pdp__banner-description">
+        <div class="banner-description__image--wrapper">
+            <img class="pdp_img lazyload"
+                    src="{{ section.settings.product_banner_image2.src | img_url: '620x720' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ section.settings.product_banner_image2.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ section.settings.product_banner_image2.alt | escape }}">
+        </div>
+        <div class="banner-description">
+            <p class="banner-description__subtitle">Here’s what you need to know about our dumbbells</p>
+            <p class="banner-description__description p">{% render 'icon-slash' %} Texture design for better grip during strength and endurance work</p>
+            <p class="banner-description__description p">{% render 'icon-slash' %} Lorem ipsum dolor sit amet, consectetur adipiscing elit  </p>
+            <p class="banner-description__description p">{% render 'icon-slash' %} Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
+        </div>
+    </div>
+
+    <div class="pdp__banner-description">
+        
+        <div class="banner-description">
+            <p class="banner-description__title">Perfect for indoor and outdoor workouts</p>
+        </div>
+        <div class="banner-description__image--wrapper">
+            <img class="pdp_img lazyload"
+                    src="{{ section.settings.product_banner_image3.src | img_url: '620x720' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ section.settings.product_banner_image3.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-parent-fit="cover"
+                    alt="{{ section.settings.product_banner_image3.alt | escape }}">
+        </div>
+    </div>
 </div>
 
 
@@ -171,6 +175,21 @@
             "id": "detail_product",
             "type": "image_picker",
             "label": "Pdp Detail Image"
+        },
+        {
+            "id": "product_banner_image1",
+            "type": "image_picker",
+            "label": "Pdp Banner Image 1"
+        },
+        {
+            "id": "product_banner_image2",
+            "type": "image_picker",
+            "label": "Pdp Banner Image 2"
+        },
+        {
+            "id": "product_banner_image3",
+            "type": "image_picker",
+            "label": "Pdp Banner Image 3"
         }
     ]
 }
@@ -187,6 +206,4 @@
         clickable: true,
       },
     });
-
-
 </script>

@@ -21,7 +21,8 @@
         <img src="{{product_card.featured_image.src | img_url: 'large' }}" alt="" class="product-card__image">
     </div>
     <div class="product-card__details">
-        <p class="product-card__title h5">{{ product_card.title }}</phref=>
+        <p
+         class="product-card__title h5">{{ product_card.title }}</phref=>
         <div class="product-card__star--wrapper">
             {% render 'icon-star' %}
             {% render 'icon-star' %}
@@ -29,7 +30,9 @@
             {% render 'icon-star' %}
             {% render 'icon-star' %}
         </div>
-        <p class="product-card__price h5">${{product_card.price}}.00</p>
+        {% for tag in product_card.tags %}
+            <p class="product-card__price h5 {% if tag == 'Sale'  %} linethrough {% endif %}">{{product_card.price | money}}.00 </p>
+        {% endfor %}
 
     </div>
 </a>
