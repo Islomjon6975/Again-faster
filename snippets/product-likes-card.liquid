@@ -1,5 +1,5 @@
 
-<a href="{{ product_card.url }}" class="product-card {{type}}">
+<div href="#" class="product-likes-card swiper-slide">
     <div class="badges__wrapper">
         {% for tag in product_card.tags %}
             {% if tag == 'Sale' %}
@@ -17,13 +17,13 @@
         {% endfor %}
 
     </div>
-    <div class="product-card__image-wrapper">
-        <img src="{{product_card.featured_image.src | img_url: 'large' }}" alt="" class="product-card__image">
+    <div class="product-likes-card__image-wrapper">
+        <img src="{{image.src | img_url: 'large' }}" alt="" class="product-likes-card__image">
     </div>
-    <div class="product-card__details">
+    <div class="product-likes-card__details">
         <p
-         class="product-card__title h5">{{ product_card.title }}</phref=>
-        <div class="product-card__star--wrapper">
+         class="product-likes-card__title h5">Product Name</phref=>
+        <div class="product-likes-card__star--wrapper">
             {% render 'icon-star' %}
             {% render 'icon-star' %}
             {% render 'icon-star' %}
@@ -31,8 +31,8 @@
             {% render 'icon-star' %}
         </div>
         {% for tag in product_card.tags %}
-            <p class="product-card__price h5 {% if tag == 'Sale'  %} linethrough {% endif %}">{{product_card.price | money}}.00 </p>
+            <p class="product-likes-card__price h5 {% if tag == 'Sale'  %} linethrough {% endif %}">$34.00</p>
         {% endfor %}
 
     </div>
-</a>
+</div>

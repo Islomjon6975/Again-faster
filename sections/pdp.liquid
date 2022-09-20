@@ -8,7 +8,7 @@
         <div class="pdp__image--wrapper swiper mySwiper">
             <div class="swiper-wrapper">
                 {% for item in product.images %}
-                <div class="swiper-slide">
+                <div class="swiper-slide swiper-item">
                     <img class="pdp_img lazyload"
                         src="{{ item.src | img_url: '720x900' }}"
                         data-src="{{ img_url }}"
@@ -39,33 +39,11 @@
             </div>
             <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p> 
             <div class="pairs">
-                {% render 'badge', title: '3lb Single', type: 'pair' %}
-                {% render 'badge', title: '10lb Single', type: 'pair' %}
-                {% render 'badge', title: '12lb Single', type: 'pair' %}
-                {% render 'badge', title: '15lb Single', type: 'pair' %}
-                {% render 'badge', title: '20lb Single', type: 'pair' %}
-                {% render 'badge', title: '25lb Single', type: 'pair' %}
-                {% render 'badge', title: '15lb Single', type: 'pair' %}
-                {% render 'badge', title: '20lb Single', type: 'pair' %}
-                {% render 'badge', title: '25lb Single', type: 'pair' %}
-                {% render 'badge', title: '30lb Single', type: 'pair' %}
-                {% render 'badge', title: '35lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
-                {% render 'badge', title: '40lb Single', type: 'pair' %}
+                {% for variant in product.variants %}
+                {% assign pricee = variant.price %}
+                    <div onclick="badgeContainer({{pricee}})" class="badge__container h5 pair">{{variant.title}}</div>
+
+                {% endfor %}
             </div>
             <p class="details__available p">Available for Free shipping!</p>
             {% render 'primary-button', title: 'Add to Cart', type: 'large' %}
@@ -159,6 +137,19 @@
                     alt="{{ section.settings.product_banner_image3.alt | escape }}">
         </div>
     </div>
+
+    <div class="pdp__like">
+        <h3 class="pdp__like__title h3">You might also like</h3>
+        <div class="pdp__like--products swiper swiperLikes">
+            <div class="swiper-wrapper">
+                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -190,6 +181,11 @@
             "id": "product_banner_image3",
             "type": "image_picker",
             "label": "Pdp Banner Image 3"
+        },
+        {
+            "id": "product_likes_img",
+            "type": "image_picker",
+            "label": "Pdp Likes Image"
         }
     ]
 }
@@ -206,4 +202,22 @@
         clickable: true,
       },
     });
+
+    var swiperr = new Swiper(".swiperLikes", {
+      direction: "horizontal",
+      slidesPerView: 4,
+      spaceBetween: 16,
+      mousewheel:true,
+      loop: true,
+      pagination: {
+        el: ".swiperLikes-pagination",
+        clickable: true,
+      },
+    });
+
+    const priceofDetails = document.querySelector('.details__price')
+
+    function badgeContainer(priceee) {
+         priceofDetails.innerText = `$${String(priceee).slice(0,-2)}.00`
+    }
 </script>
