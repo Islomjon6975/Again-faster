@@ -301,6 +301,13 @@ body {
     border: 1px solid var(--primary-black);
 }
 
+.disabled {
+    text-decoration: line-through;
+    border: 1px solid #F1F1F1;
+    color: #C4C4C4;
+
+}
+
 .width {
     width: 100%;
 }

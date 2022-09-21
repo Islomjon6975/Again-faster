@@ -4,7 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <div class="pdp">
-    <div class="pdp__container">
+    <form method='post' action='/cart/add' class="pdp__container">
         <div class="pdp__image--wrapper swiper mySwiper">
             <div class="swiper-wrapper">
                 {% for item in product.images %}
@@ -41,102 +41,60 @@
             <div class="pairs">
                 {% for variant in product.variants %}
                 {% assign pricee = variant.price %}
-                    <div onclick="badgeContainer({{pricee}})" class="badge__container h5 pair">{{variant.title}}</div>
-
+                    <div onclick="badgeContainer({{ pricee }})" class="badge__container h5 pair {% if variant.inventory_quantity<=0  %} disabled {% endif %}">{{variant.title}}</div>
                 {% endfor %}
             </div>
             <p class="details__available p">Available for Free shipping!</p>
             {% render 'primary-button', title: 'Add to Cart', type: 'large' %}
             <h4 class="details__subtitle h4">Frequently bought with</h4>
             <div class="details__wrapper">
-                <div class="details__product">
-                    <div class="product__image--wrapper">
-                        <img class="banner_img lazyload"
-                        src="{{ section.settings.detail_product.src | img_url: '98x125' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.detail_product.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.detail_product.alt | escape }}">
+            {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
+                {% for product in selected_handles %}
+                    <div class="details__product">
+                        <div class="product__image--wrapper">
+                            <img class="banner_img lazyload"
+                            src="{{ all_products[product].featured_image | img_url: '98x125' }}"
+                            data-src="{{ img_url }}"
+                            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                            data-aspectratio="{{all_products[product].featured_image.aspect_ratio }}"
+                            data-sizes="auto"
+                            data-parent-fit="cover"
+                            alt="{{ all_products[product].featured_image.alt | escape }}">
+                        </div>
+                        <div class="product__details">
+                            <p class="p product__details--text">{{ all_products[product].title }}</p>
+                            <a href='#'  class="p product__details--text">Add to Cart</a>
+                        </div>
                     </div>
-                    <div class="product__details">
-                        <p class="p product__details--text">{{ collection.metafields.accentuate.eyebrow | newline_to_br }}</p>
-                        <a href="#" class="p product__details--text">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="details__product">
-                    <div class="product__image--wrapper">
-                        <img class="banner_img lazyload"
-                        src="{{ section.settings.detail_product.src | img_url: '98x125' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.detail_product.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.detail_product.alt | escape }}">
-                    </div>
-                    <div class="product__details">
-                        <p class="p product__details--text">Product Name</p>
-                        <a href="#" class="p product__details--text">Add to Cart</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <div class="pdp__banner-rubber">
-        <div class="banner-rubber__content">
-            <p class="banner-rubber__title">Rubber Hex Dumbbells</p>
-            <p class="banner-rubber__description p">Again Faster® Rubber Hex Dumbbells offer one of the most effective ways to add variance to any training program. Functional dumbbell movements cultivate stability, coordination and strength in ways that cannot be achieved using a barbell. Lighter dumbbells are great tools for accommodating athletes with an injury or those not yet comfortable with a bar. Whether you are making your first equipment purchase or looking to expand your gym's capabilities, making dumbbells a priority will take your training to the next level.</p>
-            <p class="banner-rubber__text">Need a way to organize your weights? Check out some of our Storage Options.</p>
-        </div>
-        <div class="banner-rubber__image--wrapper">
-            <img class="pdp_img lazyload"
-                    src="{{ section.settings.product_banner_image1.src | img_url: '620x720' }}"
-                    data-src="{{ img_url }}"
-                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                    data-aspectratio="{{ section.settings.product_banner_image1.aspect_ratio }}"
-                    data-sizes="auto"
-                    data-parent-fit="cover"
-                    alt="{{ section.settings.product_banner_image1.alt | escape }}">
-        </div>
-    </div>
+    {% assign banner_text = product.metafields.accentuate.banner_text %}
+    {% assign banner_images = product.metafields.accentuate.banner_image %}
+    {% for item in (0..banner_text.size) %}
+        <div class="pdp__banner-rubber">
+            <div class="banner-rubber__content">
+                {% if banner_text[forloop.index0] != blank %}
+                    {{ banner_text[forloop.index0] }}
+                {% endif %}
+            </div>
 
-    <div class="pdp__banner-description">
-        <div class="banner-description__image--wrapper">
-            <img class="pdp_img lazyload"
-                    src="{{ section.settings.product_banner_image2.src | img_url: '620x720' }}"
-                    data-src="{{ img_url }}"
-                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                    data-aspectratio="{{ section.settings.product_banner_image2.aspect_ratio }}"
-                    data-sizes="auto"
-                    data-parent-fit="cover"
-                    alt="{{ section.settings.product_banner_image2.alt | escape }}">
+            <div class="banner-rubber__image--wrapper">
+                {% if banner_images[forloop.index0] != blank %}
+                    <img class="pdp_img lazyload"
+                        src="{{  banner_images[forloop.index0][0].src }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ banner_images[forloop.index0][0].aspect_ratio }}"
+                        data-sizes="auto"
+                        data-parent-fit="cover"
+                        alt="{{ banner_images[forloop.index0][0].alt | escape }}">
+                {% endif %}
+            </div>
         </div>
-        <div class="banner-description">
-            <p class="banner-description__subtitle">Here’s what you need to know about our dumbbells</p>
-            <p class="banner-description__description p">{% render 'icon-slash' %} Texture design for better grip during strength and endurance work</p>
-            <p class="banner-description__description p">{% render 'icon-slash' %} Lorem ipsum dolor sit amet, consectetur adipiscing elit  </p>
-            <p class="banner-description__description p">{% render 'icon-slash' %} Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
-        </div>
-    </div>
+    {% endfor %} 
 
-    <div class="pdp__banner-description">
-        
-        <div class="banner-description">
-            <p class="banner-description__title">Perfect for indoor and outdoor workouts</p>
-        </div>
-        <div class="banner-description__image--wrapper">
-            <img class="pdp_img lazyload"
-                    src="{{ section.settings.product_banner_image3.src | img_url: '620x720' }}"
-                    data-src="{{ img_url }}"
-                    data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                    data-aspectratio="{{ section.settings.product_banner_image3.aspect_ratio }}"
-                    data-sizes="auto"
-                    data-parent-fit="cover"
-                    alt="{{ section.settings.product_banner_image3.alt | escape }}">
-        </div>
-    </div>
 
     <div class="pdp__like">
         <h3 class="pdp__like__title h3">You might also like</h3>
@@ -219,5 +177,6 @@
 
     function badgeContainer(priceee) {
          priceofDetails.innerText = `$${String(priceee).slice(0,-2)}.00`
+
     }
 </script>
