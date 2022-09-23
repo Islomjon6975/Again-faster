@@ -1,0 +1,72 @@
+{% if cart.item_count <= 0 %}
+  <form action="/cart" method="post" novalidate class='mycart'>
+    <div class="mycart__top">
+        <h3 class="mycart__title h3">My Cart</h3>
+        {% render 'icon-x' %}
+    </div>
+    <div class="mycart__products">
+        <div class="mycart__product">
+            <div class="mycart__img--wrapper">
+                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
+            </div>
+            <div class="mycart__product--details">
+                <div class="mycart__wrapper">
+                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
+                    <p class="mycart__product--price h5">$8.00</p>
+                </div>
+                <div class="mycart__wrapper">
+                    <h5 class="mycart__product--weight h5">3lb Single</h5>
+                    <div class="mycart__close--wrapper">
+                        {% render 'icon-close' %}
+                    </div>
+                </div>
+                <div class="mycart__calculator">
+                    {% render 'icon-minus' %}
+                    <span class="mycart__count p">1</span>
+                    {% render 'icon-plus' %}
+                </div>
+            </div>
+        </div>
+        <div class="mycart__product">
+            <div class="mycart__img--wrapper">
+                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
+            </div>
+            <div class="mycart__product--details">
+                <div class="mycart__wrapper">
+                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
+                    <p class="mycart__product--price h5">$8.00</p>
+                </div>
+                <div class="mycart__wrapper">
+                    <h5 class="mycart__product--weight h5">3lb Single</h5>
+                    <div class="mycart__close--wrapper">
+                        {% render 'icon-close' %}
+                    </div>
+                </div>
+                <div class="mycart__calculator">
+                    {% render 'icon-minus' %}
+                    <span class="mycart__count p">1</span>
+                    {% render 'icon-plus' %}
+                </div>
+            </div>
+        </div>
+    </div>
+  </form>
+{% else %}
+  <h2>cart</h2>
+  Cart is empty
+{% endif %}
+
+
+{% schema %}
+{
+    "name": "Cart",
+    "settings": [
+        {
+            "id": "cart_img",
+            "type": "image_picker",
+            "label": "Cart Image"
+        }
+    ]
+}
+{% endschema %}
+

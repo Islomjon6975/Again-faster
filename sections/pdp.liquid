@@ -41,7 +41,9 @@
             <div class="pairs">
                 {% for variant in product.variants %}
                 {% assign pricee = variant.price %}
-                    <div onclick="badgeContainer({{ pricee }})" class="badge__container h5 pair {% if variant.inventory_quantity<=0  %} disabled {% endif %}">{{variant.title}}</div>
+                    {% comment %} <div onclick="badgeContainer({{ pricee }})" class="badge__container h5 pair {% if variant.inventory_quantity<=0  %} disabled {% endif %}">{{variant.title}}</div> {% endcomment %}
+                    <input type="radio" name="size" id="{{variant.title}}" checked="checked"   {% if variant.inventory_quantity==0  %} disabled {% endif %} />
+                    <label onclick="{% if variant.inventory_quantity != 0 %} badgeContainer( {{ pricee }}) {% endif %}" for="{{variant.title}}" class="{% if variant.inventory_quantity==0  %} disabled {% endif %}">{{variant.title}}</label>
                 {% endfor %}
             </div>
             <p class="details__available p">Available for Free shipping!</p>
@@ -72,7 +74,7 @@
     </div>
     {% assign banner_text = product.metafields.accentuate.banner_text %}
     {% assign banner_images = product.metafields.accentuate.banner_image %}
-    {% for item in (0..banner_text.size) %}
+    {% for item in (1..banner_text.size) %}
         <div class="pdp__banner-rubber">
             <div class="banner-rubber__content">
                 {% if banner_text[forloop.index0] != blank %}
@@ -81,17 +83,25 @@
             </div>
 
             <div class="banner-rubber__image--wrapper">
-                {% if banner_images[forloop.index0] != blank %}
-                    <img class="pdp_img lazyload"
-                        src="{{  banner_images[forloop.index0][0].src }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ banner_images[forloop.index0][0].aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ banner_images[forloop.index0][0].alt | escape }}">
-                {% endif %}
+                
+                    {% if banner_images[forloop.index0] != blank %}
+                        <img class="banner__img lazyload"
+                            src="{{  banner_images[forloop.index0][0].src }}"
+                            data-src="{{ img_url }}"
+                            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                            data-aspectratio="{{ banner_images[forloop.index0][0].aspect_ratio }}"
+                            data-sizes="auto"
+                            data-parent-fit="cover"
+                            alt="{{ banner_images[forloop.index0][0].alt | escape }}">
+                    {% endif %}
+                    <span class='circleb'>
+                    <span class='circles'></span>
+                    </span>
+                    
             </div>
+            <span class='banner__line line_left'></span>
+            <span class='banner__line line_center'></span>
+            <span class='banner__line line_right'></span>
         </div>
     {% endfor %} 
 
@@ -100,11 +110,10 @@
         <h3 class="pdp__like__title h3">You might also like</h3>
         <div class="pdp__like--products swiper swiperLikes">
             <div class="swiper-wrapper">
-                {% render 'product-likes-card', image: section.settings.product_likes_img %}
-                {% render 'product-likes-card', image: section.settings.product_likes_img %}
-                {% render 'product-likes-card', image: section.settings.product_likes_img %}
-                {% render 'product-likes-card', image: section.settings.product_likes_img %}
-                {% render 'product-likes-card', image: section.settings.product_likes_img %}
+                {% assign selected_handles = product.metafields.accentuate.you_might_also_like | split: "|" %}
+                {% for product in selected_handles %}
+                    {% render 'product-likes-card', image: all_products[product].featured_image, title: all_products[product].title, price: all_products[product].price, product_card: all_products[product] %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -179,4 +188,11 @@
          priceofDetails.innerText = `$${String(priceee).slice(0,-2)}.00`
 
     }
+
+    const circleb = document.querySelectorAll('.circleb')
+    const circles = document.querySelectorAll('.circles')
+    const bannerImg = document.querySelectorAll('.banner__img')
+    circleb[0].classList.add('circle_big')
+    circles[0].classList.add('circle_small')
+    bannerImg[0].classList.add('banner_firstImg')
 </script>
