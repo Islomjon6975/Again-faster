@@ -155,6 +155,7 @@ input[type="radio"]:checked + label {
 }
 
 .banner-rubber__content {
+  
   padding: 147px 0px 0px 80px;
   display: flex;
   flex-direction: column;
