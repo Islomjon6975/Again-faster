@@ -77,6 +77,25 @@
     cursor: pointer;
 }
 
+.basket__counter--wrapper {
+    position: relative;
+}
+
+.basket__counter {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    position: absolute;
+    bottom: -1px;
+    right: -7px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 9px;
+}
+
+
 .rich-text {
 
 }

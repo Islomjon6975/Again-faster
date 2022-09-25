@@ -200,21 +200,20 @@
     const variantRadio = document.querySelector('.variant-radio')
     let variant_id = document.querySelector('.variant-radio').value 
     const form = document.querySelector('#form')
+    const basketCounter = document.querySelector('.basket__counter')
     
-    form.addEventListener('submit', async (e) => {
+    
+    form.addEventListener('submit', (e) => {
         e.preventDefault()
-        console.log(e)
         let formData = {
             'items': [{
                 'id': variant_id,
                 'quantity': 1
             }]
         };
-        console.log(variant_id)
-        await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
             method: 'POST',
             headers: {
-                'dataType': 'json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
@@ -224,6 +223,7 @@
             .catch((error) => {
                 console.error('Error:', error);
             });
-        
+            // basketCounter.innerText = 1
+            // badgeContainer.style.background = 'crimson'
     })
 </script>
