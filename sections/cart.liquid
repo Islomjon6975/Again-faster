@@ -1,125 +1,40 @@
-{% if cart.item_count <=0  %}
+{% if cart.item_count > 0  %}
   <form action="/cart" method="post" novalidate class='mycart'>
     <div class="mycart__top">
         <h3 class="mycart__title h3">My Cart</h3>
         {% render 'icon-x' %}
     </div>
     <div class="mycart__products">
-        <div class="mycart__product">
-            <div class="mycart__img--wrapper">
-                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
-            </div>
-            <div class="mycart__product--details">
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
-                    <p class="mycart__product--price h5">$8.00</p>
-                </div>
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--weight h5">3lb Single</h5>
-                    <div class="mycart__close--wrapper">
-                        {% render 'icon-close' %}
+        {% for item in cart.items %}
+            <div class="mycart__product">
+                <a href="{{ item.url | within: collections.all }}" class="mycart__img--wrapper">
+                    <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                </a>
+                <div class="mycart__product--details">
+                    <div class="mycart__wrapper">
+                        <a href="{{ item.url }}" class="mycart__product--title h5">{{ item.product.title }}</a>
+                        <p class="mycart__product--price h5">{{ item.price | money }}</p>
+                    </div>
+                    <div class="mycart__wrapper">
+                        <h5 class="mycart__product--weight h5">{{ item.variant.title }}</h5>
+                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="mycart__close--wrapper">
+                            {% render 'icon-close' %}
+                        </a>
+                    </div>
+                    <div class="mycart__calculator">
+                        {% render 'icon-minus' %}
+                        <span class="mycart__count p">1</span>
+                        {% render 'icon-plus' %}
                     </div>
                 </div>
-                <div class="mycart__calculator">
-                    {% render 'icon-minus' %}
-                    <span class="mycart__count p">1</span>
-                    {% render 'icon-plus' %}
-                </div>
             </div>
-        </div>
-        <div class="mycart__product">
-            <div class="mycart__img--wrapper">
-                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
-            </div>
-            <div class="mycart__product--details">
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
-                    <p class="mycart__product--price h5">$8.00</p>
-                </div>
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--weight h5">3lb Single</h5>
-                    <div class="mycart__close--wrapper">
-                        {% render 'icon-close' %}
-                    </div>
-                </div>
-                <div class="mycart__calculator">
-                    {% render 'icon-minus' %}
-                    <span class="mycart__count p">1</span>
-                    {% render 'icon-plus' %}
-                </div>
-            </div>
-        </div>
-        <div class="mycart__product">
-            <div class="mycart__img--wrapper">
-                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
-            </div>
-            <div class="mycart__product--details">
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
-                    <p class="mycart__product--price h5">$8.00</p>
-                </div>
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--weight h5">3lb Single</h5>
-                    <div class="mycart__close--wrapper">
-                        {% render 'icon-close' %}
-                    </div>
-                </div>
-                <div class="mycart__calculator">
-                    {% render 'icon-minus' %}
-                    <span class="mycart__count p">1</span>
-                    {% render 'icon-plus' %}
-                </div>
-            </div>
-        </div>
-        <div class="mycart__product">
-            <div class="mycart__img--wrapper">
-                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
-            </div>
-            <div class="mycart__product--details">
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
-                    <p class="mycart__product--price h5">$8.00</p>
-                </div>
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--weight h5">3lb Single</h5>
-                    <div class="mycart__close--wrapper">
-                        {% render 'icon-close' %}
-                    </div>
-                </div>
-                <div class="mycart__calculator">
-                    {% render 'icon-minus' %}
-                    <span class="mycart__count p">1</span>
-                    {% render 'icon-plus' %}
-                </div>
-            </div>
-        </div>
-        <div class="mycart__product">
-            <div class="mycart__img--wrapper">
-                <img src="{{ section.settings.cart_img.src | img_url: '120x150' }}" alt="">
-            </div>
-            <div class="mycart__product--details">
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--title h5">Dumbbell Singles</h5>
-                    <p class="mycart__product--price h5">$8.00</p>
-                </div>
-                <div class="mycart__wrapper">
-                    <h5 class="mycart__product--weight h5">3lb Single</h5>
-                    <div class="mycart__close--wrapper">
-                        {% render 'icon-close' %}
-                    </div>
-                </div>
-                <div class="mycart__calculator">
-                    {% render 'icon-minus' %}
-                    <span class="mycart__count p">1</span>
-                    {% render 'icon-plus' %}
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+        
     </div>
     <div class="mycart__bottom">
         <div class="mycart__wrapper">
             <h4 class="h4">Subtotal</h4>
-            <p class="h4">$25.00</p>
+            <p class="h4 subtotal">$25.00</p>
         </div>
         <div class="mycart__wrapper">
             <p class="p">Tax and shipping calculates at checkout.</p>
@@ -159,3 +74,49 @@
 }
 {% endschema %}
 
+
+<script>
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+    method: 'GET',
+    })
+    .then(response => {
+    return console.log(response.json(), 'gett response');
+    })
+    .catch((error) => {
+    console.error('Error:', error);
+    });
+
+
+    const calculator = document.querySelectorAll('.mycart__calculator')
+    const count = document.querySelector('.mycart__count')
+    const minus = document.querySelectorAll('.mycart__calculator svg')[0]
+    const plus = document.querySelectorAll('.mycart__calculator svg')[1]
+    let subtotal = document.querySelector('.subtotal')
+    const productPrice = document.querySelector('.mycart__product--price').innerText
+    
+    function total() {
+        let sum = +count.innerText * (+productPrice.slice(1,))
+        subtotal.innerText = `$${sum}.00`
+        console.log(subtotal)
+    }
+
+    total()
+    plus.addEventListener('click', () => {
+        console.log(+count.innerText++)
+        total()
+    })
+    minus.addEventListener('click', () => {
+        if(+count.innerHTML > 1) {
+            console.log(+count.innerText--);
+            total()
+        }
+    })
+
+    console.log(productPrice)
+
+    const close = document.querySelector('.mycart__top svg')
+    const mycart = document.querySelector('.mycart')
+    close.addEventListener('click', () => {
+        mycart.style.right = '-479px'
+    })
+</script>

@@ -4,7 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <div class="pdp">
-    <form method='post' action='/cart/add' class="pdp__container">
+    <form method='post' action='/cart/add' id="form" class="pdp__container">
         <div class="pdp__image--wrapper swiper mySwiper">
             <div class="swiper-wrapper">
                 {% for item in product.images %}
@@ -41,13 +41,12 @@
             <div class="pairs">
                 {% for variant in product.variants %}
                 {% assign pricee = variant.price %}
-                    {% comment %} <div onclick="badgeContainer({{ pricee }})" class="badge__container h5 pair {% if variant.inventory_quantity<=0  %} disabled {% endif %}">{{variant.title}}</div> {% endcomment %}
-                    <input type="radio" name="size" id="{{variant.title}}" checked="checked"   {% if variant.inventory_quantity==0  %} disabled {% endif %} />
-                    <label onclick="{% if variant.inventory_quantity != 0 %} badgeContainer( {{ pricee }}) {% endif %}" for="{{variant.title}}" class="{% if variant.inventory_quantity==0  %} disabled {% endif %}">{{variant.title}}</label>
+                    <input value="{{ variant.id }}" class="variant-radio" type="radio" name="size" id="{{variant.title}}" checked="checked"   {% if variant.inventory_quantity==0  %} disabled {% endif %} />
+                    <label onclick="badgeContainer()" data-variantPrice="{% if variant.inventory_quantity != 0 %} {{pricee}} {% endif %}" for="{{variant.title}}" class="variant {% if variant.inventory_quantity==0  %} disabled {% endif %}">{{variant.title}}</label>
                 {% endfor %}
             </div>
             <p class="details__available p">Available for Free shipping!</p>
-            {% render 'primary-button', title: 'Add to Cart', type: 'large' %}
+            {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart' %}
             <h4 class="details__subtitle h4">Frequently bought with</h4>
             <div class="details__wrapper">
             {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
@@ -65,7 +64,7 @@
                         </div>
                         <div class="product__details">
                             <p class="p product__details--text">{{ all_products[product].title }}</p>
-                            <a href='#'  class="p product__details--text">Add to Cart</a>
+                            <button type="submit"  class="p product__details--text ">Add to Cart</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -183,11 +182,11 @@
     });
 
     const priceofDetails = document.querySelector('.details__price')
-
-    function badgeContainer(priceee) {
-         priceofDetails.innerText = `$${String(priceee).slice(0,-2)}.00`
-
-    }
+    let variant = document.querySelector('.variant')
+    let variantPrice = variant.getAttribute('data-variantPrice')
+    function badgeContainer () {
+        priceofDetails.innerText = variantPrice/100
+    };
 
     const circleb = document.querySelectorAll('.circleb')
     const circles = document.querySelectorAll('.circles')
@@ -195,4 +194,36 @@
     circleb[0].classList.add('circle_big')
     circles[0].classList.add('circle_small')
     bannerImg[0].classList.add('banner_firstImg')
+
+
+    const addToCart = document.querySelector('.addtocart')
+    const variantRadio = document.querySelector('.variant-radio')
+    let variant_id = document.querySelector('.variant-radio').value 
+    const form = document.querySelector('#form')
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        console.log(e)
+        let formData = {
+            'items': [{
+                'id': variant_id,
+                'quantity': 1
+            }]
+        };
+        console.log(variant_id)
+        await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+                'dataType': 'json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then((response) => {
+                return response.json()
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        
+    })
 </script>

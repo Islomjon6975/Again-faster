@@ -48,5 +48,14 @@
   </main>
   {% section 'footer' %}
 
+
+  <script>
+    const navIcons = document.querySelectorAll('.header__icons svg');
+    const baskett = navIcons[2]
+    const mycartt = document.querySelector('.mycart')
+    baskett.addEventListener('click', () => {
+      mycartt.style.right = '0px'
+    })
+  </script>
 </body>
 </html>

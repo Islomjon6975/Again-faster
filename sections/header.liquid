@@ -23,9 +23,13 @@
             <div class="header__icons">
                 {% render 'icon-search' %}
                 {% render 'icon-account' %}
-                {% render 'icon-basket' %}
+                <span class="basket__counter--wrapper">
+                    {% render 'icon-basket' %}
+                    <span class="basket__counter">1</span>
+                </span>
             </div>
     </div>
+
 </div>
 
 <script>
@@ -33,7 +37,9 @@
     const basket = headerIcons[2]
 
     basket.addEventListener('click', () => {
+        
 
+        
     })
 </script>
 

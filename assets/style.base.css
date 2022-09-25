@@ -105,6 +105,7 @@ body {
     font-weight: normal;
     font-size: 14px;
     line-height: 167.5%;
+    overflow-x: hidden;
 }
 
 /* ------------------ ( Primary button ) -------------------- */
@@ -458,8 +459,7 @@ body {
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-
+    transition: all .9s ease;
 }
 
 .mycart__top {
@@ -537,6 +537,8 @@ body {
 
 .mycart__product--title {
     font-weight: 300;
+    text-decoration: none;
+    color: black;
 }
 
 .mycart__product--price {
