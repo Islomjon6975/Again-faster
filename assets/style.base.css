@@ -119,6 +119,8 @@ body {
     padding: 0 40px;
     background-color: var(--primary-black);
     color: var(--primary-white);
+    outline: none;
+    border: none;
 }
 
 .primary-button-white {

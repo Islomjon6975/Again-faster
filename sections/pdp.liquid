@@ -104,7 +104,6 @@
         </div>
     {% endfor %} 
 
-
     <div class="pdp__like">
         <h3 class="pdp__like__title h3">You might also like</h3>
         <div class="pdp__like--products swiper swiperLikes">
@@ -117,7 +116,6 @@
         </div>
     </div>
 </div>
-
 
 {% schema %}
 {
@@ -218,12 +216,13 @@
             },
             body: JSON.stringify(formData)
         }).then((response) => {
+                basketCounter.innerText = 1
+                basketCounter.style.background = 'crimson'
                 return response.json()
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
-            // basketCounter.innerText = 1
-            // badgeContainer.style.background = 'crimson'
     })
+
 </script>

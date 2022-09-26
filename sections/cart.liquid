@@ -55,19 +55,17 @@
   </form>
   <script>console.log({{cart.items | json}})</script>
 
-
-
 {% schema %}
-{
-    "name": "Cart",
-    "settings": [
-        {
-            "id": "cart_img",
-            "type": "image_picker",
-            "label": "Cart Image"
-        }
-    ]
-}
+    {
+        "name": "Cart",
+        "settings": [
+            {
+                "id": "cart_img",
+                "type": "image_picker",
+                "label": "Cart Image"
+            }
+        ]
+    }
 {% endschema %}
 
 
@@ -93,26 +91,25 @@
     function total() {
         let sum = +count.innerText * (+productPrice.slice(1,))
         subtotal.innerText = `$${sum}.00`
-        console.log(subtotal)
     }
-
     total()
+
     plus.addEventListener('click', () => {
-        console.log(+count.innerText++)
+        +count.innerText++
         total()
     })
+
     minus.addEventListener('click', () => {
         if(+count.innerHTML > 1) {
-            console.log(+count.innerText--);
+            +count.innerText--
             total()
         }
     })
-
-    console.log(productPrice)
 
     const close = document.querySelector('.mycart__top svg')
     const mycart = document.querySelector('.mycart')
     close.addEventListener('click', () => {
         mycart.style.right = '-479px'
     })
+
 </script>
