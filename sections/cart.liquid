@@ -53,7 +53,6 @@
         </div>
     {% endif %}
   </form>
-  <script>console.log({{cart.items | json}})</script>
 
 {% schema %}
     {
@@ -70,23 +69,14 @@
 
 
 <script>
-    fetch(window.Shopify.routes.root + 'cart/add.js', {
-        method: 'GET',
-    })
-    .then(response => {
-        return console.log(response.json(), 'gett response');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
-
+    const response = fetch(fetch(window.Shopify.routes.root + 'cart/add.js'))
     const calculator = document.querySelectorAll('.mycart__calculator')
     const count = document.querySelector('.mycart__count')
     const minus = document.querySelectorAll('.mycart__calculator svg')[0]
     const plus = document.querySelectorAll('.mycart__calculator svg')[1]
     let subtotal = document.querySelector('.subtotal')
     const productPrice = document.querySelector('.mycart__product--price').innerText
+    console.log(response)
     
     function total() {
         let sum = +count.innerText * (+productPrice.slice(1,))

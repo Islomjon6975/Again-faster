@@ -449,11 +449,11 @@ body {
 
 .mycart {
     position:absolute;
-    top: 95px;
+    top: 0px;
     right: -479px;
     z-index: 10;
     width: 479px;
-    height: calc(100vh - 95px);
+    height: 100vh;
     padding-top: 24px;
     padding-bottom: 40px;
     display: flex;

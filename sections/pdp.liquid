@@ -201,7 +201,7 @@
     const basketCounter = document.querySelector('.basket__counter')
     
     
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async(e) => {
         e.preventDefault()
         let formData = {
             'items': [{
@@ -209,20 +209,17 @@
                 'quantity': 1
             }]
         };
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
+        const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
-        }).then((response) => {
-                basketCounter.innerText = 1
-                basketCounter.style.background = 'crimson'
-                return response.json()
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            
+        })
+        const data = await response.json()
+        basketCounter.innerText = 1
+        basketCounter.style.background = 'crimson'
     })
 
 </script>
