@@ -1,3 +1,4 @@
+
   <form action="/cart" method="post" novalidate class='mycart'>
     <div class="mycart__top">
         <h3 class="mycart__title h3">My Cart</h3>
@@ -69,37 +70,39 @@
 
 
 <script>
-    const response = fetch(fetch(window.Shopify.routes.root + 'cart/add.js'))
-    const calculator = document.querySelectorAll('.mycart__calculator')
-    const count = document.querySelector('.mycart__count')
-    const minus = document.querySelectorAll('.mycart__calculator svg')[0]
-    const plus = document.querySelectorAll('.mycart__calculator svg')[1]
-    let subtotal = document.querySelector('.subtotal')
-    const productPrice = document.querySelector('.mycart__product--price').innerText
-    console.log(response)
-    
-    function total() {
-        let sum = +count.innerText * (+productPrice.slice(1,))
-        subtotal.innerText = `$${sum}.00`
-    }
-    total()
-
-    plus.addEventListener('click', () => {
-        +count.innerText++
-        total()
-    })
-
-    minus.addEventListener('click', () => {
-        if(+count.innerHTML > 1) {
-            +count.innerText--
-            total()
-        }
-    })
 
     const close = document.querySelector('.mycart__top svg')
     const mycart = document.querySelector('.mycart')
     close.addEventListener('click', () => {
         mycart.style.right = '-479px'
     })
+    
+    const calculator = document.querySelectorAll('.mycart__calculator')
+    const count = document.querySelector('.mycart__count')
+    const minus = document.querySelectorAll('.mycart__calculator svg')[0]
+    const plus = document.querySelectorAll('.mycart__calculator svg')[1]
+    let subtotal = document.querySelector('.subtotal')
+    const productPrice = document.querySelector('.mycart__product--price')
+    const initialPrice = productPrice.innerText
+    // function total() {
+    //     let sum = +count.innerText * (+productPrice.slice(1,))
+    //     subtotal.innerText = `$${sum}.00`
+    // }
+    // total()
 
+    // plus.addEventListener('click', () => {
+    //     +count.innerText++
+    //     productPrice.innerText = `$${+count.innerText * +initialPrice.slice(1,-3)}.00`
+    //     // total()
+    // })
+
+    // minus.addEventListener('click', () => {
+    //     if(+count.innerHTML > 1) {
+    //         +count.innerText--
+    //         productPrice.innerText = `${ +productPrice.innerText.slice(1,-3) / +count.innerText}`
+    //         // total()
+    //     }
+    // })
+
+    
 </script>

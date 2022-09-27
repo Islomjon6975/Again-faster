@@ -38,13 +38,34 @@
                 <span class="p reviews">pay as low as 56/mo Learn More</span>
             </div>
             <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p> 
-            <div class="pairs">
-                {% for variant in product.variants %}
-                {% assign pricee = variant.price %}
-                    <input value="{{ variant.id }}" class="variant-radio" type="radio" name="size" id="{{variant.title}}" checked="checked"   {% if variant.inventory_quantity==0  %} disabled {% endif %} />
-                    <label onclick="badgeContainer()" data-variantPrice="{% if variant.inventory_quantity != 0 %} {{pricee}} {% endif %}" for="{{variant.title}}" class="variant {% if variant.inventory_quantity==0  %} disabled {% endif %}">{{variant.title}}</label>
-                {% endfor %}
-            </div>
+            <div class="product-details__variants-list">
+                {% unless product.variants[0].title == 'Default Title' %}
+                 
+                 {% for variant in product.variants %}
+                   {% assign price = variant.price %}
+                   {% assign quantity = variant.inventory_quantity %}
+                   <input
+                     type="radio"
+                     name="variant"
+                     id="{{ variant.id }}"
+                     class = "product-details__variants-item-input"
+                     value="{{ variant.id }}"
+                     {% if variant == product.selected_or_first_available_variant %}checked{% endif %}
+                     {% if quantity <= 0 %}
+                       disabled
+                     {% endif %}
+                   >
+                     <label
+                       for="{{ variant.id }}"
+                       data-price="{{ price }}"
+                       data-id="{{ variant.id }}"
+                       class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
+                       >
+                         {{ variant.title }}
+                       </label>
+                     {% endfor %}
+                   {% endunless %}
+               </div>
             <p class="details__available p">Available for Free shipping!</p>
             {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart' %}
             <h4 class="details__subtitle h4">Frequently bought with</h4>
@@ -178,12 +199,23 @@
         clickable: true,
       },
     });
-
-    const priceofDetails = document.querySelector('.details__price')
-    let variant = document.querySelector('.variant')
-    let variantPrice = variant.getAttribute('data-variantPrice')
-    function badgeContainer () {
-        priceofDetails.innerText = variantPrice/100
+    
+    const priceTag = document.querySelector('.details__price');
+    const varinatsList = document.querySelector('.product-details__variants-list');
+    var variantId = "{{ product.id }}";
+    varinatsList.addEventListener('click', function (e) {
+        const target = e.target.closest('.product-details__variants-item');
+        if (!target) return;
+        badgeContainer(target.dataset.price);
+        variantId = target.dataset.id;
+        
+    });
+    const badgeContainer = (price) => {
+        const opt = {
+        style: 'currency',
+        currency: 'USD',
+        };
+        priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
     };
 
     const circleb = document.querySelectorAll('.circleb')
@@ -196,16 +228,14 @@
 
     const addToCart = document.querySelector('.addtocart')
     const variantRadio = document.querySelector('.variant-radio')
-    let variant_id = document.querySelector('.variant-radio').value 
     const form = document.querySelector('#form')
     const basketCounter = document.querySelector('.basket__counter')
-    
     
     form.addEventListener('submit', async(e) => {
         e.preventDefault()
         let formData = {
             'items': [{
-                'id': variant_id,
+                'id': variantId,
                 'quantity': 1
             }]
         };
@@ -219,7 +249,8 @@
         })
         const data = await response.json()
         basketCounter.innerText = 1
-        basketCounter.style.background = 'crimson'
+        basketCounter.style.background = 'crimson' 
+        mycart.style.right = '0px'     
     })
 
 </script>

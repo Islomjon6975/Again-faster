@@ -61,7 +61,7 @@
   margin-bottom: 18px;
 }
 
-.pairs {
+.product-details__variants-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 8px;
@@ -71,11 +71,9 @@
   position: relative;
 }
 
-input[type="radio"] {
-  display: none;
-}
 
-label {
+
+.product-details__variants-item {
   position: relative;
   color: black;
   border: 1px solid #c4c4c4;
@@ -84,9 +82,15 @@ label {
   padding: 10px 30px;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .product-details__variants-item {
   border: 1px solid #000000;
 }
+
+
 
 /* Designing for scroll-bar */
 ::-webkit-scrollbar {
