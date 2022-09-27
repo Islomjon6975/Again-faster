@@ -4,9 +4,9 @@
         <h3 class="mycart__title h3">My Cart</h3>
         {% render 'icon-x' %}
     </div>
-    {% if cart.item_count > 0  %}
+    <!-- {% if cart.item_count > 0  %} -->
         <div class="mycart__products">
-            {% for item in cart.items %}
+            <!-- {% for item in cart.items %}
                 <div class="mycart__product">
                     <a href="{{ item.url | within: collections.all }}" class="mycart__img--wrapper">
                         <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
+            {% endfor %} -->
             
         </div>
         <div class="mycart__bottom">
@@ -47,12 +47,12 @@
             </div>
             {% render 'primary-button', title: 'Continue to Checkout', type:'large' %}
         </div>
-    {% else %}
+    <!-- {% else %}
         <div class="mycart__empty">
             <p class="mycart__empty--title">Your Cart is Empty</p>
             {% render 'primary-button', title: 'Shop Best Sellers', type: 'large primary-button-white' %}
         </div>
-    {% endif %}
+    {% endif %} -->
   </form>
 
 {% schema %}
@@ -67,42 +67,3 @@
         ]
     }
 {% endschema %}
-
-
-<script>
-
-    const close = document.querySelector('.mycart__top svg')
-    const mycart = document.querySelector('.mycart')
-    close.addEventListener('click', () => {
-        mycart.style.right = '-479px'
-    })
-    
-    const calculator = document.querySelectorAll('.mycart__calculator')
-    const count = document.querySelector('.mycart__count')
-    const minus = document.querySelectorAll('.mycart__calculator svg')[0]
-    const plus = document.querySelectorAll('.mycart__calculator svg')[1]
-    let subtotal = document.querySelector('.subtotal')
-    const productPrice = document.querySelector('.mycart__product--price')
-    const initialPrice = productPrice.innerText
-    // function total() {
-    //     let sum = +count.innerText * (+productPrice.slice(1,))
-    //     subtotal.innerText = `$${sum}.00`
-    // }
-    // total()
-
-    // plus.addEventListener('click', () => {
-    //     +count.innerText++
-    //     productPrice.innerText = `$${+count.innerText * +initialPrice.slice(1,-3)}.00`
-    //     // total()
-    // })
-
-    // minus.addEventListener('click', () => {
-    //     if(+count.innerHTML > 1) {
-    //         +count.innerText--
-    //         productPrice.innerText = `${ +productPrice.innerText.slice(1,-3) / +count.innerText}`
-    //         // total()
-    //     }
-    // })
-
-    
-</script>

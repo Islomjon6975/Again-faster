@@ -15,6 +15,7 @@
   {{ 'application.js' | asset_url | script_tag }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="{{ 'js.fetch-Api.js' | asset_url }}" defer></script>
   <!-- <style>      
     @font-face {
         font-family: 'OpenSans-Bold';
@@ -49,7 +50,7 @@
   {% section 'footer' %}
 
 
-  <script>
+  <!-- <script>
     const navIcons = document.querySelectorAll('.header__icons svg');
     const baskett = navIcons[2]
     const mycartt = document.querySelector('.mycart')
@@ -59,6 +60,6 @@
 
 
     
-  </script>
+  </script> -->
 </body>
 </html>

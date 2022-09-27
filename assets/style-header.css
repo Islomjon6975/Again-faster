@@ -79,6 +79,8 @@
 
 .basket__counter--wrapper {
     position: relative;
+    display: flex;
+    align-items:flex-end;
 }
 
 .basket__counter {
@@ -86,11 +88,12 @@
     justify-content: center;
     align-items:center;
     position: absolute;
-    bottom: -1px;
-    right: -7px;
+    top: -5px;
+    right: -9px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
+    background: black;
     color: #ffffff;
     font-size: 9px;
 }

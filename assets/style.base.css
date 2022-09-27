@@ -450,9 +450,9 @@ body {
 .mycart {
     position:absolute;
     top: 0px;
-    right: -479px;
+    right: -500px;
     z-index: 10;
-    width: 479px;
+    width: 500px;
     height: 100vh;
     padding-top: 24px;
     padding-bottom: 40px;
@@ -462,6 +462,10 @@ body {
     display: flex;
     flex-direction: column;
     transition: all .9s ease;
+}
+
+.open {
+    right: 0px;
 }
 
 .mycart__top {
@@ -477,6 +481,11 @@ body {
 
 .mycart__top svg:active {
     transform: scale(0.97);
+}
+
+.mycart__product-img {
+    width: 120px;
+    height: 150px;
 }
 
 .mycart__products {

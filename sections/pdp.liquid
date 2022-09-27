@@ -67,7 +67,7 @@
                    {% endunless %}
                </div>
             <p class="details__available p">Available for Free shipping!</p>
-            {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart' %}
+            {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
             <h4 class="details__subtitle h4">Frequently bought with</h4>
             <div class="details__wrapper">
             {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
@@ -85,7 +85,7 @@
                         </div>
                         <div class="product__details">
                             <p class="p product__details--text">{{ all_products[product].title }}</p>
-                            <button type="submit"  class="p product__details--text ">Add to Cart</button>
+                            <button type="submit"  class="p product__details--text">Add to Cart</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -218,39 +218,13 @@
         priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
     };
 
-    const circleb = document.querySelectorAll('.circleb')
-    const circles = document.querySelectorAll('.circles')
-    const bannerImg = document.querySelectorAll('.banner__img')
-    circleb[0].classList.add('circle_big')
-    circles[0].classList.add('circle_small')
-    bannerImg[0].classList.add('banner_firstImg')
+    // const circleb = document.querySelectorAll('.circleb')
+    // const circles = document.querySelectorAll('.circles')
+    // const bannerImg = document.querySelectorAll('.banner__img')
+    // circleb[0].classList.add('circle_big')
+    // circles[0].classList.add('circle_small')
+    // bannerImg[0].classList.add('banner_firstImg')
 
 
-    const addToCart = document.querySelector('.addtocart')
-    const variantRadio = document.querySelector('.variant-radio')
-    const form = document.querySelector('#form')
-    const basketCounter = document.querySelector('.basket__counter')
-    
-    form.addEventListener('submit', async(e) => {
-        e.preventDefault()
-        let formData = {
-            'items': [{
-                'id': variantId,
-                'quantity': 1
-            }]
-        };
-        const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-            
-        })
-        const data = await response.json()
-        basketCounter.innerText = 1
-        basketCounter.style.background = 'crimson' 
-        mycart.style.right = '0px'     
-    })
 
 </script>
