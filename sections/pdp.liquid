@@ -85,7 +85,7 @@
                         </div>
                         <div class="product__details">
                             <p class="p product__details--text">{{ all_products[product].title }}</p>
-                            <button type="submit" data-id="{{ all_products[product].id }}"  class="p product__details--text-btn">Add to Cart</button>
+                            <button type="button" data-id="{{ all_products[product].selected_or_first_available_variant.id }}" class="p product__details--text-btn">Add to Cart</button>
                         </div>
                     </div>
                 {% endfor %}

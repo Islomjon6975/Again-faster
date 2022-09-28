@@ -4,34 +4,8 @@
         <h3 class="mycart__title h3">My Cart</h3>
         {% render 'icon-x' %}
     </div>
-    {% if cart.item_count > 0  %}
-        <div class="mycart__products">
-            <!-- {% for item in cart.items %}
-                <div class="mycart__product">
-                    <a href="{{ item.url | within: collections.all }}" class="mycart__img--wrapper">
-                        <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-                    </a>
-                    <div class="mycart__product--details">
-                        <div class="mycart__wrapper">
-                            <a href="{{ item.url }}" class="mycart__product--title h5">{{ item.product.title }}</a>
-                            <p class="mycart__product--price h5">{{ item.price | money }}</p>
-                        </div>
-                        <div class="mycart__wrapper">
-                            <h5 class="mycart__product--weight h5">{{ item.variant.title }}</h5>
-                            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="mycart__close--wrapper">
-                                {% render 'icon-close' %}
-                            </a>
-                        </div>
-                        <div class="mycart__calculator">
-                            {% render 'icon-minus' %}
-                            <span class="mycart__count p">1</span>
-                            {% render 'icon-plus' %}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %} -->
-            
-        </div>
+    <!-- {% if cart.item_count > 0  %} -->
+        <div class="mycart__products"></div>
         <div class="mycart__bottom">
             <div class="mycart__wrapper">
                 <h4 class="h4">Subtotal</h4>
@@ -47,12 +21,12 @@
             </div>
             {% render 'primary-button', title: 'Continue to Checkout', type:'large' %}
         </div>
-    {% else %}
+    <!-- {% else %}
         <div class="mycart__empty">
             <p class="mycart__empty--title">Your Cart is Empty</p>
             {% render 'primary-button', title: 'Shop Best Sellers', type: 'large primary-button-white' %}
         </div>
-    {% endif %}
+    {% endif %} -->
   </form>
 
 {% schema %}

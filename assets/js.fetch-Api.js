@@ -54,7 +54,7 @@ class Cart {
         cartItemsWrapper.innerHTML = "";
         for (let item of cartDetails.items) {
             const template = `
-                <div class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
+                <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
                     <div class="mycart__img--wrapper">
                         <img src="${ item.image }" alt="${ item.title }" class="mycart__product-img">
                     </div>
@@ -117,7 +117,7 @@ class Cart {
         this.getCartDetails().then(cartDetails => {
             const headerCartLinks = document.querySelectorAll(".header-cart-link");
             headerCartLinks.forEach(link => {
-                link.innerHTML += " (" + cartDetails.item_count + ")"
+                link.innerHTML +=  cartDetails.item_count
             })
         })
     }
@@ -154,7 +154,7 @@ class Cart {
 
 const sideCart = new Cart();
 
-// Basket toggle
+// Basket
 const navIcons = document.querySelectorAll('.header__icons svg');
 const baskett = navIcons[2]
 baskett.addEventListener('click', () => {
@@ -167,47 +167,43 @@ close.addEventListener('click', () => {
     sideCart.closeModal()
 })
 
-// Add to Cart 
+// Add To Cart
 const addToCartBtn = document.querySelector('.addtocart')
 addToCartBtn.addEventListener('click',function(e){
     e.preventDefault()
-    const variantId = addToCartBtn[i].dataset.id
-    const formData = {
-        items: [{
-            id: variantId,
-            quantity: 1
-        }]
-    }
-    
-    sideCart.addItem(formData).then(() => sideCart.toggleCart());
-    console.log(variantId, 'frequentlyyyyy')
+    sideCart.addToCart()
 })
 
-// Add to Cart 2
 const addToCartBtns2 = document.querySelectorAll('.product__details--text-btn')
 for(let i = 0; i < addToCartBtns2.length; i++) {
     const addToCartBtn2 = addToCartBtns2[i]
     addToCartBtn2.addEventListener('click',function(e){
         e.preventDefault()
-        sideCart.addToCart()
-        console.log(addToCartBtn2.dataset.id, 'frequestttttttt')        
+        const variantId = addToCartBtn2.dataset.id
+        console.log(variantId, 'fq')
+            const formData = {
+                items: [{
+                    id: variantId,
+                    quantity: 1
+                }]
+            }
+    
+            sideCart.addItem(formData).then(() => sideCart.toggleCart());
     })
 }
 
-// Products confugirations
+
 const mycartProducts = document.querySelector('.mycart__products')
 mycartProducts.addEventListener('click', (e) => {
     const target = e.target.closest(".item__control")
     if(!target) return
     const operator = target.dataset.operator
     const cartItem = target.closest('.mycart__product')
-    console.log(target.dataset, 'operator')
     if(operator === 'remove') {
         sideCart.deleteItem({itemID:cartItem.dataset.id})
     }
     if(operator === 'plus') {
         sideCart.increaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
-        console.log('plusss')
     }  
     if(operator === 'minus') {
         sideCart.decreaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
