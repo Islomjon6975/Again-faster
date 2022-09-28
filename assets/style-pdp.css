@@ -82,6 +82,10 @@
   padding: 10px 30px;
 }
 
+.disabled {
+  opacity: 0.3;
+}
+
 input[type="radio"] {
   display: none;
 }
@@ -142,6 +146,14 @@ input[type="radio"]:checked + .product-details__variants-item {
 
 .product__details--text {
   color: var(--primary-black);
+}
+
+.product__details--text-btn {
+  color: var(--primary-black);
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: underline;
 }
 
 .pdp__banner-rubber {
@@ -324,7 +336,7 @@ input[type="radio"]:checked + .product-details__variants-item {
   border-right: 1px solid #C2A578;
   border-left: 1px solid #C2A578;
   height: 100%;
-  opacity: 0.2;
+  opacity: 0.1;
   bottom: 0px;
 }
 

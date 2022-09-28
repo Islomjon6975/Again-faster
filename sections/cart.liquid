@@ -4,7 +4,7 @@
         <h3 class="mycart__title h3">My Cart</h3>
         {% render 'icon-x' %}
     </div>
-    <!-- {% if cart.item_count > 0  %} -->
+    {% if cart.item_count > 0  %}
         <div class="mycart__products">
             <!-- {% for item in cart.items %}
                 <div class="mycart__product">
@@ -47,12 +47,12 @@
             </div>
             {% render 'primary-button', title: 'Continue to Checkout', type:'large' %}
         </div>
-    <!-- {% else %}
+    {% else %}
         <div class="mycart__empty">
             <p class="mycart__empty--title">Your Cart is Empty</p>
             {% render 'primary-button', title: 'Shop Best Sellers', type: 'large primary-button-white' %}
         </div>
-    {% endif %} -->
+    {% endif %}
   </form>
 
 {% schema %}

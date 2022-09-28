@@ -52,7 +52,6 @@ class Cart {
     renderCartItems(cartDetails) {
         const cartItemsWrapper = document.querySelector(".mycart__products");
         cartItemsWrapper.innerHTML = "";
-
         for (let item of cartDetails.items) {
             const template = `
                 <div class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
@@ -66,12 +65,12 @@ class Cart {
                         </div>
                         <div class="mycart__wrapper">
                             <h5 class="mycart__product--weight h5">${ item.variant_options[0] }</h5>
-                            <img data-operator="remove" class="remove-variant" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-close.liquid?v=1664294173" />
+                            <img data-operator="remove" class="remove-variant item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-close.liquid?v=1664294173" />
                         </div>
                         <div class="mycart__calculator">
-                            <img data-operator="minus" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-minus.liquid?v=1664294349" />
-                            <span class="mycart__count p">1</span>
-                            <img data-operator="plus" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-plus.liquid?v=1664294335" />
+                            <img data-operator="minus" class="item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-minus.liquid?v=1664294349" />
+                            <span class="mycart__count p">${item.quantity}</span>
+                            <img data-operator="plus" class="item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-plus.liquid?v=1664294335" />
                         </div>
                     </div>
                 </div>
@@ -80,11 +79,15 @@ class Cart {
             cartItemsWrapper.insertAdjacentHTML('beforeend', template);
         }
 
-        // const sideCartTotalPrice = document.querySelector(".side-cart__total-price");
-        // sideCartTotalPrice.textContent = "Subtotal " + this.formatter.format(cartDetails.total_price / 100);
+        const sideCartTotalPrice = document.querySelector(".subtotal");
+        sideCartTotalPrice.textContent = "Subtotal " + this.formatter.format(cartDetails.total_price / 100);
 
         const sideCartItemCart = document.querySelector(".basket__counter");
         sideCartItemCart.textContent = cartDetails.item_count
+        if(Number(cartDetails.item_count) > 0) {
+            const basketCounter = document.querySelector('.basket__counter')
+            basketCounter.classList.add('basket__counter-style')
+        } 
     }
 
     async toggleCart() {
@@ -95,9 +98,10 @@ class Cart {
         document.body.setAttribute('style', 'overflow: hidden');
     }
 
+    
+
     addToCart() {
         const variantId = document.querySelector(".product-details__variants-item-input:checked");
-        console.log(variantId.getAttribute('id'))
         const formData = {
             items: [{
                 id: variantId.value,
@@ -106,6 +110,7 @@ class Cart {
         }
 
         this.addItem(formData).then(() => this.toggleCart());
+        console.log(variantId.value, 'variant id')
     }
 
     addCartItemCount() {
@@ -118,43 +123,93 @@ class Cart {
     }
 
     deleteItem({itemID}) {
+
         const formData = {
             id: itemID,
             quantity: 0
         }
         this.changeItem(formData).then(() => this.updateCart())
     }
+
+    increaseItemAmount({ itemID, itemAmount }) {
+        console.log(itemID, itemAmount)
+        const formData = {
+          id: itemID,
+          quantity:Number(itemAmount) + 1
+        };
+    
+        this.changeItem(formData).then(() => this.updateCart());
+    }
+      
+    decreaseItemAmount({ itemID, itemAmount }) {
+     
+        const formData = {
+          id: itemID,
+          quantity:Number(itemAmount) - 1
+        };
+      
+        this.changeItem(formData).then(() => this.updateCart());
+    }
 }
 
 const sideCart = new Cart();
 
-
+// Basket toggle
 const navIcons = document.querySelectorAll('.header__icons svg');
 const baskett = navIcons[2]
 baskett.addEventListener('click', () => {
     sideCart.toggleCart()
 })
 
-
+// Close Modal
 const close = document.querySelector('.mycart__top svg')
 close.addEventListener('click', () => {
     sideCart.closeModal()
 })
 
+// Add to Cart 
 const addToCartBtn = document.querySelector('.addtocart')
 addToCartBtn.addEventListener('click',function(e){
     e.preventDefault()
-    console.log('clicked')
-    sideCart.addToCart()
+    const variantId = addToCartBtn[i].dataset.id
+    const formData = {
+        items: [{
+            id: variantId,
+            quantity: 1
+        }]
+    }
+    
+    sideCart.addItem(formData).then(() => sideCart.toggleCart());
+    console.log(variantId, 'frequentlyyyyy')
 })
 
+// Add to Cart 2
+const addToCartBtns2 = document.querySelectorAll('.product__details--text-btn')
+for(let i = 0; i < addToCartBtns2.length; i++) {
+    const addToCartBtn2 = addToCartBtns2[i]
+    addToCartBtn2.addEventListener('click',function(e){
+        e.preventDefault()
+        sideCart.addToCart()
+        console.log(addToCartBtn2.dataset.id, 'frequestttttttt')        
+    })
+}
+
+// Products confugirations
 const mycartProducts = document.querySelector('.mycart__products')
 mycartProducts.addEventListener('click', (e) => {
-    const target = e.target.closest(".remove-variant")
+    const target = e.target.closest(".item__control")
     if(!target) return
     const operator = target.dataset.operator
     const cartItem = target.closest('.mycart__product')
+    console.log(target.dataset, 'operator')
     if(operator === 'remove') {
         sideCart.deleteItem({itemID:cartItem.dataset.id})
+    }
+    if(operator === 'plus') {
+        sideCart.increaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
+        console.log('plusss')
+    }  
+    if(operator === 'minus') {
+        sideCart.decreaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
     }
 })

@@ -5,7 +5,7 @@
 
 <div class="pdp">
     <form method='post' action='/cart/add' id="form" class="pdp__container">
-        <div class="pdp__image--wrapper swiper mySwiper">
+        <div class="pdp__image--wrapper swiper myProductSwiper">
             <div class="swiper-wrapper">
                 {% for item in product.images %}
                 <div class="swiper-slide swiper-item">
@@ -20,7 +20,7 @@
                 </div>
                 {% endfor %}             
             </div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination myProductSwiper-pagination"></div>
         </div>
         <div class="pdp__details">
             <h3 class="details__title h3">{{ product.title }}</h3>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="product__details">
                             <p class="p product__details--text">{{ all_products[product].title }}</p>
-                            <button type="submit"  class="p product__details--text">Add to Cart</button>
+                            <button type="submit" data-id="{{ all_products[product].id }}"  class="p product__details--text-btn">Add to Cart</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -178,12 +178,12 @@
 
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".myProductSwiper", {
       direction: "vertical",
       slidesPerView: 1,
       mousewheel:true,
       pagination: {
-        el: ".swiper-pagination",
+        el: ".myProductSwiper-pagination",
         clickable: true,
       },
     });

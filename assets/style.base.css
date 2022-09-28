@@ -365,6 +365,11 @@ body {
 .product-card__price {
     margin: 8px 0;
     text-decoration: none;
+    display: none;
+}
+
+.product-card__star--wrapper + .product-card__price {
+    display: block;
 }
 
 .product-card__star--wrapper {
@@ -381,6 +386,7 @@ body {
 .linethrough {
     text-decoration: line-through;
     color: #353535;
+    opacity: 0.5;
 }
 
 /* ------------------ ( Product likes card ) -------------------- */
