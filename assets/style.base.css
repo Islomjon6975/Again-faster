@@ -328,6 +328,11 @@ body {
     width: 443px;
     text-decoration: none;
     display: block;
+    transition: all .3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(0.97);
 }
 
 .badges__wrapper {

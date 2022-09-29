@@ -130,6 +130,17 @@
     padding: 0 130px;
 }
 
+.product-collection {
+    transition: all .3s ease-in-out;
+    padding-bottom: 20px;
+
+}
+
+.product-collection:hover {
+    transform: scale(0.97);
+    border: 1px solid #777777;
+}
+
 @media (max-width: 1440px) {
     .product-collections {
         width: 100%;
