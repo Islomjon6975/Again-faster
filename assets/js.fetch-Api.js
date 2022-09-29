@@ -78,7 +78,9 @@ class Cart {
                         </div>
                         <div class="mycart__wrapper">
                             <h5 class="mycart__product--weight h5">${ item.variant_options[0] }</h5>
-                            <img data-operator="remove" class="remove-variant item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-close.liquid?v=1664294173" />
+                            <div class="remove-round-border">
+                                <img data-operator="remove" class="remove-variant item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-close.liquid?v=1664294173" />
+                            </div>
                         </div>
                         <div class="mycart__calculator">
                             <img data-operator="minus" class="item__control" src="https://cdn.shopify.com/s/files/1/0609/7030/3540/files/icon-minus.liquid?v=1664294349" />

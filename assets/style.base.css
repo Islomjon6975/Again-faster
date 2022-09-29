@@ -395,7 +395,7 @@ body {
 /* ------------------ ( Product likes card ) -------------------- */
 .product-likes-card {
     position: relative;
-    width: 328px;
+    width: fit-content;
     text-decoration: none;
     display: block;
 }
@@ -410,13 +410,14 @@ body {
 }
 
 .product-likes-card__image-wrapper {
-    /* width: 100%; */
+    width: 100%;
     height: auto;
 }
 
 .product-likes-card__image {
-    /* width: 100%; */
-    height: 410px;
+    width: 100%;
+    height: 500px;
+
     background-color: #F1F1F1;
 }
 
@@ -545,6 +546,16 @@ body {
     display: flex;
     flex-direction: column;
 
+}
+
+.remove-round-border {
+    border: 1px solid #F1F1F1;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-radius: 50%
 }
 
 .subtotal {
