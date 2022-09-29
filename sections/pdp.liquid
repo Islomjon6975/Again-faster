@@ -1,230 +1,199 @@
 {{ 'style-pdp.css' | asset_url | stylesheet_tag }}
 <script src="lazysizes.min.js" async=""></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <div class="pdp">
-    <form method='post' action='/cart/add' id="form" class="pdp__container">
-        <div class="pdp__image--wrapper swiper myProductSwiper">
-            <div class="swiper-wrapper">
-                {% for item in product.images %}
-                <div class="swiper-slide swiper-item">
-                    <img class="pdp_img lazyload"
-                        src="{{ item.src | img_url: '720x900' }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                        data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}"
-                        data-sizes="auto"
-                        data-parent-fit="cover"
-                        alt="{{ section.settings.pdp_img.alt | escape }}">
-                </div>
-                {% endfor %}             
-            </div>
-            <div class="swiper-pagination myProductSwiper-pagination"></div>
-        </div>
-        <div class="pdp__details">
-            <h3 class="details__title h3">{{ product.title }}</h3>
-            <p class="details__price p">$4.00</p>
-            <span class="stars__wrapper">
-                {% render 'icon-star' %}
-                {% render 'icon-star' %}
-                {% render 'icon-star' %}
-                {% render 'icon-star' %}
-                {% render 'icon-star' %}
-                <span class="p reviews">18 reviews</span>
-            </span>
-            <div class="affirm__wrapper">
-                {% render 'icon-affirm' %}
-                <span class="p reviews">pay as low as 56/mo Learn More</span>
-            </div>
-            <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p> 
-            <div class="product-details__variants-list">
-                {% unless product.variants[0].title == 'Default Title' %}
-                 
-                 {% for variant in product.variants %}
-                   {% assign price = variant.price %}
-                   {% assign quantity = variant.inventory_quantity %}
-                   <input
-                     type="radio"
-                     name="variant"
-                     id="{{ variant.id }}"
-                     class = "product-details__variants-item-input"
-                     value="{{ variant.id }}"
-                     {% if variant == product.selected_or_first_available_variant %}checked{% endif %}
-                     {% if quantity <= 0 %}
-                       disabled
-                     {% endif %}
-                   >
-                     <label
-                       for="{{ variant.id }}"
-                       data-price="{{ price }}"
-                       data-id="{{ variant.id }}"
-                       class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
-                       >
-                         {{ variant.title }}
-                       </label>
-                     {% endfor %}
-                   {% endunless %}
-               </div>
-            <p class="details__available p">Available for Free shipping!</p>
-            {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
-            <h4 class="details__subtitle h4">Frequently bought with</h4>
-            <div class="details__wrapper">
-            {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
-                {% for product in selected_handles %}
-                    <div class="details__product">
-                        <div class="product__image--wrapper">
-                            <img class="banner_img lazyload"
-                            src="{{ all_products[product].featured_image | img_url: '98x125' }}"
-                            data-src="{{ img_url }}"
-                            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                            data-aspectratio="{{all_products[product].featured_image.aspect_ratio }}"
-                            data-sizes="auto"
-                            data-parent-fit="cover"
-                            alt="{{ all_products[product].featured_image.alt | escape }}">
-                        </div>
-                        <div class="product__details">
-                            <p class="p product__details--text">{{ all_products[product].title }}</p>
-                            <button type="button" data-id="{{ all_products[product].selected_or_first_available_variant.id }}" class="p product__details--text-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+  <form method='post' action='/cart/add' id="form" class="pdp__container" data-noVariant="{{ product.has_only_default_variant }}">
+    <div class="pdp__image--wrapper swiper myProductSwiper">
+      <div class="swiper-wrapper">
+        {% for item in product.images %}
+          <div class="swiper-slide swiper-item">
+            <img class="pdp_img lazyload" src="{{ item.src | img_url: '720x900' }}" data-src="{{ img_url }}" data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}" data-sizes="auto" data-parent-fit="cover" alt="{{ section.settings.pdp_img.alt | escape }}">
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination myProductSwiper-pagination"></div>
     </div>
-    {% assign banner_text = product.metafields.accentuate.banner_text %}
-    {% assign banner_images = product.metafields.accentuate.banner_image %}
-    {% for item in (1..banner_text.size) %}
-        <div class="pdp__banner-rubber">
-            <div class="banner-rubber__content">
-                {% if banner_text[forloop.index0] != blank %}
-                    {{ banner_text[forloop.index0] }}
-                {% endif %}
-            </div>
+    <div class="pdp__details">
+      <h3 class="details__title h3">{{ product.title }}
+      </h3>
+      <p class="details__price p">$4.00</p>
+      <span class="stars__wrapper">
+        {% render 'icon-star' %}
+        {% render 'icon-star' %}
+        {% render 'icon-star' %}
+        {% render 'icon-star' %}
+        {% render 'icon-star' %}
+        <span class="p reviews">18 reviews</span>
+      </span>
+      <div class="affirm__wrapper">
+        {% render 'icon-affirm' %}
+        <span class="p reviews">pay as low as 56/mo Learn More</span>
+      </div>
+      <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <div class="product-details__variants-list">
+        {% unless product.variants[0].title == 'Default Title' %}
 
-            <div class="banner-rubber__image--wrapper">
-                
-                    {% if banner_images[forloop.index0] != blank %}
-                        <img class="banner__img lazyload"
-                            src="{{  banner_images[forloop.index0][0].src }}"
-                            data-src="{{ img_url }}"
-                            data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                            data-aspectratio="{{ banner_images[forloop.index0][0].aspect_ratio }}"
-                            data-sizes="auto"
-                            data-parent-fit="cover"
-                            alt="{{ banner_images[forloop.index0][0].alt | escape }}">
-                    {% endif %}
-                    <span class='circleb'>
-                    <span class='circles'></span>
-                    </span>
-                    
-            </div>
-            <span class='banner__line line_left'></span>
-            <span class='banner__line line_center'></span>
-            <span class='banner__line line_right'></span>
-        </div>
-    {% endfor %} 
+          {% for variant in product.variants %}
+            {% assign price = variant.price %}
+            {% assign quantity = variant.inventory_quantity %}
+            <input type="radio" name="variant" id="{{ variant.id }}" class="product-details__variants-item-input" value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}checked{% endif %} {% if quantity <= 0 %}disabled
+              {% endif %}><label for="{{ variant.id }}" data-price="{{ price }}" data-id="{{ variant.id }}" class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}">
+              {{ variant.title }}
+            </label>
+          {% endfor %}
+        {% else %}
+          <span class="product-details__noVariant" data-id="{{ product.variants[0].id }}">This product has no variants</span>
+        {% endunless %}
 
-    <div class="pdp__like">
-        <h3 class="pdp__like__title h3">You might also like</h3>
-        <div class="pdp__like--products swiper swiperLikes">
-            <div class="swiper-wrapper">
-                {% assign selected_handles = product.metafields.accentuate.you_might_also_like | split: "|" %}
-                {% for product in selected_handles %}
-                    {% render 'product-likes-card', image: all_products[product].featured_image, title: all_products[product].title, price: all_products[product].price, product_card: all_products[product] %}
-                {% endfor %}
+      </div>
+      <p class="details__available p">Available for Free shipping!</p>
+      {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
+      <h4 class="details__subtitle h4">Frequently bought with</h4>
+      <div class="details__wrapper">
+        {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
+        {% for product in selected_handles %}
+          <div class="details__product">
+            <div class="product__image--wrapper">
+              <img class="banner_img lazyload" src="{{ all_products[product].featured_image | img_url: '98x125' }}" data-src="{{ img_url }}" data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-aspectratio="{{all_products[product].featured_image.aspect_ratio }}" data-sizes="auto" data-parent-fit="cover" alt="{{ all_products[product].featured_image.alt | escape }}">
             </div>
-        </div>
+            <div class="product__details">
+              <p class="p product__details--text">{{ all_products[product].title }}
+              </p>
+              <button type="button" data-id="{{ all_products[product].selected_or_first_available_variant.id }}" class="p product__details--text-btn">Add to Cart</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
+  {% assign banner_text = product.metafields.accentuate.banner_text %}
+  {% assign banner_images = product.metafields.accentuate.banner_image %}
+  {% for item in (1..banner_text.size) %}
+    <div class="pdp__banner-rubber">
+      <div class="banner-rubber__content">
+        {% if banner_text[forloop.index0] != blank %}
+          {{ banner_text[forloop.index0] }}
+        {% endif %}
+      </div>
+
+      <div class="banner-rubber__image--wrapper">
+
+        {% if banner_images[forloop.index0] != blank %}
+          <img class="banner__img lazyload" src="{{  banner_images[forloop.index0][0].src }}" data-src="{{ img_url }}" data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-aspectratio="{{ banner_images[forloop.index0][0].aspect_ratio }}" data-sizes="auto" data-parent-fit="cover" alt="{{ banner_images[forloop.index0][0].alt | escape }}">
+        {% endif %}
+        <span class='circleb'>
+          <span class='circles'></span>
+        </span>
+
+      </div>
+      <span class='banner__line line_left'></span>
+      <span class='banner__line line_center'></span>
+      <span class='banner__line line_right'></span>
+    </div>
+  {% endfor %}
+
+  <div class="pdp__like">
+    <h3 class="pdp__like__title h3">You might also like</h3>
+    <div class="pdp__like--products swiper swiperLikes">
+      <div class="swiper-wrapper">
+        {% assign selected_handles = product.metafields.accentuate.you_might_also_like | split: "|" %}
+        {% for product in selected_handles %}
+          {% render 'product-likes-card', image: all_products[product].featured_image, title: all_products[product].title, price: all_products[product].price, product_card: all_products[product] %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 
 {% schema %}
-{
+  {
     "name": "PDP",
     "settings": [
-        {
-            "id": "pdp_img",
-            "type": "image_picker",
-            "label": "Pdp Image"
-        },
-        {
-            "id": "detail_product",
-            "type": "image_picker",
-            "label": "Pdp Detail Image"
-        },
-        {
-            "id": "product_banner_image1",
-            "type": "image_picker",
-            "label": "Pdp Banner Image 1"
-        },
-        {
-            "id": "product_banner_image2",
-            "type": "image_picker",
-            "label": "Pdp Banner Image 2"
-        },
-        {
-            "id": "product_banner_image3",
-            "type": "image_picker",
-            "label": "Pdp Banner Image 3"
-        },
-        {
-            "id": "product_likes_img",
-            "type": "image_picker",
-            "label": "Pdp Likes Image"
-        }
+      {
+        "id": "pdp_img",
+        "type": "image_picker",
+        "label": "Pdp Image"
+      },
+      {
+        "id": "detail_product",
+        "type": "image_picker",
+        "label": "Pdp Detail Image"
+      },
+      {
+        "id": "product_banner_image1",
+        "type": "image_picker",
+        "label": "Pdp Banner Image 1"
+      },
+      {
+        "id": "product_banner_image2",
+        "type": "image_picker",
+        "label": "Pdp Banner Image 2"
+      }, {
+        "id": "product_banner_image3",
+        "type": "image_picker",
+        "label": "Pdp Banner Image 3"
+      }, {
+        "id": "product_likes_img",
+        "type": "image_picker",
+        "label": "Pdp Likes Image"
+      }
     ]
-}
+  }
 {% endschema %}
 
 
 <script>
-    var swiper = new Swiper(".myProductSwiper", {
-      direction: "vertical",
-      slidesPerView: 1,
-      mousewheel:true,
-      pagination: {
-        el: ".myProductSwiper-pagination",
-        clickable: true,
-      },
-    });
+  var swiper = new Swiper(".myProductSwiper", {
+    direction: "vertical",
+    slidesPerView: 1,
+    mousewheel: true,
+    pagination: {
+      el: ".myProductSwiper-pagination",
+      clickable: true
+    }
+  });
 
-    var swiperr = new Swiper(".swiperLikes", {
-      direction: "horizontal",
-      slidesPerView: 4,
-      spaceBetween: 16,
-      mousewheel:true,
-      loop: true,
-      pagination: {
-        el: ".swiperLikes-pagination",
-        clickable: true,
-      },
-    });
+  var swiperr = new Swiper(".swiperLikes", {
+    direction: "horizontal",
+    slidesPerView: 4,
+    spaceBetween: 16,
+    mousewheel: true,
+    loop: true,
+    pagination: {
+      el: ".swiperLikes-pagination",
+      clickable: true
+    }
+  });
+
+  const priceTag = document.querySelector('.details__price');
+  const varinatsList = document.querySelector('.product-details__variants-list');
+  var variantId = "{{ product.id }}";
+  varinatsList.addEventListener('click', function(e) {
+    const target = e.target.closest('.product-details__variants-item');
+    if (! target) 
+      return;
     
-    const priceTag = document.querySelector('.details__price');
-    const varinatsList = document.querySelector('.product-details__variants-list');
-    var variantId = "{{ product.id }}";
-    varinatsList.addEventListener('click', function (e) {
-        const target = e.target.closest('.product-details__variants-item');
-        if (!target) return;
-        badgeContainer(target.dataset.price);
-        variantId = target.dataset.id;
-        
-    });
-    const badgeContainer = (price) => {
-        const opt = {
-        style: 'currency',
-        currency: 'USD',
-        };
-        priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
+
+
+
+    badgeContainer(target.dataset.price);
+    variantId = target.dataset.id;
+
+  });
+  const badgeContainer = (price) => {
+    const opt = {
+      style: 'currency',
+      currency: 'USD'
     };
+    priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
+  };
 
-    // const circleb = document.querySelectorAll('.circleb')
-    // const circles = document.querySelectorAll('.circles')
-    // const bannerImg = document.querySelectorAll('.banner__img')
-    // circleb[0].classList.add('circle_big')
-    // circles[0].classList.add('circle_small')
-    // bannerImg[0].classList.add('banner_firstImg')
-
-
-
-</script>
+// const circleb = document.querySelectorAll('.circleb')
+// const circles = document.querySelectorAll('.circles')
+// const bannerImg = document.querySelectorAll('.banner__img')
+// circleb[0].classList.add('circle_big')
+// circles[0].classList.add('circle_small')
+// bannerImg[0].classList.add('banner_firstImg')
+</script>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -50,10 +50,23 @@ class Cart {
     }
 
     renderCartItems(cartDetails) {
+
+        if(cartDetails.item_count !== 0){
+            document.querySelector('.mycart__products').style.display = 'block'
+            document.querySelector('.mycart__bottom').style.display= 'block'
+            document.querySelector('.mycart__empty').style.display= 'none'
+        }else{
+            document.querySelector('.mycart__products').style.display = 'none'
+            document.querySelector('.mycart__bottom').style.display= 'none'
+            document.querySelector('.mycart__empty').style.display= 'block'
+            return
+        }
+
         const cartItemsWrapper = document.querySelector(".mycart__products");
         cartItemsWrapper.innerHTML = "";
         for (let item of cartDetails.items) {
-            const template = `
+            if(cartDetails.items.length > 0) {}
+            const template = cartDetails.item_count > 0 ? ( `
                 <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
                     <div class="mycart__img--wrapper">
                         <img src="${ item.image }" alt="${ item.title }" class="mycart__product-img">
@@ -74,10 +87,15 @@ class Cart {
                         </div>
                     </div>
                 </div>
-            `
+            ` ) : (
+                `<h1>Empty</h1>`
+            )
 
+         
             cartItemsWrapper.insertAdjacentHTML('beforeend', template);
         }
+
+        
 
         const sideCartTotalPrice = document.querySelector(".subtotal");
         sideCartTotalPrice.textContent = "Subtotal " + this.formatter.format(cartDetails.total_price / 100);
@@ -101,10 +119,12 @@ class Cart {
     
 
     addToCart() {
+        const hasOnlyDefaultVariant = document.querySelector('#form')
+        const novariant = document.querySelector('.product-details__noVariant')
         const variantId = document.querySelector(".product-details__variants-item-input:checked");
         const formData = {
             items: [{
-                id: variantId.value,
+                id: hasOnlyDefaultVariant.getAttribute('data-noVariant') == 'true' ? novariant.getAttribute('data-id') :  variantId.value,
                 quantity: 1
             }]
         }
@@ -153,6 +173,7 @@ class Cart {
 }
 
 const sideCart = new Cart();
+sideCart.updateCart()
 
 // Basket
 const navIcons = document.querySelectorAll('.header__icons svg');
@@ -209,3 +230,4 @@ mycartProducts.addEventListener('click', (e) => {
         sideCart.decreaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
     }
 })
+
