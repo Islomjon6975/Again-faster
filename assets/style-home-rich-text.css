@@ -6,17 +6,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-    margin: auto;
-    margin-top: -58px;
+    margin-top: -80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding-left: 40px;
     padding-bottom: 40px;
+    background-color: red;
 }
 
 .rich-text__title {
-    max-width: 601px;
+    max-width: 580px;
     font-style: normal;
     font-weight: 700;
     font-size: 60px;
@@ -34,6 +34,7 @@
     line-height: 167.5%;
     color: #FFFFFF;
     margin: 24px 0px 40px 0px;
+    
 }
 
 

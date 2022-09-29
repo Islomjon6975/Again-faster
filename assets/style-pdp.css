@@ -39,6 +39,7 @@
 
 .details__title {
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .stars__wrapper {
@@ -77,6 +78,7 @@
   position: relative;
   color: black;
   border: 1px solid #c4c4c4;
+  border: 1px solid #F1F1F1;
   display: flex;
   align-items: center;
   padding: 10px 30px;

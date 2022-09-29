@@ -547,6 +547,10 @@ body {
 
 }
 
+.subtotal {
+    color: var(--primary-black)
+}
+
 .mycart__wrapper {
     width: 100%;
     display: flex;

@@ -7,7 +7,6 @@
     position: relative;
     top: 0px;
     z-index: 10;
-    position: sticky;
     top: 0px;
     left: 0;
     z-index: 10;
@@ -20,7 +19,6 @@
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 10px;
     align-items: center;
-    
 }
 
 .logo {
@@ -43,14 +41,12 @@
 }
 
 .home .nav__link {
-    font-family: var(--primary-font);
     color: #FFFFFF;
     text-decoration: none;
     text-transform: capitalize;
 }
 
 .nav__link {
-    font-family: var(--primary-font);
     color: #000000;
     text-decoration: none;
     text-transform: capitalize;
@@ -104,18 +100,4 @@
 }
 
 
-.rich-text {
-
-}
-
-.rich-text__title {
-    max-width: 601px;
-    color: #FFFFFF;
-}
-
-.rich-text__description {
-    max-width: 601px;
-    color: #FFFFFF;
-    margin: 24px 0px 40px 0px;
-}
 

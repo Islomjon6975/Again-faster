@@ -66,7 +66,7 @@ class Cart {
         cartItemsWrapper.innerHTML = "";
         for (let item of cartDetails.items) {
             if(cartDetails.items.length > 0) {}
-            const template = cartDetails.item_count > 0 ? ( `
+            const template = `
                 <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
                     <div class="mycart__img--wrapper">
                         <img src="${ item.image }" alt="${ item.title }" class="mycart__product-img">
@@ -87,9 +87,7 @@ class Cart {
                         </div>
                     </div>
                 </div>
-            ` ) : (
-                `<h1>Empty</h1>`
-            )
+            ` 
 
          
             cartItemsWrapper.insertAdjacentHTML('beforeend', template);
@@ -98,7 +96,7 @@ class Cart {
         
 
         const sideCartTotalPrice = document.querySelector(".subtotal");
-        sideCartTotalPrice.textContent = "Subtotal " + this.formatter.format(cartDetails.total_price / 100);
+        sideCartTotalPrice.textContent = this.formatter.format(cartDetails.total_price / 100);
 
         const sideCartItemCart = document.querySelector(".basket__counter");
         sideCartItemCart.textContent = cartDetails.item_count
