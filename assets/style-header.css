@@ -43,12 +43,14 @@
 }
 
 .home .nav__link {
+    font-family: var(--primary-font);
     color: #FFFFFF;
     text-decoration: none;
     text-transform: capitalize;
 }
 
 .nav__link {
+    font-family: var(--primary-font);
     color: #000000;
     text-decoration: none;
     text-transform: capitalize;

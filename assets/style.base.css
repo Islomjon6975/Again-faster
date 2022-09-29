@@ -14,6 +14,8 @@
     --red: #DA0000;
     --green: #6FCF97;
     --sale: #9E0404;
+    --primary-font: "Open Sans", sans-serif;
+    --secondary-font: "Oswald", sans-serif;
 }
 
 html {
@@ -21,7 +23,7 @@ html {
 }
 
 h1, .h1 {
-    font-family: 'OpenSans-Bold';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: bold;
     font-size: 60px;
@@ -31,7 +33,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-    font-family: 'OpenSans-SemiBold';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: bold;
     font-size: 40px;
@@ -41,7 +43,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-    font-family: 'OpenSans-Regular';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -51,7 +53,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-    font-family: 'OpenSans-Regular';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
@@ -61,7 +63,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-    font-family: 'Oswald-Light';
+    font-family: var(--secondary-font);
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -70,8 +72,8 @@ h5, .h5 {
     text-transform: uppercase;
 }
 
-p, .p  {
-    font-family: 'OpenSans-Regular';
+p, .p {
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -80,7 +82,7 @@ p, .p  {
 }
 
 .small-p {
-    font-family: 'OpenSans-Regular';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -89,7 +91,7 @@ p, .p  {
 }
 
 .link {
-    font-family: 'OpenSans-Regular';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -100,7 +102,7 @@ p, .p  {
 }
 
 body {
-    font-family: 'OpenSans-Regular';
+    font-family: var(--primary-font);
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -213,9 +215,6 @@ body {
     color: var(--primary-black)
 }
 
-
-
-
 /* ------------------ ( 1440-768 ) -------------------- */
 @media (max-width: 1440px) {
     h1, .h1 {
@@ -234,7 +233,6 @@ body {
         font-size: 16px;
     }
 }
-
 
 /* ------------------ ( 768-375 ) -------------------- */
 @media (max-width: 1440px) {
