@@ -102,6 +102,9 @@
       <div class="swiper-wrapper">
         {% assign selected_handles = product.metafields.accentuate.you_might_also_like | split: "|" %}
         {% for product in selected_handles %}
+          <script>
+            console.log({{ product_price | json }})
+          </script>
           {% render 'product-likes-card', image: all_products[product].featured_image, title: all_products[product].title, price: all_products[product].price, product_card: all_products[product] %}
         {% endfor %}
       </div>
@@ -206,4 +209,4 @@
   bannerImg[1]
   .classList
   .add('banner_firstImg')
-</script>>>
+</script>

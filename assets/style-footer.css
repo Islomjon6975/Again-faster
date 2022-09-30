@@ -29,6 +29,7 @@
 }
 
 .footer__input__wrapper {
+    display: block;
     position: relative;
     width: 100%;
 }
@@ -49,6 +50,13 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.footer-arrow:active {
+    transform: scale(0.97);
 }
 
 .footer__socials {

@@ -37,6 +37,7 @@
 .banner__title {
     margin: 8px 0px 18px 0px;
     width: 100%;
+    font-weight: 600;
 }
 
 .banner__description {

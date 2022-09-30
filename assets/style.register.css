@@ -48,6 +48,11 @@
     margin-top: 8px;
 }
 
+.register__input:focus {
+    border-bottom: 1px solid #000000;
+}
+
+
 .register__btn {
     background: #000000;
     width: 100%;

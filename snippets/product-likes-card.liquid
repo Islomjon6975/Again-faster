@@ -31,8 +31,23 @@
             {% render 'icon-star' %}
         </div>
         {% for tag in product_card.tags %}
-            <p class="product-likes-card__price h5 {% if tag == 'Sale'  %} linethrough {% endif %}">price</p>
+            <p class="product-likes-card__price pricee h5 {% if tag == 'Sale'  %} linethrough {% endif %}">{{ price }}</p>
         {% endfor %}
 
     </div>
 </div>
+
+<script>
+    formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 2
+    });
+
+    
+    const price = document.querySelector('.product-likes-card__price')
+    const pricee = document.querySelector('.pricee')
+
+    pricee.innerText = (formatter.format(+price.innerText / 100))
+    console.log(pricee.innerText, 'priceeeeee')
+</script>
