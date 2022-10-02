@@ -23,7 +23,9 @@
 
     <div class="header__icons">
       {% render 'icon-search' %}
-      {% render 'icon-account' %}
+      <a href="/account/login">
+        {% render 'icon-account' %}
+      </a>
       <div class="basket__counter--wrapper">
         {% render 'icon-basket' %}
         <span class="basket__counter"></span>
