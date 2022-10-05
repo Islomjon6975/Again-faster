@@ -181,7 +181,7 @@ input[type="radio"]:checked + .product-details__variants-item {
 
 
 
-.pdp__banner-rubber:nth-child(2n + 1) {
+.pdp__banner-rubber:nth-child(2n) {
   flex-direction: row-reverse;
 }
 
@@ -239,9 +239,9 @@ input[type="radio"]:checked + .product-details__variants-item {
 
 .banner-rubber__content ul li {
   list-style-type: none;
-  font-family: "Arca Majora 3";
+  font-family: "Open Sans";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   line-height: 167.5%;
   color: var(--primary-white);
@@ -253,7 +253,7 @@ input[type="radio"]:checked + .product-details__variants-item {
   position: absolute;
   left: -10px;
   color: #c2a578;
-  font-family: "Arca Majora 3";
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -445,4 +445,19 @@ input[type="radio"]:checked + .product-details__variants-item {
 
 .pdp__like--products {
   width: 100%;
+}
+
+/* Reviews */
+.yotpo-reviews-main-widget .yotpo-reviews-icon-text, .yotpo-reviews-icon {
+  display: none !important;
+}
+
+#yotpo-main-widget-btn {
+  background: #000000 !important;
+  width: 214px !important;
+  height: 43px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items:center !important;
+  border-radius: 0 !important;
 }
