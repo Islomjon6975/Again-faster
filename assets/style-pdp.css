@@ -488,7 +488,6 @@ input[type="radio"]:checked + .product-details__variants-item {
 }
 
 .yotpo-layout-header-wrapper {
-  background-color: red !important;
   display: flex !important;
   justify-content:  space-between !important;
   align-items:center !important;
