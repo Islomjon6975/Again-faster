@@ -24,11 +24,12 @@
         <p
          class="product-card__title h5">{{ product_card.title }}</phref=>
         <div class="product-card__star--wrapper">
+            {%- comment -%} {% render 'icon-star' %}
             {% render 'icon-star' %}
             {% render 'icon-star' %}
             {% render 'icon-star' %}
-            {% render 'icon-star' %}
-            {% render 'icon-star' %}
+            {% render 'icon-star' %} {%- endcomment -%}
+            <div class="yotpo-widget-instance" data-yotpo-instance-id="250088" data-yotpo-product-id="{{product.id}}"></div>
         </div>
         {% for tag in product_card.tags %}
             <p class="product-card__price h5 {% if tag == 'Sale'  %} linethrough {% endif %}">{{product_card.price | money}} </p>

@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/fIXQBDcPB1ga8iaQHkuy2oMDpWAx7wpwAHovVRjv" async></script>
-
 <div class="pdp">
   <form method='post' action='/cart/add' id="form" class="pdp__container" data-noVariant="{{ product.has_only_default_variant }}">
     <div class="pdp__image--wrapper swiper myProductSwiper">
@@ -20,13 +19,14 @@
       <h3 class="details__title h3">{{ product.title }}
       </h3>
       <p class="details__price p">$4.00</p>
-      <span class="stars__wrapper">
+      {%- comment -%} <span class="stars__wrapper">
         {% render 'icon-star' %}
         {% render 'icon-star' %}
         {% render 'icon-star' %}
         {% render 'icon-star' %}
         {% render 'icon-star' %}
-        <span class="p reviews">18 reviews</span>
+        <span class="p reviews">18 reviews</span> {%- endcomment -%}
+        <div class="yotpo-widget-instance" data-yotpo-instance-id="250088" data-yotpo-product-id="{{product.id}}"></div>
       </span>
       <div class="affirm__wrapper">
         {% render 'icon-affirm' %}
@@ -126,13 +126,14 @@
             <div class="product-likes-card__details">
                 <p
                 class="product-likes-card__title h5">{{ all_products[product].title }}</phref=>
-                <div class="product-likes-card__star--wrapper">
+                {%- comment -%} <div class="product-likes-card__star--wrapper">
                     {% render 'icon-star' %}
                     {% render 'icon-star' %}
                     {% render 'icon-star' %}
                     {% render 'icon-star' %}
                     {% render 'icon-star' %}
-                </div>
+                </div> {%- endcomment -%}
+                <div class="yotpo-widget-instance" data-yotpo-instance-id="250088" data-yotpo-product-id="{{product.id}}"></div>
                 {% for tag in all_products[product].tags %}
                     <p class="product-likes-card__price pricee h5 {% if tag == 'Sale'  %} linethrough {% endif %}">{{ all_products[product].price }}</p>
                 {% endfor %}
@@ -259,4 +260,7 @@
     for(let i = 0; i < price.length; i++) {
       pricee[i].innerText = (formatter.format(+price[i].innerText / 100))
     }
+
+
+    console.log(document.querySelectorAll('.yotpo-layout-header-wrapper'), 'yotpo')
 </script>

@@ -461,3 +461,69 @@ input[type="radio"]:checked + .product-details__variants-item {
   align-items:center !important;
   border-radius: 0 !important;
 }
+
+.yotpo-display-s .yotpo-layout-header-wrapper .yotpo-bottom-line {
+  justify-content: flex-start !important ;
+  margin-top: 13px !important;
+}
+
+
+
+.yotpo-sr-bottom-line .yotpo-sr-bottom-line-new-review[data-v-020aa9ae], .yotpo-sr-bottom-line .yotpo-sr-bottom-line-text[data-v-020aa9ae] {
+  font-size: 14px !important;
+  font-weight: 300 !important;
+}
+
+.product-likes-card__details .yotpo-sr-bottom-line-text {
+  display: none !important;
+}
+
+.product-likes-card__details svg {
+  stroke: rgb(194, 165, 120) !important;
+}
+
+
+.yotpo-bottom-line .yotpo-bottom-line-summary .yotpo-vertical-border {
+  border: none !important;
+}
+
+.yotpo-layout-header-wrapper {
+  background-color: red !important;
+  display: flex !important;
+  justify-content:  space-between !important;
+  align-items:center !important;
+  flex-direction: row !important;
+}
+
+.yotpo-headline {
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 28px !important;
+  line-height: 130% !important;
+  /* or 36px */
+
+  text-align: center !important;
+  letter-spacing: 0.08em !important;
+}
+
+.yotpo-bottom-line .yotpo-bottom-line-left-panel.yotpo-bottom-line-score {
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 60px !important;
+  line-height: 130% !important;
+  /* identical to box height, or 78px */
+
+  text-transform: uppercase !important;
+}
+
+.star-container svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.yotpo-bottom-line-right-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 65px !important;
+}

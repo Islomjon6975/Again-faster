@@ -386,6 +386,10 @@ body {
     height: 18px;
 }
 
+.product-card__star--wrapper .yotpo-sr-bottom-line-text {
+    display: none !important;
+}
+
 .linethrough {
     text-decoration: line-through;
     color: #353535;

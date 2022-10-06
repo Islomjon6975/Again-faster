@@ -1,49 +1,51 @@
 {{ 'style-collection-plp.css'  | asset_url |  stylesheet_tag}}
+<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/fIXQBDcPB1ga8iaQHkuy2oMDpWAx7wpwAHovVRjv" async></script>
 
 
 <style>
-    .collection-plp__products {
-        /* grid-template-columns: repeat({{section.settings.grid_column | plus:0}}, 1fr); */
-    }
+  .collection-plp__products {
+    ;
+    /* grid-template-columns: repeat({{section.settings.grid_column | plus:0}}, 1fr); */
+  }
 </style>
 
 <div class="collection-plp">
-    <div class="collection-plp__wrapper">
-        <h3 class="collection-plp__title h3">{{ collection.title }}</h3>
-        
-        <ul class="breadcrumb">
-            {% for coll in section.settings.collection_list %}
-                <li class="breadcrumb-item">
-                    <a href="{{coll.url}}" class="breadcrumb-item__link h5 {% if collection.title == coll.title %} active {% endif %}">{{coll.title}}</a>
-                </li>
-                <span class="slash">/</span>
-            {% endfor %}
-        </ul>
+  <div class="collection-plp__wrapper">
+    <h3 class="collection-plp__title h3">{{ collection.title }}
+    </h3>
 
-        <div class="collection-plp__products">
-            {% for product in collection.products %}
-                {% render 'product-card', product_card: product %}
-            {% endfor %}
-        </div>
+    <ul class="breadcrumb">
+      {% for coll in section.settings.collection_list %}
+        <li class="breadcrumb-item">
+          <a href="{{coll.url}}" class="breadcrumb-item__link h5 {% if collection.title == coll.title %} active {% endif %}">{{coll.title}}
+          </a>
+        </li>
+        <span class="slash">/</span>
+      {% endfor %}
+    </ul>
+
+    <div class="collection-plp__products">
+      {% for product in collection.products %}
+        {% render 'product-card', product_card: product %}
+      {% endfor %}
     </div>
+  </div>
 </div>
 
 
 {% schema %}
-{
+  {
     "name": "Product List",
     "settings": [
-        {
-            "id": "grid_column",
-            "type": "number",
-            "label": "Grid Column"
-        },
-        {
-            "id": "collection_list",
-            "type": "collection_list",
-            "label": "Breadcrumb Collections"
-        }
+      {
+        "id": "grid_column",
+        "type": "number",
+        "label": "Grid Column"
+      }, {
+        "id": "collection_list",
+        "type": "collection_list",
+        "label": "Breadcrumb Collections"
+      }
     ]
-}
+  }
 {% endschema %}
-
