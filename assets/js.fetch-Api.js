@@ -148,6 +148,7 @@ class Cart {
             id: itemID,
             quantity: 0
         }
+        this.toggleCart()
         this.changeItem(formData).then(() => this.updateCart())
     }
 
@@ -201,7 +202,6 @@ for(let i = 0; i < addToCartBtns2.length; i++) {
     addToCartBtn2.addEventListener('click',function(e){
         e.preventDefault()
         const variantId = addToCartBtn2.dataset.id
-        console.log(variantId, 'fq')
             const formData = {
                 items: [{
                     id: variantId,
@@ -213,6 +213,48 @@ for(let i = 0; i < addToCartBtns2.length; i++) {
     })
 }
 
+const addToCartWithSellingPlans = (id, qtty, sellingPlanId) => {
+    let formData = {
+        items: [
+            {
+                id: id,
+                quantity: qtty,
+                selling_plan: sellingPlanId
+            }
+        ]
+    }
+    sideCart.addItem(formData).then(() => sideCart.toggleCart());
+
+}
+
+// form add to cart
+let form = document.querySelector('#form')
+
+
+
+form?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (e.target.dataset.selling_plan_id >= 1) {
+      let recharge_id = form.querySelector(".recharge-option:checked").value;
+      if (recharge_id == "subscribe") {
+        let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
+        let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").id;
+        sideCart.addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
+      } else {
+        sideCart.addToCart(recharge_id);
+      }
+    } else {
+      let productID;
+      if (e.target.dataset.novariant == "true") {
+        const span = form.querySelector(".product-details__noVariant");
+        productID = span.dataset.productid;
+      } else {
+        const variantId = document.querySelector(".product-details__variants-item-input:checked");
+        productID = variantId.value;
+      }
+      sideCart.addToCart(productID);
+    }
+  });
 
 const mycartProducts = document.querySelector('.mycart__products')
 mycartProducts.addEventListener('click', (e) => {

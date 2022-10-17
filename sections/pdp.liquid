@@ -1,10 +1,13 @@
+{{ 'style.recharge.css' | asset_url | stylesheet_tag }}
 {{ 'style-pdp.css' | asset_url | stylesheet_tag }}
 <script src="lazysizes.min.js" async=""></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/fIXQBDcPB1ga8iaQHkuy2oMDpWAx7wpwAHovVRjv" async></script>
+<script src="{{ 'js.recharge.js' | asset_url }}" defer></script>
+
 <div class="pdp">
-  <form method='post' action='/cart/add' id="form" class="pdp__container" data-noVariant="{{ product.has_only_default_variant }}">
+  <form method='post' action='/cart/add' id="form" class="pdp__container" data-selling_plan_id="{{ product.selling_plan_groups.size }}" data-noVariant="{{ product.has_only_default_variant }}">
     <div class="pdp__image--wrapper swiper myProductSwiper">
       <div class="swiper-wrapper">
         {% for item in product.images %}
@@ -12,6 +15,7 @@
             <img class="pdp_img lazyload" src="{{ item.src | img_url: '720x900' }}" data-src="{{ img_url }}" data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-aspectratio="{{ section.settings.pdp_img.aspect_ratio }}" data-sizes="auto" data-parent-fit="cover" alt="{{ section.settings.pdp_img.alt | escape }}">
           </div>
         {% endfor %}
+        <script>{{ product | json }}</script>
       </div>
       <div class="swiper-pagination myProductSwiper-pagination"></div>
     </div>
@@ -50,6 +54,58 @@
 
       </div>
       <p class="details__available p">Available for Free shipping!</p>
+      {%- comment -%} <div class="rc-widget-injection-parent"></div> {%- endcomment -%}
+
+
+      <div class="product-form"  >
+        <script>
+          console.log({{product | json}})
+        </script>
+        {% if product.selling_plan_groups.size >= 1 %}
+          <div class="form__block">
+            <p class="block__header">Select Your Purchase Type</p>
+            <ul class="block__options">
+              <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
+                <input class="recharge-option" name="purchase-type" value="{{ product.selected_or_first_available_variant.id }}" name="one" id="one-time-purchase" type="radio" hidden checked />
+                <label class="label--checkbox" for="one-time-purchase">One-time purchase</label>
+              </li>
+              <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
+                {%- assign new_price = product.variants[0].selling_plan_allocations[0].price | money -%}
+                <input name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden />
+                <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save <span class="new_price">{{ new_price }}</span></label>
+                
+              </li>
+            </ul>
+            <p class="block__subtitle" data-open-accessibility-text-original="14px" style="font-size: 14px;">Choose fewer shipments and we pass along the savings to you. </p>
+          </div>
+      
+
+          <div class="form__block" id="subscribe-and-save-form-block" style="display: none">
+              <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;"><span></span> Select your delivery option?</p>
+              <ul id="subscribe-and-save-options" class="block__options">
+                {% for item in product.selling_plan_groups[0].selling_plans %}
+                      <li class="options__item">
+                        <input class="recharge-frequent-option"  value="{{ item.id }}" name="sub-options" id="{{ product.selected_or_first_available_variant.id }}" type="radio" hidden="" checked="">
+                        <label class="label--simple full" for="sub-option-10">
+                            
+                            <div class="weight">
+                                <span class="paragraph">{{ item.name | remove: 'Delivery every' }}</span>
+                            </div>
+                            <div class="price">
+                                <span class="heading">
+                                    {{product.variants[0].selling_plan_allocations[0].price | money}}
+                                </span>
+                            </div>
+                        </label>
+                      </li>   
+                {% endfor %}
+                   
+              </ul>
+          </div>
+
+          <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">YOU’RE QUALIFIED FOR FREE SHIPPING</p>
+        {% endif %}
+      </div>
       {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
       <h4 class="details__subtitle h4">Frequently bought with</h4>
       <div class="details__wrapper">
@@ -69,7 +125,8 @@
         {% endfor %}
       </div>
     </div>
-  </div>
+</div>
+
   {% assign banner_text = product.metafields.accentuate.banner_text %}
   {% assign banner_images = product.metafields.accentuate.banner_image %}
   {% for item in (1..banner_text.size) %}
@@ -178,7 +235,13 @@
         "type": "image_picker",
         "label": "Pdp Likes Image"
       }
+    ],
+    "blocks": [
+      {
+      "type": "@app"
+    }
     ]
+
   }
 {% endschema %}
 
@@ -261,5 +324,4 @@
     }
 
 
-    console.log(document.querySelectorAll('.yotpo-layout-header-wrapper'), 'yotpo')
 </script>
