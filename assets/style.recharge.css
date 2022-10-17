@@ -119,7 +119,6 @@ input:checked + .label--checkbox {
     font-size: 12px;
     line-height: 100%;
     color: #1c1c1c;
-    /* color: #FFFFFF; */
 }
 
 .label--simple .weight .heading {
@@ -127,7 +126,6 @@ input:checked + .label--checkbox {
     font-size: 18px;
     line-height: 100%;
     color: #1c1c1c;
-    /* color: #FFFFFF; */
 }
 
 .block__options .options__item input:checked+.label--simple .price, .weight span:first-child {

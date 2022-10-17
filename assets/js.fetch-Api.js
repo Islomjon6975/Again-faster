@@ -65,7 +65,8 @@ class Cart {
         const cartItemsWrapper = document.querySelector(".mycart__products");
         cartItemsWrapper.innerHTML = "";
         for (let item of cartDetails.items) {
-            if(cartDetails.items.length > 0) {}
+            let deliver_frequency = item?.selling_plan_allocation?.selling_plan.name
+            // if(cartDetails.items.length > 0) {}
             const template = `
                 <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
                     <div class="mycart__img--wrapper">
@@ -74,6 +75,7 @@ class Cart {
                     <div class="mycart__product--details">
                         <div class="mycart__wrapper">
                             <a href="${ item.url }" class="mycart__product--title h5">${ item.title }</a>
+                            <p id="variant_title">${ deliver_frequency != null ? deliver_frequency : ""     }</p>
                             <p class="mycart__product--price h5">${this.formatter.format(item.price / 100)}</p>
                         </div>
                         <div class="mycart__wrapper">
@@ -130,7 +132,6 @@ class Cart {
         }
 
         this.addItem(formData).then(() => this.toggleCart());
-        console.log(variantId.value, 'variant id')
     }
 
     addCartItemCount() {
@@ -189,29 +190,6 @@ close.addEventListener('click', () => {
     sideCart.closeModal()
 })
 
-// Add To Cart
-const addToCartBtn = document.querySelector('.addtocart')
-addToCartBtn.addEventListener('click',function(e){
-    e.preventDefault()
-    sideCart.addToCart()
-})
-
-const addToCartBtns2 = document.querySelectorAll('.product__details--text-btn')
-for(let i = 0; i < addToCartBtns2.length; i++) {
-    const addToCartBtn2 = addToCartBtns2[i]
-    addToCartBtn2.addEventListener('click',function(e){
-        e.preventDefault()
-        const variantId = addToCartBtn2.dataset.id
-            const formData = {
-                items: [{
-                    id: variantId,
-                    quantity: 1
-                }]
-            }
-    
-            sideCart.addItem(formData).then(() => sideCart.toggleCart());
-    })
-}
 
 const addToCartWithSellingPlans = (id, qtty, sellingPlanId) => {
     let formData = {
@@ -224,35 +202,57 @@ const addToCartWithSellingPlans = (id, qtty, sellingPlanId) => {
         ]
     }
     sideCart.addItem(formData).then(() => sideCart.toggleCart());
-
 }
 
+
 // form add to cart
-let form = document.querySelector('#form')
-
-
-
-form?.addEventListener("submit", function (e) {
+let form = document.querySelector('.pdp__container')
+form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (e.target.dataset.selling_plan_id >= 1) {
-      let recharge_id = form.querySelector(".recharge-option:checked").value;
-      if (recharge_id == "subscribe") {
+        let recharge_id = form.querySelector(".recharge-option:checked").value;
+        if (recharge_id == "subscribe") {
+          console.log(e.target.dataset.selling_plan_id,'recharge subs')
         let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
         let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").id;
-        sideCart.addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
+        addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
       } else {
         sideCart.addToCart(recharge_id);
       }
     } else {
-      let productID;
-      if (e.target.dataset.novariant == "true") {
-        const span = form.querySelector(".product-details__noVariant");
-        productID = span.dataset.productid;
-      } else {
-        const variantId = document.querySelector(".product-details__variants-item-input:checked");
-        productID = variantId.value;
-      }
-      sideCart.addToCart(productID);
+    //   let productID;
+    //   if (e.target.dataset.novariant == "true") {
+    //     const span = form.querySelector(".product-details__noVariant");
+    //     productID = span.dataset.productid;
+    //   } else {
+    //     const variantId = document.querySelector(".product-details__variants-item-input:checked");
+    //     productID = variantId.value;
+    //   }
+    //   sideCart.addToCart(productID);
+
+      // Add To Cart
+        const addToCartBtn = document.querySelector('.addtocart')
+        addToCartBtn.addEventListener('click',function(e){
+            e.preventDefault()
+            sideCart.addToCart()
+        })
+
+        const addToCartBtns2 = document.querySelectorAll('.product__details--text-btn')
+        for(let i = 0; i < addToCartBtns2.length; i++) {
+            const addToCartBtn2 = addToCartBtns2[i]
+            addToCartBtn2.addEventListener('click',function(e){
+                e.preventDefault()
+                const variantId = addToCartBtn2.dataset.id
+                    const formData = {
+                        items: [{
+                            id: variantId,
+                            quantity: 1
+                        }]
+                    }
+                    sideCart.addItem(formData).then(() => sideCart.toggleCart());
+            })
+        }
+
     }
   });
 

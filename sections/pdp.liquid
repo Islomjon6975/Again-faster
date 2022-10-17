@@ -7,7 +7,7 @@
 <script src="{{ 'js.recharge.js' | asset_url }}" defer></script>
 
 <div class="pdp">
-  <form method='post' action='/cart/add' id="form" class="pdp__container" data-selling_plan_id="{{ product.selling_plan_groups.size }}" data-noVariant="{{ product.has_only_default_variant }}">
+  <form  id="form" class="pdp__container" data-selling_plan_id="{{ product.selling_plan_groups.size }}" data-noVariant="{{ product.has_only_default_variant }}">
     <div class="pdp__image--wrapper swiper myProductSwiper">
       <div class="swiper-wrapper">
         {% for item in product.images %}
@@ -59,42 +59,39 @@
 
       <div class="product-form"  >
         <script>
-          console.log({{product | json}})
+          console.log({{product.selling_plan_groups.size | json}})
         </script>
         {% if product.selling_plan_groups.size >= 1 %}
           <div class="form__block">
             <p class="block__header">Select Your Purchase Type</p>
             <ul class="block__options">
               <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
-                <input class="recharge-option" name="purchase-type" value="{{ product.selected_or_first_available_variant.id }}" name="one" id="one-time-purchase" type="radio" hidden checked />
+                <input class="recharge-option" name="purchase-type" value="{{ product.selected_or_first_available_variant.id }}" name="one" id="one-time-purchase" type="radio" checked />
                 <label class="label--checkbox" for="one-time-purchase">One-time purchase</label>
               </li>
               <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
                 {%- assign new_price = product.variants[0].selling_plan_allocations[0].price | money -%}
-                <input name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden />
+                <input class="recharge-option" name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden />
                 <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save <span class="new_price">{{ new_price }}</span></label>
                 
               </li>
             </ul>
-            <p class="block__subtitle" data-open-accessibility-text-original="14px" style="font-size: 14px;">Choose fewer shipments and we pass along the savings to you. </p>
           </div>
       
 
-          <div class="form__block" id="subscribe-and-save-form-block" style="display: none">
+          <div class="form__block" id="subscribe-and-save-form-block">
+            <p class="block__subtitle" data-open-accessibility-text-original="14px" style="font-size: 14px;">Choose fewer shipments and we pass along the savings to you. </p>
               <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;"><span></span> Select your delivery option?</p>
               <ul id="subscribe-and-save-options" class="block__options">
                 {% for item in product.selling_plan_groups[0].selling_plans %}
+                <script>
+                  console.log({{item | json}})
+                </script>
                       <li class="options__item">
-                        <input class="recharge-frequent-option"  value="{{ item.id }}" name="sub-options" id="{{ product.selected_or_first_available_variant.id }}" type="radio" hidden="" checked="">
-                        <label class="label--simple full" for="sub-option-10">
-                            
+                        <input class="recharge-frequent-option"  value="{{ item.id }}" name="sub-options" id="{{ product.selected_or_first_available_variant.id }}" type="radio" hidden="" checked>
+                        <label class="label--simple full" for="{{ product.selected_or_first_available_variant.id }}">
                             <div class="weight">
                                 <span class="paragraph">{{ item.name | remove: 'Delivery every' }}</span>
-                            </div>
-                            <div class="price">
-                                <span class="heading">
-                                    {{product.variants[0].selling_plan_allocations[0].price | money}}
-                                </span>
                             </div>
                         </label>
                       </li>   
@@ -102,7 +99,6 @@
                    
               </ul>
           </div>
-
           <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">YOU’RE QUALIFIED FOR FREE SHIPPING</p>
         {% endif %}
       </div>
@@ -125,6 +121,7 @@
         {% endfor %}
       </div>
     </div>
+  </form>
 </div>
 
   {% assign banner_text = product.metafields.accentuate.banner_text %}
