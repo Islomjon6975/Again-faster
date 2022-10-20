@@ -1,29 +1,43 @@
 {
-  "sections":{
-      "home-rich-text": {
-        "type": "home-rich-text"
-      },
-      "home-products": {
-        "type": "home-products"
-      },
-      "home-banners": {
-        "type": "home-banners"
-      },
-      "home-training": {
-        "type": "home-training"
+  "sections": {
+    "home-rich-text": {
+      "type": "home-rich-text",
+      "settings": {
+        "hero_img": "shopify:\/\/shop_images\/hero_2dba6c55-3adc-4cc4-b18b-1305b106b582.jpg",
+        "secondary_btn": "Explore"
       }
+    },
+    "home-products": {
+      "type": "home-products",
+      "settings": {
+        "collection_list": [
+
+        ]
+      }
+    },
+    "home-banners": {
+      "type": "home-banners",
+      "settings": {
+        "banner_subtitle": "Best seller",
+        "banner_title": "TRULY, AN ALL IN ONE BARBELL",
+        "banner_description": "Design that matches the performance and quality of other elite level competition bars",
+        "banner_url_name": "Shop weights",
+        "banner_url": ""
+      }
+    },
+    "home-training": {
+      "type": "home-training",
+      "settings": {
+        "training_title": "Training in comfort",
+        "training_description": "Incredibly soft Airlume combed and ringspun cotton + poly fabric provides excellent stretch and recovery during even the most intense workouts.",
+        "training_btn": "Shop now"
+      }
+    }
   },
-  "order":[
+  "order": [
     "home-rich-text",
     "home-products",
     "home-banners",
     "home-training"
   ]
 }
-
-
-
-
-
-
-
