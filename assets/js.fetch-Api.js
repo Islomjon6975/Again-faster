@@ -68,7 +68,7 @@ class Cart {
             let deliver_frequency = item?.selling_plan_allocation?.selling_plan.name
             // if(cartDetails.items.length > 0) {}
             const template = `
-                <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.id}" data-amount="${item.quantity}">
+                <div length=${cartDetails.items.length} class="mycart__product" data-id="${item.key}" data-amount="${item.quantity}">
                     <div class="mycart__img--wrapper">
                         <img src="${ item.image }" alt="${ item.title }" class="mycart__product-img">
                     </div>

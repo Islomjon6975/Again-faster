@@ -84,9 +84,6 @@
               <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;"><span></span> Select your delivery option?</p>
               <ul id="subscribe-and-save-options" class="block__options">
                 {% for item in product.selling_plan_groups[0].selling_plans %}
-                <script>
-                  console.log({{item | json}})
-                </script>
                       <li class="options__item">
                         <input class="recharge-frequent-option"  value="{{ item.id }}" name="sub-options" id="{{ product.selected_or_first_available_variant.id }}" type="radio" hidden="" checked>
                         <label class="label--simple full" for="{{ product.selected_or_first_available_variant.id }}">
