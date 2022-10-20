@@ -40,6 +40,64 @@
           "menu2": "",
           "copyright": "2020 Again Faster"
         }
+      },
+      "affiliate-outfitting-header": {
+        "type": "affiliate-outfitting-header",
+        "settings": {
+          "header_subtitle": "Commercial gym",
+          "header_title": "Affiliate Outfitting",
+          "header_img": "shopify:\/\/shop_images\/AF_Affiliate_outlifting_Hero_1.png"
+        }
+      },
+      "affiliate-outfitting-evoluation-banner": {
+        "type": "affiliate-outfitting-evoluation-banner",
+        "settings": {
+          "menu": "affiliate-outfitting-navlink",
+          "title": "Don't make costly mistakes at startup. We listen to your needs and provide expertise regarding equipment selection and layout design so you're ready to start training when you open your doors.",
+          "description": "Again Faster Equipment has supplied thousands of fitness affiliates and commercial gyms around the world since 2006. We are excited to help you design your new gym or upgrade your existing facility with the highest quality equipment at the best prices around.",
+          "banner_img": "shopify:\/\/shop_images\/Brooke_3pm_Workout-02_2.png"
+        }
+      },
+      "affiliate-outfitting-packages": {
+        "type": "affiliate-outfitting-packages",
+        "blocks": {
+          "095feef4-0107-48ef-89a5-1b2bee218505": {
+            "type": "packages",
+            "settings": {
+              "packages_num": "5",
+              "packages_subtitle": "Athletic package",
+              "packages_items": "packages-items",
+              "packages_viewmore": "view-more"
+            }
+          },
+          "777c16b2-cf73-4c72-8c73-f3e2b0114a4d": {
+            "type": "packages",
+            "settings": {
+              "packages_num": "10",
+              "packages_subtitle": "Athletic package",
+              "packages_items": "packages-items",
+              "packages_viewmore": "view-more"
+            }
+          },
+          "1088f697-5172-484f-8e8b-3ee2afeddfde": {
+            "type": "packages",
+            "settings": {
+              "packages_num": "15",
+              "packages_subtitle": "Athletic package",
+              "packages_items": "packages-items",
+              "packages_viewmore": "view-more"
+            }
+          }
+        },
+        "block_order": [
+          "095feef4-0107-48ef-89a5-1b2bee218505",
+          "777c16b2-cf73-4c72-8c73-f3e2b0114a4d",
+          "1088f697-5172-484f-8e8b-3ee2afeddfde"
+        ],
+        "settings": {
+          "packages_title": "Affiliate packages",
+          "packages_description": "Ready to stop planning and start training? Our equipment packages provide the right amount of equipment to get you up and running fast."
+        }
       }
     },
     "content_for_index": [
