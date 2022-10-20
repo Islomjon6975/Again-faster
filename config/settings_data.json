@@ -40,6 +40,29 @@
           "menu2": "",
           "copyright": "2020 Again Faster"
         }
+      },
+      "affiliate-outfitting-header": {
+        "type": "affiliate-outfitting-header",
+        "settings": {
+          "header_subtitle": "Commercial gym",
+          "header_title": "Affiliate Outfitting",
+          "header_img": "shopify:\/\/shop_images\/AF_Affiliate_outlifting_Hero_1.png"
+        }
+      },
+      "affiliate-outfitting-evoluation-banner": {
+        "type": "affiliate-outfitting-evoluation-banner",
+        "settings": {
+          "menu": "",
+          "title": "Don't make costly mistakes at startup. We listen to your needs and provide expertise regarding equipment selection and layout design so you're ready to start training when you open your doors.",
+          "description": "Again Faster Equipment has supplied thousands of fitness affiliates and commercial gyms around the world since 2006. We are excited to help you design your new gym or upgrade your existing facility with the highest quality equipment at the best prices around."
+        }
+      },
+      "affiliate-outfitting-packages": {
+        "type": "affiliate-outfitting-packages",
+        "settings": {
+          "packages_title": "Affiliate packages",
+          "packages_description": "Ready to stop planning and start training? Our equipment packages provide the right amount of equipment to get you up and running fast."
+        }
       }
     },
     "content_for_index": [
