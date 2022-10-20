@@ -1,6 +1,53 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "400518da-3e62-4866-8b4d-9cd2859bf619": {
+            "type": "announcement",
+            "settings": {
+              "title": "20% OFF Sitewide until 9\/12"
+            }
+          }
+        },
+        "block_order": [
+          "400518da-3e62-4866-8b4d-9cd2859bf619"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "header_logo": "shopify:\/\/shop_images\/img-logo.png",
+          "header_logo_black": "shopify:\/\/shop_images\/image-logo-black.png"
+        }
+      },
+      "cart": {
+        "type": "cart",
+        "settings": {
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_title1": "Newsletter",
+          "footer_title2": "Again faster",
+          "footer_title3": "Get Help",
+          "menu1": "",
+          "menu2": "",
+          "copyright": "2020 Again Faster"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }
