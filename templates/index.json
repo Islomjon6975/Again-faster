@@ -11,7 +11,11 @@
       "type": "home-products",
       "settings": {
         "collection_list": [
-
+          "barbel-tools",
+          "garage-package",
+          "gdc",
+          "jerk-block-set",
+          "medicine-balls"
         ]
       }
     },
