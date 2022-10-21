@@ -33,11 +33,12 @@
       "footer": {
         "type": "footer",
         "settings": {
+          "footer_icon": "shopify:\/\/shop_images\/image-footer.png",
           "footer_title1": "Newsletter",
           "footer_title2": "Again faster",
           "footer_title3": "Get Help",
-          "menu1": "",
-          "menu2": "",
+          "menu1": "footer",
+          "menu2": "footer-column-menu-2",
           "copyright": "2020 Again Faster"
         }
       },

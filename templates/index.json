@@ -11,13 +11,19 @@
       "type": "home-products",
       "settings": {
         "collection_list": [
-
+          "barbel-tools",
+          "garage-package",
+          "gdc",
+          "jerk-block-set",
+          "medicine-balls"
         ]
       }
     },
     "home-banners": {
       "type": "home-banners",
       "settings": {
+        "banner_image": "shopify:\/\/shop_images\/banner.jpg",
+        "banner_imagesmall": "shopify:\/\/shop_images\/image-home-banner-small.jpg",
         "banner_subtitle": "Best seller",
         "banner_title": "TRULY, AN ALL IN ONE BARBELL",
         "banner_description": "Design that matches the performance and quality of other elite level competition bars",
@@ -28,6 +34,7 @@
     "home-training": {
       "type": "home-training",
       "settings": {
+        "training_img": "shopify:\/\/shop_images\/training.jpg",
         "training_title": "Training in comfort",
         "training_description": "Incredibly soft Airlume combed and ringspun cotton + poly fabric provides excellent stretch and recovery during even the most intense workouts.",
         "training_btn": "Shop now"
