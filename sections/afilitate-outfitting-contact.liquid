@@ -166,10 +166,10 @@ display: inline-block !important;
 <div class="contact-container">
   <div class="contact__consultation">
     <h2 class="contact__title">
-      Consultation
+      {{schema.settings.title}}
     </h2>
     <p class="contact__description">
-      Looking to customize a package or build your own? Our team is here to help build your dream gym.
+      {{schema.settings.description}}
     </p>
   </div>
   <form class="contact__form">
@@ -223,6 +223,21 @@ display: inline-block !important;
 
 {% schema %}
 {
+  "name":"Afilitate Contact",
+  "settings":[
+  {
+    "type":"text",
+    "id":"title",
+    "label":"Contact title ",
+    "default":"Consultation"
+  },
+  {
+    "type":"text",
+    "id":"description",
+    "label":"Contact description",
+    "default":"Looking to customize a package or build your own? Our team is here to help build your dream gym."
+  }
   
+  ]
 }
 {% endschema %}
