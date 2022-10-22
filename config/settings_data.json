@@ -100,6 +100,18 @@
           "packages_description": "Ready to stop planning and start training? Our equipment packages provide the right amount of equipment to get you up and running fast."
         }
       },
+
+      "afilitate-outfitting-contact": {
+        "type": "afilitate-outfitting-contact",
+        "blocks": {
+          "c1fd356f-f805-4b87-bd85-615d258ce560": {
+            "type": "slide",
+            "settings": {
+              "detail_title": "FINANCING INFORMATION",
+              "detail_description": "Again Faster offers instant credit applications through PayPal Credit and custom financing options for large orders and new gym builds.",
+              "btn_text": "Learn more",
+              "btn_url": "https:\/\/bakhti-natours.herokuapp.com\/"
+
       "section-affiliate": {
         "type": "section-affiliate",
         "blocks": {
@@ -157,10 +169,18 @@
               "banner_image": "shopify:\/\/shop_images\/picture_7.jpg",
               "banner_header": "Flooring",
               "banner_description": "Gym flooring is a very important, yet often overlooked part of the facility outfitting process. We offer high-performance rubber flooring in multiple colors as well as custom turf options. Tell us about the size of your space and we'll help you determine what will work best."
+
             }
           }
         },
         "block_order": [
+
+          "c1fd356f-f805-4b87-bd85-615d258ce560"
+        ],
+        "settings": {
+          "title": "Consultation",
+          "description": "Looking to customize a package or build your own? Our team is here to help build your dream gym."
+
           "eec104cc-1dc2-4fae-96be-fff3c80b4231",
           "77d482d8-f50b-4ab3-9204-3bfb4ac2802b",
           "0e04ea70-122d-4c85-ac37-1f90d72631ae",
@@ -173,6 +193,7 @@
           "banner_title": "Why again faster?",
           "banner_heading": "Again Faster stands behind our products. Our barbells and rigs are guaranteed for life, and all products carry a strong",
           "banner_heading_span": "warranty"
+
         }
       }
     },
