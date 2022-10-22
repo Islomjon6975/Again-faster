@@ -91,9 +91,7 @@
   #option_1,#option_2{
  display: none;
   }
-  #option_1:checked .option__label-1::after,#option_2 .option__label-2::after{
-display: inline-block;
-  }
+ 
 
   
 
@@ -129,7 +127,9 @@ position: relative;
     transform: translateX(-22%) translateY(-50%);
     display: none;
   }
-  
+  #option_1:checked .option__label-1::after,#option_2 .option__label-2::after{
+display: inline-block;
+  }
   
 </style>
 <div class="contact-container">
