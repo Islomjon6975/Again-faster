@@ -99,6 +99,27 @@
           "packages_title": "Affiliate packages",
           "packages_description": "Ready to stop planning and start training? Our equipment packages provide the right amount of equipment to get you up and running fast."
         }
+      },
+      "afilitate-outfitting-contact": {
+        "type": "afilitate-outfitting-contact",
+        "blocks": {
+          "c1fd356f-f805-4b87-bd85-615d258ce560": {
+            "type": "slide",
+            "settings": {
+              "detail_title": "FINANCING INFORMATION",
+              "detail_description": "Again Faster offers instant credit applications through PayPal Credit and custom financing options for large orders and new gym builds.",
+              "btn_text": "Learn more",
+              "btn_url": "https:\/\/bakhti-natours.herokuapp.com\/"
+            }
+          }
+        },
+        "block_order": [
+          "c1fd356f-f805-4b87-bd85-615d258ce560"
+        ],
+        "settings": {
+          "title": "Consultation",
+          "description": "Looking to customize a package or build your own? Our team is here to help build your dream gym."
+        }
       }
     },
     "content_for_index": [
