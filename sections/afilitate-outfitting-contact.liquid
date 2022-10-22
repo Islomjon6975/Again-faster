@@ -90,8 +90,12 @@
   }
   #option_1,#option_2{
  display: none;
-    
   }
+  #option_1:checked .option__label-1,#option_2 .option__label-2{
+
+  }
+
+  
 
   #option_2{
 
@@ -148,11 +152,11 @@ position: relative;
       <div class="swatch__box">
         <div class="option option_1">
           <input type="radio" name="swatch__options" id="option_1" />
-          <label class="option__label" for="option_1">Outfitting a new gym</label>
+          <label class="option__label option__label-1" for="option_1">Outfitting a new gym</label>
         </div>
         <div class="option option_2">
           <input type="radio" name="swatch__options" id="option_2" />
-          <label class="option__label" for="option_2">Updating an existing gym</label>
+          <label class="option__label option__label-2" for="option_2">Updating an existing gym</label>
         </div>
       </div>
     </div>
