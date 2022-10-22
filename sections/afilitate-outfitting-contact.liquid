@@ -186,15 +186,18 @@ justify-self: center;
 align-self: center;
   }
 </style>
+{% for block in section.blocks %}
 <div class="detail-container">
   <h2 class="detail__title">
-    FINANCING INFORMATION
+    {{block.detail_title}}
   </h2>
   <div class="detail__description">
-    Again Faster offers instant credit applications through PayPal Credit and custom financing options for large orders and new gym builds.
+    {{block.detail_description}}
   </div>
   <a href="#" class="detail__btn"><span>Learn More</span><span>&rarr;</span></a>
 </div>
+  
+{% endfor %}
 <div class="contact-container">
   <div class="contact__consultation">
     <h2 class="contact__title">
