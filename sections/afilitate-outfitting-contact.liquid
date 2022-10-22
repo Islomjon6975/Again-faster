@@ -189,12 +189,12 @@ align-self: center;
 {% for block in section.blocks %}
 <div class="detail-container">
   <h2 class="detail__title">
-    {{block.detail_title}}
+    {{block.settings.detail_title}}
   </h2>
   <div class="detail__description">
-    {{block.detail_description}}
+    {{block.settings.detail_description}}
   </div>
-  <a href="{{block.btn_text}}" class="detail__btn"><span>{{block.btn_text}}</span><span>&rarr;</span></a>
+  <a href="{{block.settings.btn_text}}" class="detail__btn"><span>{{block.settings.btn_text}}</span><span>&rarr;</span></a>
 </div>
 {% endfor %}
 <div class="contact-container">
