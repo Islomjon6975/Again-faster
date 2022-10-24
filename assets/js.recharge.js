@@ -6,9 +6,9 @@ const subscribeAndSaveFormBlock = document.querySelector('#subscribe-and-save-fo
 subscribeAndSaveFormBlock.style.display = 'none';
 
 oneTimePurchase.addEventListener('click', (e) => {
-    subscribeAndSaveFormBlock.style.display = 'none';
+    // subscribeAndSaveFormBlock.style.display = 'none';
 })
 
 subscribeAndSave.addEventListener('click', (e) => {
-    subscribeAndSaveFormBlock.style.display = 'block';
+    // subscribeAndSaveFormBlock.style.display = 'block';
 })
