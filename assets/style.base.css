@@ -467,7 +467,7 @@ body {
     position:absolute;
     top: 0px;
     right: -500px;
-    z-index: 10;
+    z-index: 999;
     width: 500px;
     height: 100vh;
     padding-top: 24px;

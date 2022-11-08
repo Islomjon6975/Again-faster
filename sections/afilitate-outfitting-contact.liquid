@@ -1,36 +1,35 @@
 <style>
   .contact-container {
     background-color: white !important;
-    padding: 10rem;
-    padding-top: 2rem;
+    padding: 2rem 10rem 10rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 7rem;
     justify-items: start;
     align-items: flex-start;
   }
-  .contact__consultation {
-  
-  }
-  .contact__title,.detail__title{
-  
-font-size: 24px;
-font-weight: 600;
-line-height: 31px;
-letter-spacing: 0.08em;
-text-align: left;
-margin-bottom: 2.4rem;
-text-transform: uppercase;
+  .contact__consultation {}
+  .contact__title,
+  .detail__title {
+
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 31px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
 
   }
-  .contact__description,.detail__description{
-   
-font-size: 14px;
-font-weight: 400;
-line-height: 23px;
-letter-spacing: 0em;
-text-align: left;
-color: black !important;
+  .contact__description,
+  .detail__description {
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0;
+    text-align: left;
+    color: black !important;
 
   }
   .contact__form {
@@ -38,13 +37,13 @@ color: black !important;
     flex-direction: column;
     gap: 2rem;
   }
-  .form__title{
- 
-font-size: 16px;
-font-weight: 400;
-line-height: 27px;
-letter-spacing: 0em;
-text-align: left;
+  .form__title {
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-align: left;
 
   }
   .full-name {
@@ -72,7 +71,7 @@ text-align: left;
     font-size: 14px;
     font-weight: 600;
     line-height: 23px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: left;
     border-bottom: 1px solid #c4c4c4;
   }
@@ -84,7 +83,7 @@ text-align: left;
     font-size: 12px;
     font-weight: 400;
     line-height: 20px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: left;
   }
   .details-box textarea {
@@ -111,32 +110,29 @@ text-align: left;
     font-size: 14px;
     font-weight: 400;
     line-height: 23px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: left;
   }
-  .swatch__box{
+  .swatch__box {
     margin-left: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    
-  }
-  #option_1,#option_2{
- display: none;
-  }
- 
-
-  
-
-  #option_2{
-
 
   }
-  .option__label{
-position: relative;
+  #option_1,
+  #option_2 {
+    display: none;
+  }
+
+
+
+  #option_2 {}
+  .option__label {
+    position: relative;
 
   }
-  .option__label::before{
+  .option__label::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -147,7 +143,7 @@ position: relative;
     transform: translateY(-50%);
     border-radius: 50%;
   }
-  .option__label::after{
+  .option__label::after {
     position: absolute;
     content: "";
     top: 50%;
@@ -160,50 +156,55 @@ position: relative;
     transform: translateX(-18%) translateY(-50%);
     display: none;
   }
-  #option_1:checked~.option__label-1::after,#option_2:checked~.option__label-2::after{
-display: inline-block !important;
+  #option_1,
+  #option_2:checked~.option__label-2::after {
+    display: inline-block !important;
   }
-  .detail-container{
+  .detail-container {
     margin: 6rem 0;
-padding: 8rem;
-/* padding-bottom: 10rem; */
-display: flex;
-flex-direction: column;
-gap: 2rem;
-background-color: #d4d4d44a !important;
+    padding: 8rem;
+    /* padding-bottom: 10rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #d4d4d44a !important;
   }
-  .detail__title{
-text-align: center !important;
-margin: 0;
+  .detail__title {
+    text-align: center !important;
+    margin: 0;
   }
-  .detail__description{
-text-align: center;
-font-size: 1.4rem;
-line-height: 2rem;
+  .detail__description {
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
-  .detail__btn{
+  .detail__btn {
     color: black;
-justify-self: center;
-text-decoration: none;
-display: flex;
-gap: 2.2rem;
-padding: 1rem 2rem;
-align-items: center;
-border: solid 1px black;
-justify-content: center;
-align-self: center;
+    justify-self: center;
+    text-decoration: none;
+    display: flex;
+    gap: 2.2rem;
+    padding: 1rem 2rem;
+    align-items: center;
+    border: solid 1px black;
+    justify-content: center;
+    align-self: center;
   }
 </style>
 {% for block in section.blocks %}
-<div class="detail-container">
-  <h2 class="detail__title">
-    {{block.settings.detail_title}}
-  </h2>
-  <div class="detail__description">
-    {{block.settings.detail_description}}
+  <div class="detail-container">
+    <h2 class="detail__title">
+      {{block.settings.detail_title}}
+    </h2>
+    <div class="detail__description">
+      {{block.settings.detail_description}}
+    </div>
+    <a href="{{block.settings.btn_text}}" class="detail__btn">
+      <span>{{block.settings.btn_text}}
+      </span>
+      <span>&rarr;</span>
+    </a>
   </div>
-  <a href="{{block.settings.btn_text}}" class="detail__btn"><span>{{block.settings.btn_text}}</span><span>&rarr;</span></a>
-</div>
 {% endfor %}
 <div class="contact-container">
   <div class="contact__consultation">
@@ -219,99 +220,88 @@ align-self: center;
     <div class="full-name">
       <div class="first-name">
         <label for="name">First name</label>
-        <input type="text" id="name" required placeholder="First name" />
+        <input type="text" id="name" required placeholder="First name"/>
       </div>
       <div class="last-name">
         <label for="last-name">First name</label>
-        <input type="text" id="last-name" required placeholder="Last name" />
+        <input type="text" id="last-name" required placeholder="Last name"/>
       </div>
     </div>
     <div class="email">
       <label for="email">Email</label>
-      <input type="email" required placeholder="example@gmail.com" id="email" />
+      <input type="email" required placeholder="example@gmail.com" id="email"/>
     </div>
     <div class="swatch">
       <div class="swatch__content">I'm interested in</div>
       <div class="swatch__box">
         <div class="option option_1">
-          <input type="radio" name="swatch__options" id="option_1" />
+          <input type="radio" name="swatch__options" id="option_1"/>
           <label class="option__label option__label-1" for="option_1">Outfitting a new gym</label>
         </div>
         <div class="option option_2">
-          <input type="radio" name="swatch__options" id="option_2" />
+          <input type="radio" name="swatch__options" id="option_2"/>
           <label class="option__label option__label-2" for="option_2">Updating an existing gym</label>
         </div>
       </div>
     </div>
     <div class="gym-name">
       <label for="gym-name">Gym Name</label>
-      <input placeholder="Again Faster" type="text" required id="gym-name" />
+      <input placeholder="Again Faster" type="text" required id="gym-name"/>
     </div>
     <div class="details-box">
       <label for="details-area">Additional Details</label>
-      <textarea
-        name="details-area"
-        id=""
-        cols="30"
-        rows="5"
-        id="details-area"
-        class="details-area"
-      ></textarea>
+      <textarea name="details-area" id="" cols="30" rows="5" id="details-area" class="details-area"></textarea>
     </div>
-    <button class="btn btn--submit">Submit</button>
+    <button aria-label="btn--submit" class="btn btn--submit">Submit</button>
   </form>
 </div>
 
 
 {% schema %}
-{
-  "name":"Afilitate Contact",
-  "blocks":[
   {
-"name":"Detail block",
-"type":"slide",
-"settings":[
-{
-  "type":"text",
-  "id":"detail_title",
-  "label":"title ",
-  "default":"FINANCING INFORMATION"
-},
-{
-  "type":"text",
-  "id":"detail_description",
-  "label":"description",
-  "default":"Again Faster offers instant credit applications through PayPal Credit and custom financing options for large orders and new gym builds."
-},
-{
-  "type":"text",
-  "id":"btn_text",
-  "label":"Button text",
-  "default":"Learn more"
-},
-{
-  "type":"url",
-  "id":"btn_url",
-  "label":"Button url"
-}
+    "name": "Afilitate Contact",
+    "blocks": [
+      {
+        "name": "Detail block",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "detail_title",
+            "label": "title ",
+            "default": "FINANCING INFORMATION"
+          }, {
+            "type": "text",
+            "id": "detail_description",
+            "label": "description",
+            "default": "Again Faster offers instant credit applications through PayPal Credit and custom financing options for large orders and new gym builds."
+          }, {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "Learn more"
+          }, {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button url"
+          }
 
-]
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Contact title ",
+        "default": "Consultation"
+      }, {
+        "type": "text",
+        "id": "description",
+        "label": "Contact description",
+        "default": "Looking to customize a package or build your own? Our team is here to help build your dream gym."
+      }
+
+    ]
   }
-  ],
-  "settings":[
-  {
-    "type":"text",
-    "id":"title",
-    "label":"Contact title ",
-    "default":"Consultation"
-  },
-  {
-    "type":"text",
-    "id":"description",
-    "label":"Contact description",
-    "default":"Looking to customize a package or build your own? Our team is here to help build your dream gym."
-  }
-  
-  ]
-}
 {% endschema %}

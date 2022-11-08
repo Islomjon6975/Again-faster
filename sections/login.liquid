@@ -6,29 +6,29 @@
   <div class="login__container">
   {% form 'customer_login' %}
   {{ form.errors | default_errors }}
-    <h3 class="h3 login__title">Log in</h3>
+    <h3 class="h3 login__title">{{ 'general.login_page.login_title' }}</h3>
     <div class="login__wrapper">
       <div class="input-box">
-        <label class="login__label" for="email">Email Address</label>
+        <label class="login__label" for="email">{{ 'general.login_page.login_email' | t }}</label>
         <input class="login__input" type="email" value="" name="customer[email]"/>
       </div>
     </div>
 
     <div class="login__wrapper">
       <div class="input-box">
-        <label class="login__label" for="password">Password</label>
+        <label class="login__label" for="password">{{ 'general.login_page.login_password' | t }}</label>
         <input class="login__input" type="password" value="" name="customer[password]"/>
       </div>
     </div>
 
-    <p class="login__forgot">Forgot password?</p>
+    <p class="login__forgot">{{ 'general.login_page.login_forgot_password' | t }}</p>
     
-    <button class="login__btn" type="submit">Log in</button>
+    <button  aria-label="btn--submit" class="login__btn" type="submit">{{ 'general.login_page.login_log_in' | t }}</button>
 
   {% endform %}
-    <p class="login__alreadyHaveAnAccount">Don’t have an account yet?</p>
+    <p class="login__alreadyHaveAnAccount">{{ 'general.login_page.login_dont_have_account_yet' | t }}</p>
     <form action="/account/register">
-      <button class="login__btn--secondary" type="submit">Create an account</button>
+      <button  aria-label="btn--submit" class="login__btn--secondary" type="submit">{{ 'general.login_page.login_create_account' | t }}</button>
     </form>
 
   </div>

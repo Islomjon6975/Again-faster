@@ -3,7 +3,7 @@
 
 
 
-<h3 class="h3 register__title">Create an Account</h3>
+<h3 class="h3 register__title">{{ 'general.register_page.register_title' | t }}</h3>
 <div class="register__container">
   {% form 'create_customer' %}
 
@@ -42,12 +42,12 @@
     </div>
 
 
-    <button class="register__btn" type="submit">Create an Account</button>
+    <button aria-label="btn--submit" class="register__btn" type="submit">{{ 'general.register_page.register_title' | t }}</button>
   {% endform %}
-  <p class="register__alreadyHaveAnAccount">Already have an account?</p>
+  <p class="register__alreadyHaveAnAccount">{{ 'general.register_page.register_have_an_account' | t }}</p>
 
   <form action="/account/login">
-    <button class="register__btn--secondary" type="submit">Log in</button>
+    <button aria-label="btn--submit" class="register__btn--secondary" type="submit">{{ 'general.register_page.register_login_title' | t }}</button>
   </form>
 
 

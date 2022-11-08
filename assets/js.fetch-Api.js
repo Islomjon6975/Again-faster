@@ -154,7 +154,6 @@ class Cart {
     }
 
     increaseItemAmount({ itemID, itemAmount }) {
-        console.log(itemID, itemAmount)
         const formData = {
           id: itemID,
           quantity:Number(itemAmount) + 1
@@ -207,12 +206,11 @@ const addToCartWithSellingPlans = (id, qtty, sellingPlanId) => {
 
 // form add to cart
 let form = document.querySelector('.pdp__container')
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (e.target.dataset.selling_plan_id >= 1) {
         let recharge_id = form.querySelector(".recharge-option:checked").value;
         if (recharge_id == "subscribe") {
-          console.log(e.target.dataset.selling_plan_id,'recharge subs')
         let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
         let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").id;
         addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
@@ -220,15 +218,6 @@ form.addEventListener("submit", function (e) {
         sideCart.addToCart(recharge_id);
       }
     } else {
-    //   let productID;
-    //   if (e.target.dataset.novariant == "true") {
-    //     const span = form.querySelector(".product-details__noVariant");
-    //     productID = span.dataset.productid;
-    //   } else {
-    //     const variantId = document.querySelector(".product-details__variants-item-input:checked");
-    //     productID = variantId.value;
-    //   }
-    //   sideCart.addToCart(productID);
 
       // Add To Cart
         const addToCartBtn = document.querySelector('.addtocart')

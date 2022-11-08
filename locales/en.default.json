@@ -3,6 +3,53 @@
     "404": {
       "title": "Not found",
       "subtext_html": "The page you were looking for does not exist"
+    },
+    "login_page": {
+      "login_title": "Log in",
+      "login_email": "Email Address",
+      "login_password": "Password",
+      "login_forgot_password": "Forgot password?",
+      "login_log_in": "Log in",
+      "login_dont_have_account_yet": "Don't have account yet?",
+      "login_create_account": "Create an account"
+    },
+    "register_page": {
+      "register_title": "Create an Account",
+      "register_have_an_account": "Already have an account",
+      "register_login_title": "Log in"
+    }
+  },
+  "cart": {
+    "cart_page": {
+      "cart_title": "My Cart",
+      "cart_subtotal": "Subtotal",
+      "cart_tax_text": "Tax and shipping calculates at checkout.",
+      "cart_link_learn_more": "learn more",
+      "cart_affirm": "pay as low as 56/mo",
+      "cart_checkout_btn": "Continue to checkout",
+      "cart_cart_empty": "Your Cart is Empty",
+      "cart_shop_best_sellers": "Shop Best Sellers"
+    }
+  },
+  "plp_page": {
+    "plp": {
+      "plp_clear": "Clear All"
+    }
+  },
+  "pdp_page": {
+    "pdp_details": {
+      "reviews": "pay as low as 56/mo Learn More",
+      "description": "Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+      "has_no_variants": "This product has no variants",
+      "available_free_shipping" : "Available for Free shipping!",
+      "purchase-type": "Select Your Purchase Type",
+      "one_time_purchase": "One-time purchase",
+      "subscribe_and_save": "Subscribe & Save",
+      "select_delivery_option": "Select your delivery option?",
+      "you_are_qualified_for_free_shipping": "YOU’RE QUALIFIED FOR FREE SHIPPING",
+      "frequently_bought_with": "Frequently bought with",
+      "add_to_cart": "Add to Cart",
+      "you_might_also_like": "You might also like"
     }
   }
 }

@@ -34,9 +34,9 @@
       </span>
       <div class="affirm__wrapper">
         {% render 'icon-affirm' %}
-        <span class="p reviews">pay as low as 56/mo Learn More</span>
+        <span class="p reviews">{{ 'pdp_page.pdp_details.reviews' | t }}</span>
       </div>
-      <p class="details__description p">Again Faster Dumbbells offer the ability to target specific muscle groups or attain a full body workout. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <p class="details__description p">{{ 'pdp_page.pdp_details.description' | t }}</p>
       <div class="product-details__variants-list">
         {% unless product.variants[0].title == 'Default Title' %}
 
@@ -49,30 +49,27 @@
             </label>
           {% endfor %}
         {% else %}
-          <span class="product-details__noVariant" data-id="{{ product.variants[0].id }}">This product has no variants</span>
+          <span class="product-details__noVariant" data-id="{{ product.variants[0].id }}">{{ 'pdp_page.pdp_details.has_no_variants' | t }}</span>
         {% endunless %}
 
       </div>
-      <p class="details__available p">Available for Free shipping!</p>
+      <p class="details__available p">{{ 'pdp_page.pdp_details.available_free_shipping' | t }}</p>
       {%- comment -%} <div class="rc-widget-injection-parent"></div> {%- endcomment -%}
 
 
       <div class="product-form"  >
-        <script>
-          console.log({{product.selling_plan_groups.size | json}})
-        </script>
         {% if product.selling_plan_groups.size >= 1 %}
           <div class="form__block">
-            <p class="block__header">Select Your Purchase Type</p>
+            <p class="block__header">{{ 'pdp_page.pdp_details.purchase_type' | t }}</p>
             <ul class="block__options">
               <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
                 <input class="recharge-option" name="purchase-type" value="{{ product.selected_or_first_available_variant.id }}" name="one" id="one-time-purchase" type="radio" checked />
-                <label class="label--checkbox" for="one-time-purchase">One-time purchase</label>
+                <label class="label--checkbox" for="one-time-purchase">{{ 'pdp_page.pdp_details.one_time_purchase' | t }}</label>
               </li>
               <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
                 {%- assign new_price = product.variants[0].selling_plan_allocations[0].price | money -%}
                 <input class="recharge-option" name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden />
-                <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save <span class="new_price">{{ new_price }}</span></label>
+                <label class="label--checkbox" for="subscribe-and-save">{{ 'pdp_page.pdp_details.subscribe_and_save' | t }} <span class="new_price">{{ new_price }}</span></label>
                 
               </li>
             </ul>
@@ -81,7 +78,7 @@
 
           <div class="form__block" id="subscribe-and-save-form-block">
             <p class="block__subtitle" data-open-accessibility-text-original="14px" style="font-size: 14px;">Choose fewer shipments and we pass along the savings to you. </p>
-              <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;"><span></span> Select your delivery option?</p>
+              <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;"><span></span> {{ 'pdp_page.pdp_details.select_delivery_option' | t }} </p>
               <ul id="subscribe-and-save-options" class="block__options">
                 {% for item in product.selling_plan_groups[0].selling_plans %}
                       <li class="options__item">
@@ -96,11 +93,11 @@
                    
               </ul>
           </div>
-          <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">YOU’RE QUALIFIED FOR FREE SHIPPING</p>
+          <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">{{ 'pdp_page.pdp_details.you_are_qualified_for_free_shipping' | t }}</p>
         {% endif %}
       </div>
       {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
-      <h4 class="details__subtitle h4">Frequently bought with</h4>
+      <h4 class="details__subtitle h4">{{ 'pdp_page.pdp_details.frequently_bought_with' | t }}</h4>
       <div class="details__wrapper">
         {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
         {% for product in selected_handles %}
@@ -112,7 +109,7 @@
             <div class="product__details">
               <p class="p product__details--text">{{ all_products[product].title }}
               </p>
-              <button type="button" data-id="{{ all_products[product].selected_or_first_available_variant.id }}" class="p product__details--text-btn">Add to Cart</button>
+              <button  aria-label="btn--submit" type="button" data-id="{{ all_products[product].selected_or_first_available_variant.id }}" class="p product__details--text-btn">Add to Cart</button>
             </div>
           </div>
         {% endfor %}
@@ -146,7 +143,7 @@
   {% endfor %}
 
   <div class="pdp__like">
-    <h3 class="pdp__like__title h3">You might also like</h3>
+    <h3 class="pdp__like__title h3">{{ 'pdp_page.pdp_details.you_might_also_like' | t }}</h3>
     <div class="pdp__like--products swiper swiperLikes">
       <div class="swiper-wrapper">
         {% assign selected_handles = product.metafields.accentuate.you_might_also_like | split: "|" %}
