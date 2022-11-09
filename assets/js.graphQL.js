@@ -119,13 +119,15 @@ async function addToCart(variantId) {
       }
     }
 `
-  await fetchApi(productAddQuery).then(res => res)
+  await fetchApi(productAddQuery)
+  renderCartItems()
 }
-
 
 // ---------- renderCartItems ----------------
 async function renderCartItems() {
   const cartProducts = document.querySelector('.cart-products')
+  const cartCount = document.querySelector('.graphQL-toggle')
+  const cartTitleCount = document.querySelector('.graphQL-cart__title')
 
   const rendercartQuery = () => `
       query{
@@ -135,7 +137,7 @@ async function renderCartItems() {
           id
           createdAt
           updatedAt
-          lines(first: 10) {
+          lines(first: 20) {
             edges {
               node {
                 id
@@ -145,6 +147,9 @@ async function renderCartItems() {
                     id
                     title
                     price
+                    product{
+                      title
+                    }
                     image {
                       id
                       url
@@ -175,74 +180,170 @@ async function renderCartItems() {
       }
   `
   let cartProductItems = []
+  let pro = ''
   await fetchApi(rendercartQuery).then((response) => cartProductItems = response)
+  cartCount.innerText =  `GraphQL (${cartProductItems?.data?.cart?.lines?.edges?.length})`
+  cartTitleCount.innerText = `GraphQL Cart (${cartProductItems?.data?.cart?.lines?.edges?.length})`
   console.log(cartProductItems,'cartproductitems')
   for(let item of cartProductItems?.data?.cart?.lines?.edges) {
-    cartProducts.innerHTML += `
+     pro += `
         <div class="cart-product">
         <div class="cart-product__image-wrapper">
           <img src="${item?.node?.merchandise?.image?.url}" alt="${item?.node?.merchandise?.image?.altText}" class="cart-product__image">
         </div>
-        <h4 class="cart-product__title">${item?.node?.merchandise?.title}</h4>
+        <h4 class="cart-product__title">${item?.node?.merchandise?.product?.title}</h4>
         <h4 class="cart-product__price">$${item?.node?.merchandise?.price}</h4>
         <div class="cart-product__quantity">
-          <button class="cart-product__increment">-</button>
-          <h5>${item?.node?.quantity + 1}</h5>
-          <button class="cart-product__decrement" onclick="incrementQuantity('${item?.id}', '${item?.lines?.edges[0]?.node?.id}')">+</button>
+          <button  onclick="decreaseItemAmount('${item?.node?.id}', ${item?.node?.quantity})" class="cart-product__increment">-</button>
+          <h5>${item?.node?.quantity}</h5>
+          <button onclick="increaseItemAmount('${item?.node?.id}', ${item?.node?.quantity})"  class="cart-product__decrement" >+</button>
         </div>
+        <button class="cart-item__remove" onclick="removeItemFromCart('${item?.node?.id}')">x</button>
       </div>
     `
+    cartProducts.innerHTML = pro
   }
 }
 renderCartItems()
 
-// ---------- incrementQuantity ----------------
-function incrementQuantity() {
-  
+// ---------- cartLinesUpdate ----------------
+async function increaseItemAmount(cartLineId, itemAmount) {
+  const cartLinesUpdateQuery = () => `
+      mutation {
+        cartLinesUpdate(
+          cartId: "${localStorage.getItem('cartId')}"
+          lines: {
+            id: "${cartLineId}"
+            quantity: ${itemAmount + 1}
+          }
+        ) {
+          cart {
+            id
+            lines(first: 20) {
+              edges {
+                node {
+                  id
+                  quantity
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                      product {
+                        title
+                      }
+                      image {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      `
+      await fetchApi(cartLinesUpdateQuery)
+      renderCartItems()
 }
 
+async function decreaseItemAmount(cartLineId, itemAmount) {
+  const cartLinesUpdateQuery = () => `
+      mutation {
+        cartLinesUpdate(
+          cartId: "${localStorage.getItem('cartId')}"
+          lines: {
+            id: "${cartLineId}"
+            quantity: ${itemAmount - 1}
+          }
+        ) {
+          cart {
+            id
+            lines(first: 20) {
+              edges {
+                node {
+                  id
+                  quantity
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                      product {
+                        title
+                      }
+                      image {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      `
+      await fetchApi(cartLinesUpdateQuery)
+      renderCartItems()
+}
 
+// ---------- removeItemFromCart ----------------
+async function removeItemFromCart(cartLineId) {
+  const removeItemFromCartQuery = () => `
+      mutation  {
+        cartLinesRemove(cartId: "${localStorage.getItem('cartId')}", lineIds: "${cartLineId}") {
+          cart {
+            id
+            lines(first: 10) {
+              edges {
+                node {
+                  id
+                  quantity
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                      product {
+                        title
+                        handle
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          userErrors {
+            field
+            message
+          }
+        }
+      }
+  `
 
+  await fetchApi(removeItemFromCartQuery).then(res => console.log(res, 'remove'))
+  renderCartItems()
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// toggle cart 
-const graphQLBtn = document.querySelector('.graphQL-toggle')
-const graphQLCart = document.querySelector('.graphQL-cart')
-const graphQLCartClose = document.querySelector('.graphQL-cart svg')
-const graphQLContinueShopping = document.querySelector('.cart-continue-shopping')
-
-graphQLBtn.addEventListener('click', () => {
-  graphQLCart.style.right='0px'
-})
-
-graphQLCartClose.addEventListener('click', () => {
-  graphQLCart.style.right='-450px'
-})
-
-graphQLContinueShopping.addEventListener('click', () => {
-  graphQLCart.style.right='-450px'
-})
+// ---------- toggle cart ----------------
+function toggleCart() {
+  const graphQLBtn = document.querySelector('.graphQL-toggle')
+  const graphQLCart = document.querySelector('.graphQL-cart')
+  const graphQLCartClose = document.querySelector('.graphQL-cart svg')
+  const graphQLContinueShopping = document.querySelector('.cart-continue-shopping')
+  
+  graphQLBtn.addEventListener('click', () => {
+    graphQLCart.style.right='0px'
+  })
+  
+  graphQLCartClose.addEventListener('click', () => {
+    graphQLCart.style.right='-500px'
+  })
+  
+  graphQLContinueShopping.addEventListener('click', () => {
+    graphQLCart.style.right='-500px'
+  })
+}
+toggleCart()
