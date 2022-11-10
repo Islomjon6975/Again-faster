@@ -60,7 +60,7 @@ async function renderData() {
 
   let data = []
   await fetchApi(productQuery).then((response) => data = response)
-  for (let value of data.data.products.edges) {
+  for (let value of data?.data?.products?.edges) {
     let ids = value?.node?.variants?.edges[0]?.node?.id
     const card = `
       <div class="product-card">
@@ -182,10 +182,13 @@ async function renderCartItems() {
   let cartProductItems = []
   let pro = ''
   await fetchApi(rendercartQuery).then((response) => cartProductItems = response)
-  cartCount.innerText =  `GraphQL (${cartProductItems?.data?.cart?.lines?.edges?.length})`
-  cartTitleCount.innerText = `GraphQL Cart (${cartProductItems?.data?.cart?.lines?.edges?.length})`
-  console.log(cartProductItems,'cartproductitems')
+  cartCount.innerText =  `GraphQL (${cartProductItems?.data?.cart?.lines?.edges?.length ? cartProductItems?.data?.cart?.lines?.edges?.length : 0})`
+  cartTitleCount.innerText = `GraphQL Cart (${cartProductItems?.data?.cart?.lines?.edges?.length  ? cartProductItems?.data?.cart?.lines?.edges?.length : 0})`
+  let subtotal = 0;
   for(let item of cartProductItems?.data?.cart?.lines?.edges) {
+    subtotal += +item?.node?.merchandise?.price
+    document.querySelector('.cart-subtotal-counter').innerText = subtotal  ? `$${subtotal}` : 0
+
      pro += `
         <div class="cart-product">
         <div class="cart-product__image-wrapper">
@@ -323,7 +326,7 @@ async function removeItemFromCart(cartLineId) {
       }
   `
 
-  await fetchApi(removeItemFromCartQuery).then(res => console.log(res, 'remove'))
+  await fetchApi(removeItemFromCartQuery)
   renderCartItems()
 }
 

@@ -17,6 +17,17 @@
     margin-top: 50px;
 }
 
+.cart-subtotal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+
+.cart-subtotal-counter {
+    font-weight: 700;
+}
+
 .product-card {
     width: 340px;
     height: 430px;
