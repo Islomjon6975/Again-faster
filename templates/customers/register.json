@@ -1,10 +1,11 @@
 {
   "sections":{
       "register": {
-        "type": "register"
+        "type": "graphql-register"
       }
   },
   "order":[
     "register"
   ]
 }
+

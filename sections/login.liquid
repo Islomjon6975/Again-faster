@@ -1,8 +1,6 @@
 <!-- /templates/customers/login.liquid -->
 {{ 'style.login.css' | asset_url | stylesheet_tag }}
 
-
-
   <div class="login__container">
   {% form 'customer_login' %}
   {{ form.errors | default_errors }}

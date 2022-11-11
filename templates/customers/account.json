@@ -1,0 +1,10 @@
+{
+    "sections":{
+        "account": {
+          "type": "graphql-account"
+        }
+    },
+    "order":[
+      "account"
+    ]
+  }
