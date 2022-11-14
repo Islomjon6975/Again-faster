@@ -84,7 +84,7 @@ class Customer {
         return await this.fetchApi(customerQuery)
     }
     // ---------------------- customerRecover -----------------------
-    async customerRecover() {
+    async customerRecover(variables) {
         const customerRecoverQuery = {
             query: `
                 mutation customerRecover($email: String!) {
@@ -96,9 +96,7 @@ class Customer {
                 }
               }
             `,
-            variables: {
-                email: "islomjonabdulakhatov6975@gmail.com"
-            }
+            variables: variables
         }
         await this.fetchApi(customerRecoverQuery).then((response) => console.log(response, 'customerRecover'))
     }
@@ -139,6 +137,7 @@ console.log(customer, 'customer class')
 // ----------------------- Forms ------------------------------
 const formSingUp = document?.querySelector('.register__container form')
 const formSingIn = document?.querySelector('.login__container form')
+const formRecover = document?.querySelector('.recover__container form')
 
 // ----------------------- Sign Up ------------------------------
 formSingUp?.addEventListener('submit', async(e) => {
@@ -159,6 +158,7 @@ formSingUp?.addEventListener('submit', async(e) => {
     await customer.customerCreate(customerCreateVariable);
     return
 })
+
 // ----------------------- Sign In ------------------------------
 formSingIn?.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -188,6 +188,13 @@ async function customerAccount() {
 }
 customerAccount()
 
-
-// ----------------------- Register ------------------------------
+// ----------------------- formRecover ------------------------------
+formRecover.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.querySelector('recover__container .recover__email').value
+    const customerRecoverVariables = {
+        email
+    }
+    await customer.customerPasswordRecover(customerRecoverVariables)
+})
 // ----------------------- Register ------------------------------
