@@ -9,8 +9,6 @@
   }
 </style>
 
-
-
 <div class="collection-plp">
   <div class="collection-plp__wrapper">
     <h3 class="collection-plp__title h3">{{ collection.title }}
@@ -34,7 +32,6 @@
             <summary class="filter-group-summary">
               <div>
                 <span>{{ filter.label }}</span>
-
                 {%- if filter.active_values.size > 0 -%}
                   <span>({{ filter.active_values.size }})</span>
                 {%- endif -%}
