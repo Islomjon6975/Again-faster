@@ -49,3 +49,37 @@
     border-bottom: 1px solid black;
     text-decoration: none;
 }
+
+@media (max-width: 1000px) {
+    .home-banner {
+    }
+    .home-banner__wrapper {
+        width: 35%;
+        padding-right: 24px;
+    }
+    .banner__title {
+        margin: 8px 0px 13px 0px;
+        width: 100%;
+        font-weight: 600;
+    }
+    .home-banner__image-small__wrapper {
+        width: 90%;
+
+    }
+    .banner__subtitle {
+        margin-top: 30px;
+    }
+    .banner__description {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .home-banner__wrapper {
+        width: 35%;
+        padding-right: 16px;
+    }
+    .banner__subtitle {
+        margin-top: 25px;
+    }
+}
