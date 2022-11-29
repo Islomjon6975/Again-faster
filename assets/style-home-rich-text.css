@@ -36,4 +36,51 @@
     
 }
 
+@media (max-width: 1250px) {
+    .rich-text {
+        height: calc(70vh - 40px);
+        margin-top: -55px;
+        background-size: cover;
+    }
 
+    .rich-text__title {
+        max-width: 480px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 130%;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    
+    .rich-text__description {
+        max-width: 601px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 167.5%;
+        color: #FFFFFF;
+        margin: 15px 0px 40px 0px;
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .rich-text {
+        height: calc(80vh - 40px);
+        margin-top: -55px;
+        background-size: cover;
+        padding-left: 16px;
+    }
+
+    .rich-text__title {
+        font-size: 40px;
+        max-width: 380px;
+    }
+    
+    .rich-text__description {
+        margin: 5px 0px 20px 0px;
+        max-width: 400px;
+    }
+}
