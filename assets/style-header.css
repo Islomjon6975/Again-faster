@@ -16,7 +16,7 @@
 .header__nav {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-column-gap: 10px;
     align-items: center;
 }
@@ -34,6 +34,7 @@
     align-items: center;
     gap: 40px;
     justify-content: center;
+    background: red;
 }
 
 .nav__item {
@@ -99,5 +100,107 @@
     font-size: 9px;
 }
 
+.humburger-menu {
+    display: none;
+}
 
+.humburger-container {
+    display: none;
+}
 
+/* Media */
+
+@media (max-width: 1250px) {
+    .header {
+        padding: 0px 24px 0px 24px;
+        width: 100%;
+        background: blue;
+    }
+    .header__nav {
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+        background: red;
+        padding: 18px 0px;
+        width: 100%;
+    }
+    .humburger-menu {
+        display: block;
+        background: green;
+    }
+    .nav__items {
+        display: none;
+    }
+
+    .humburger__container {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
+    .humburger__wrapper {
+        position: relative;
+        background: #E5E5E5;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .close-humburger-menu {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .close-humburger-menu:active {
+        transform: scale(0.97);
+    }
+    .close-humburger-menu svg {
+        width:14px;
+        height: 14px;
+    }
+    .humburger__items--wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .humburger__items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        gap: 10px;
+    }
+    .humburger__items .nav__link {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        letter-spacing: 0.175em;
+        text-transform: uppercase;
+        color: var(--primary-black);
+    }
+    .humburger__footer {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 100%;
+        height: 50px;
+        background: #F1F1F1;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 167.5%;
+        color: var(--primary-black);
+        gap: 10px;
+        text-decoration: none;
+    }
+}

@@ -1,6 +1,11 @@
 {{ 'style-header.css' | asset_url | stylesheet_tag}}
+<script src="{{ 'js.humburger-menu.js' | asset_url }}" defer></script>
+
 <div class="header">
   <div class="header__nav">
+    <div class="humburger-menu">
+      {% render 'icon-menu' %}
+    </div>
     {% if template == 'index' %}
       <a href="#">
         <img src="{{ section.settings.header_logo.src | img_url: '240x'}}" alt="logo" class="logo">
@@ -28,6 +33,28 @@
         {% render 'icon-basket' %}
         <span class="basket__counter"></span>
       </div>
+    </div>
+  </div>
+
+  <div class="humburger__container">
+    <div class="humburger__wrapper">
+      <div class="humburger__items--wrapper">
+        <div class="close-humburger-menu">
+          {% render 'icon-close' %}
+        </div>
+        <ul class="humburger__items">
+          {% for link in section.settings.menu.links %}
+            <li class="nav__item">
+              <a class="nav__link p" href="{{ link.url }}">{{link.title | escape }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <a href="/account/login" class="humburger__footer">
+        {% render 'icon-account2' %}
+        Account
+      </a>
     </div>
   </div>
 
