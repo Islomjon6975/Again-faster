@@ -46,3 +46,17 @@
     width: 240px !important;
     /* transform: translate3d(0px, 0px, 0px) !important; */
 }
+
+
+@media (max-width: 1000px) {
+    .homepage-products {
+        padding: 40px 24px 80px 24px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .homepage-products {
+        padding: 40px 16px 40px 16px;
+    }
+}
