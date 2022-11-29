@@ -480,6 +480,12 @@ body {
     transition: all .9s ease;
 }
 
+@media (max-width: 500px) {
+    .mycart {
+        width: 100%;
+    }
+}
+
 .open {
     right: 0px;
 }
