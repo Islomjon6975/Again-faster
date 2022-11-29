@@ -47,3 +47,17 @@
 .rich-text__btn-text {
     color: #FFFFFF;
 }
+
+@media (max-width: 1000px) {
+    .training__wrapper {
+        padding-left: 24px;
+        height: 520px;
+    }
+}
+
+@media (max-width: 500px) {
+    .training__wrapper {
+        padding: 0 16px;
+        height: 400px;
+    }
+}
