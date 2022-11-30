@@ -4,7 +4,11 @@
 <div class="header">
   <div class="header__nav">
     <div class="humburger-menu">
-      {% render 'icon-menu' %}
+      {% if template == 'index' %}
+        {% render 'icon-menu' %}
+      {% else %}
+        {% render 'icon-menu-black' %}
+      {% endif %}
     </div>
     {% if template == 'index' %}
       <a href="#">
