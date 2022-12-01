@@ -89,7 +89,9 @@
           <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">{{ 'pdp_page.pdp_details.you_are_qualified_for_free_shipping' | t }}</p>
         {% endif %}
       </div>
-      {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
+      <div class="addtocart__wrapper">
+        {% render 'primary-button', title: 'Add to Cart', type: 'large addtocart', class: 'addtocart' %}
+      </div>
       <h4 class="details__subtitle h4">{{ 'pdp_page.pdp_details.frequently_bought_with' | t }}</h4>
       <div class="details__wrapper">
         {% assign selected_handles = product.metafields.accentuate.fbp | split: "|" %}
