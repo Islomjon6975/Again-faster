@@ -233,7 +233,6 @@ input[type="radio"]:checked + .product-details__variants-item {
     align-items:center;
     width: 90%;
     margin: auto;
-    background: red;
   }
 
 }

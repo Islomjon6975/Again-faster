@@ -250,10 +250,6 @@
     const target = e.target.closest('.product-details__variants-item');
     if (! target) 
       return;
-    
-
-
-
     badgeContainer(target.dataset.price);
     variantId = target.dataset.id;
 
@@ -265,7 +261,6 @@
     };
     priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
   };
-
 
   const circleb = document.querySelectorAll('.circleb')
   const circles = document.querySelectorAll('.circles')
@@ -281,21 +276,15 @@
   .classList
   .add('banner_firstImg')
 
-
-
   // Cart price
   formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 2
     });
-
-    
     const price = document.querySelectorAll('.product-likes-card__price')
     const pricee = document.querySelectorAll('.pricee')
     for(let i = 0; i < price.length; i++) {
       pricee[i].innerText = (formatter.format(+price[i].innerText / 100))
     }
-
-
 </script>
